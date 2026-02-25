@@ -1,0 +1,106 @@
+You are building new features into an existing Next.js 16 / React 19 / Tailwind 4 / TypeScript Mission Control dashboard app for an AI assistant named Axel. The app is at C:\Users\kevin\projects\mission-control. The gateway is at http://127.0.0.1:18789 (token in .env.local). Read the existing code first to understand the patterns (lib/openclaw.ts, existing pages, components, NavBar).
+
+BUILD THESE 5 NEW PAGES:
+
+---
+
+## 1. Tasks Board (/tasks)
+
+Kanban board with columns: Backlog, In Progress, Done.
+
+Each task card shows:
+- Title, description, assignee badge (Kevin or Axel), status, created date
+- Thumbnail previews of any attached files/images
+- Click to expand/edit
+
+New Task Button (top right):
+- Modal form: Title, Description, Status (dropdown), Assignee (Kevin / Axel toggle)
+- File/image attachment support: drag-and-drop or click-to-upload zone
+  - Accept images (jpg, png, gif, webp) and documents (pdf, txt, md, docx)
+  - Show thumbnail preview for images, file icon for docs
+  - Multiple files allowed
+- Save button submits to API
+
+Data persistence:
+- Store tasks in C:\Users\kevin\.openclaw\workspace\tasks.json (create if missing)
+- API route: app/api/tasks/route.ts (GET all, POST new, PUT update, DELETE)
+- File uploads stored in: C:\Users\kevin\.openclaw\workspace\uploads\ (create dir)
+- Serve uploads via: app/api/uploads/[...path]/route.ts
+- Task JSON structure: { id, title, description, status, assignee, createdAt, updatedAt, attachments: [{ filename, originalName, mimeType }] }
+
+---
+
+## 2. Memory Screen (/memory)
+
+Displays all Axel's memory files in a beautiful UI.
+
+- Read files: C:\Users\kevin\.openclaw\workspace\MEMORY.md and C:\Users\kevin\.openclaw\workspace\memory\*.md
+- Show each file as a card with filename, last modified date, rendered markdown content (render as plain text with whitespace-pre-wrap, no markdown lib needed)
+- Search bar at top filters across all file contents (client-side)
+- Click a card to expand full content
+- Sort by: most recent / alphabetical
+- API route: app/api/memory/route.ts (reads files from workspace, returns array of { filename, content, lastModified })
+
+---
+
+## 3. Team Screen (/team)
+
+Shows Axel's team structure.
+
+- Axel (main agent) shown prominently at top as Lead Agent with gear icon
+- Below: list of sub-agents pulled from sessions_list (filter for :subagent: or :cron: in key field)
+- For each: avatar (colored initials), name/key, model, last active time, status dot (green if active less than 5min, gray otherwise)
+- Hardcoded roles section at bottom: Developer, Researcher, Writer, Designer (with descriptions)
+- Empty state: No active sub-agents right now
+
+---
+
+## 4. Office Screen (/office)
+
+Live view of all active sessions - auto-refreshes every 10s.
+
+- Grid of agent cards, one per session from sessions_list
+- Each card: avatar (colored by session kind), session label/key (truncated), model badge, token usage bar (totalTokens/contextTokens), last active time
+- Pulsing green dot if active in last 2 minutes
+- Active count badge in header
+- Client component with useEffect polling every 10s via /api/openclaw route
+- Empty/loading states
+
+---
+
+## 5. Content Pipeline (/content)
+
+Kanban-style content creation tracker.
+
+Columns: Idea, Scripting, Thumbnail, Filming, Published.
+
+Each content card shows:
+- Title, type badge (Video/Blog/Post), thumbnail image if attached
+- Description/notes snippet
+- Click to expand: full description, script text area, attached thumbnail image
+
+Add Content button:
+- Modal: Title, Type (Video/Blog/Post), Description, Script (textarea), optional thumbnail upload (image only)
+
+Data persistence:
+- Store in C:\Users\kevin\.openclaw\workspace\content-pipeline.json (create if missing)
+- API route: app/api/content/route.ts (GET all, POST new, PUT update with stage, DELETE)
+- Content structure: { id, title, type, description, script, stage, createdAt, updatedAt, thumbnail: { filename, originalName } or null }
+
+---
+
+## General Requirements:
+
+- Match the existing dark theme exactly: bg-[#0A0A0F], cards bg-[#1A1A2E], borders border-[#2A2A3E], text-white/gray-400
+- Include AgentBanner at top of each new page (import from @/app/components/AgentBanner)
+- Update app/components/NavBar.tsx to add links for all 5 new pages with appropriate emoji icons
+- Use use client directive where needed (interactive components)
+- Consistent loading, error, and empty states on all pages
+- File uploads: use FormData and Next.js API route with Node.js fs module to write files to uploads dir
+- Do NOT add any new npm dependencies - use only what is already installed
+- Make sure all TypeScript types are correct with no type errors
+- For the /api/openclaw route that already exists, reuse it for office polling
+
+After building everything, run: npm run build
+Fix any build errors before finishing.
+When completely done with a clean build, run this command to notify: openclaw system event --text "Done: Built 5 new Mission Control pages" --mode now
