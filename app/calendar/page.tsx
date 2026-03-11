@@ -1,5 +1,6 @@
 import { invokeTool } from "@/app/lib/openclaw";
 import CalendarClient from "./CalendarClient";
+import PageHeader from "@/app/components/PageHeader";
 
 interface CronSchedule {
   kind: string;
@@ -35,14 +36,11 @@ export default async function CalendarPage() {
   const jobs = await loadCronJobs();
 
   return (
-    <div className="max-w-5xl mx-auto px-4 py-8">
-      <div className="mb-6">
-        <h1 className="text-2xl font-bold text-white">Calendar</h1>
-        <p className="text-gray-400 text-sm mt-1">
-          Google Calendar events · <span className="text-blue-400">Personal</span> · <span className="text-green-400">Bluestone Apps</span> · <span className="text-purple-400">Cron Jobs</span>
-        </p>
+    <div>
+      <PageHeader title="Calendar" subtitle="Google Calendar events · Personal · Bluestone Apps · Cron Jobs" icon="📅" />
+      <div className="max-w-5xl mx-auto px-4 py-8">
+        <CalendarClient initialJobs={jobs} />
       </div>
-      <CalendarClient initialJobs={jobs} />
     </div>
   );
 }

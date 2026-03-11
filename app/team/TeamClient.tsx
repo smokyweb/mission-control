@@ -1,11 +1,22 @@
 "use client";
 
+import { useState, useEffect, useCallback } from 'react';
+
 interface Session {
   key?: string;
   label?: string;
   model?: string;
   tokenCount?: number;
   updatedAt?: number;
+}
+
+interface SubAgent {
+  key?: string;
+  label?: string;
+  model?: string;
+  updatedAt?: number;
+  active?: boolean;
+  lastMessage?: string | null;
 }
 
 const ROLES = [
@@ -83,6 +94,35 @@ export default function TeamClient({
 }: {
   initialSubAgents: Session[];
 }) {
+  const [subAgents, setSubAgents] = useState<SubAgent[]>(initialSubAgents);
+  const [cancellingId, setCancellingId] = useState<string | null>(null);
+
+  const fetchSubAgents = useCallback(async () => {
+    try {
+      const res = await fetch('/api/subagents', { cache: 'no-store' });
+      const data = await res.json();
+      setSubAgents(data.subagents ?? []);
+    } catch {
+      // keep stale data on error
+    }
+  }, []);
+
+  useEffect(() => {
+    fetchSubAgents();
+    const interval = setInterval(fetchSubAgents, 5000);
+    return () => clearInterval(interval);
+  }, [fetchSubAgents]);
+
+  const handleCancel = async (key: string) => {
+    setCancellingId(key);
+    try {
+      await fetch(`/api/subagents/${encodeURIComponent(key)}`, { method: 'DELETE' });
+      await fetchSubAgents();
+    } finally {
+      setCancellingId(null);
+    }
+  };
+
   return (
     <div>
       {/* Lead Agent */}
@@ -107,21 +147,80 @@ export default function TeamClient({
         </div>
       </div>
 
+      {/* Channel Agents */}
+      <div className="mb-6">
+        <h2 className="text-sm font-medium text-gray-400 uppercase tracking-wide mb-4">
+          Channel Agents
+        </h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          {[
+            { agent: "axeldev",       emoji: "🛠️", channel: "#development", model: "claude-sonnet-4-6", provider: "Anthropic", color: "#a78bfa", border: "rgba(139,92,246,0.3)", bg: "rgba(139,92,246,0.08)" },
+            { agent: "axelgeneral",   emoji: "💬", channel: "#general",     model: "gpt-5.4",          provider: "OpenAI",    color: "#34d399", border: "rgba(52,211,153,0.3)",  bg: "rgba(52,211,153,0.08)" },
+            { agent: "axelbriefing",  emoji: "📋", channel: "#briefing",    model: "gemini-2.5-flash", provider: "Google",    color: "#60a5fa", border: "rgba(96,165,250,0.3)",  bg: "rgba(96,165,250,0.08)" },
+            { agent: "axelinbox",     emoji: "📥", channel: "#inbox",       model: "deepseek-chat",    provider: "DeepSeek",  color: "#a78bfa", border: "rgba(139,92,246,0.3)",  bg: "rgba(139,92,246,0.08)" },
+            { agent: "axelmarketing", emoji: "📣", channel: "#marketing",   model: "gemini-2.5-flash", provider: "Google",    color: "#60a5fa", border: "rgba(96,165,250,0.3)",  bg: "rgba(96,165,250,0.08)" },
+            { agent: "axelmonitoring",emoji: "🔍", channel: "#monitoring",  model: "gemini-2.5-flash", provider: "Google",    color: "#60a5fa", border: "rgba(96,165,250,0.3)",  bg: "rgba(96,165,250,0.08)" },
+          ].map(({ agent, emoji, channel, model, provider, color, border, bg }) => (
+            <div key={agent} style={{ background: bg, border: `1px solid ${border}`, borderRadius: "12px", padding: "14px 16px", display: "flex", alignItems: "center", gap: "12px" }}>
+              <div style={{ width: "42px", height: "42px", borderRadius: "50%", background: `${color}22`, border: `1px solid ${border}`, display: "flex", alignItems: "center", justifyContent: "center", fontSize: "20px", flexShrink: 0 }}>
+                {emoji}
+              </div>
+              <div style={{ flex: 1, minWidth: 0 }}>
+                <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "2px" }}>
+                  <span style={{ color: "#fff", fontWeight: 700, fontSize: "14px" }}>{agent}</span>
+                  <span style={{ color: "#f5c200", fontFamily: "monospace", fontSize: "11px", background: "rgba(245, 194, 0,0.1)", border: "1px solid rgba(245, 194, 0,0.2)", borderRadius: "4px", padding: "1px 6px" }}>{channel}</span>
+                </div>
+                <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
+                  <span style={{ fontSize: "11px", color: "rgba(255,255,255,0.35)" }}>{provider}</span>
+                  <span style={{ color, fontFamily: "monospace", fontSize: "11px", fontWeight: 600 }}>{model}</span>
+                </div>
+              </div>
+              <span style={{ width: "8px", height: "8px", borderRadius: "50%", background: "#4ade80", flexShrink: 0, boxShadow: "0 0 6px #4ade80" }} />
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Task Difficulty → Model Routing */}
+      <div className="mb-6">
+        <h2 className="text-sm font-medium text-gray-400 uppercase tracking-wide mb-4">
+          Task Difficulty Routing
+        </h2>
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+          {[
+            { level: "Easy", command: "/easy", model: "gemini-2.0-flash-lite", provider: "Google", icon: "🟢", color: "#34d399", bg: "rgba(52,211,153,0.08)", border: "rgba(52,211,153,0.2)" },
+            { level: "Medium", command: "/medium", model: "deepseek-chat", provider: "DeepSeek", icon: "🟡", color: "#fbbf24", bg: "rgba(251,191,36,0.08)", border: "rgba(251,191,36,0.2)" },
+            { level: "Difficult", command: "/difficult", model: "claude-sonnet-4-6", provider: "Anthropic", icon: "🔴", color: "#f87171", bg: "rgba(248,113,113,0.08)", border: "rgba(248,113,113,0.2)" },
+          ].map(({ level, command, model, provider, icon, color, bg, border }) => (
+            <div key={level} style={{ background: bg, border: `1px solid ${border}`, borderRadius: "12px", padding: "16px" }}>
+              <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "10px" }}>
+                <span style={{ fontSize: "16px" }}>{icon}</span>
+                <span style={{ color: "#fff", fontWeight: 700, fontSize: "14px" }}>{level}</span>
+                <span style={{ marginLeft: "auto", fontFamily: "monospace", fontSize: "11px", color: "rgba(255,255,255,0.35)", background: "rgba(0,0,0,0.3)", padding: "2px 7px", borderRadius: "4px" }}>{command}</span>
+              </div>
+              <div style={{ color, fontFamily: "monospace", fontSize: "13px", fontWeight: 600, marginBottom: "2px" }}>{model}</div>
+              <div style={{ color: "rgba(255,255,255,0.35)", fontSize: "11px" }}>{provider}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+
       {/* Sub-agents */}
       <div className="mb-8">
         <h2 className="text-sm font-medium text-gray-400 uppercase tracking-wide mb-4">
-          Sub-agents ({initialSubAgents.length})
+          Sub-agents ({subAgents.length})
         </h2>
-        {initialSubAgents.length === 0 ? (
+        {subAgents.length === 0 ? (
           <div className="bg-[#1A1A2E] border border-[#2A2A3E] rounded-xl p-8 text-center">
             <p className="text-3xl mb-2">🤖</p>
             <p className="text-gray-500">No active sub-agents right now</p>
           </div>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            {initialSubAgents.map((agent, i) => {
+            {subAgents.map((agent, i) => {
               const name = agent.label ?? agent.key ?? "Unknown";
-              const active = isActive(agent.updatedAt);
+              const isActive = agent.active === true;
+              const isCancelling = cancellingId === agent.key;
               return (
                 <div
                   key={i}
@@ -141,7 +240,7 @@ export default function TeamClient({
                       </span>
                       <span
                         className={`w-2 h-2 rounded-full shrink-0 ${
-                          active
+                          isActive
                             ? "bg-green-400 animate-pulse"
                             : "bg-gray-600"
                         }`}
@@ -157,7 +256,20 @@ export default function TeamClient({
                         {formatLastActive(agent.updatedAt)}
                       </span>
                     </div>
+                    {agent.lastMessage && (
+                      <p className="text-xs text-gray-500 mt-1 truncate">
+                        <span className="text-gray-600">Working on: </span>
+                        {agent.lastMessage.slice(0, 80)}
+                      </p>
+                    )}
                   </div>
+                  <button
+                    onClick={() => agent.key && handleCancel(agent.key)}
+                    disabled={isCancelling || !agent.key}
+                    className="ml-2 bg-red-900/40 hover:bg-red-800/60 text-red-400 border border-red-800/50 rounded px-2 py-1 text-xs disabled:opacity-50 shrink-0"
+                  >
+                    {isCancelling ? "Stopping..." : "Cancel"}
+                  </button>
                 </div>
               );
             })}

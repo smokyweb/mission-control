@@ -1,8 +1,13 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
+
+const GOLD = "#f5c200";
+const GOLD_DIM = "rgba(245, 194, 0,0.12)";
+const GOLD_BORDER = "rgba(245, 194, 0,0.25)";
 
 export default function NavBar() {
   const pathname = usePathname();
@@ -25,64 +30,146 @@ export default function NavBar() {
   }, []);
 
   const links = [
-    { href: "/calendar", label: "📅 Calendar" },
-    { href: "/tasks", label: "📋 Tasks" },
-    { href: "/feed", label: "📡 Feed" },
-    { href: "/conversations", label: "💬 Conversations" },
-    { href: "/content", label: "🎬 Content" },
-    { href: "/memory", label: "🧠 Memory" },
-    { href: "/team", label: "👥 Team" },
-    { href: "/office", label: "🏢 Office" },
-    { href: "/search", label: "🔍 Search" },
+    { href: "/calendar",      label: "Calendar",      icon: "/icons/icon-7.png"  },
+    { href: "/tasks",         label: "Tasks",         icon: "/icons/icon-17.png" },
+    { href: "/todos",         label: "To-Dos",        icon: "/icons/icon-17.png" },
+    { href: "/conversations", label: "Conversations", icon: "/icons/icon-5.png"  },
+    { href: "/search",        label: "Search",        icon: "/icons/icon-14.png" },
+    { href: "/feed",          label: "Feed",          icon: "/icons/icon-4.png"  },
+    { href: "/content",       label: "Content",       icon: "/icons/icon-15.png" },
+    { href: "/memory",        label: "Memory",        icon: "/icons/icon-8.png"  },
+    { href: "/team",          label: "Team",          icon: "/icons/icon-10.png" },
+    { href: "/office",        label: "Office",        icon: "/icons/icon-16.png" },
   ];
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0A0A0F]/90 backdrop-blur-sm border-b border-[#2A2A3E] h-16 flex items-center px-6">
-      <div className="flex items-center gap-6 w-full max-w-7xl mx-auto">
-        {/* Logo */}
-        <Link href="/feed" className="flex items-center gap-2 shrink-0">
-          <span className="text-2xl">🦀</span>
-          <span className="font-bold text-white hidden sm:block">
-            Mission Control
-          </span>
+    <aside
+      style={{
+        position: "fixed",
+        top: 0,
+        left: 0,
+        bottom: 0,
+        width: "220px",
+        background: "#000",
+        borderRight: `1px solid ${GOLD_BORDER}`,
+        display: "flex",
+        flexDirection: "column",
+        zIndex: 50,
+        overflowY: "auto",
+      }}
+    >
+      {/* Logo */}
+      <div style={{ padding: "24px 20px 20px", borderBottom: `1px solid ${GOLD_BORDER}` }}>
+        <Link href="/calendar" style={{ display: "flex", alignItems: "center", gap: "12px", textDecoration: "none" }}>
+          <div style={{ position: "relative", flexShrink: 0 }}>
+            <Image
+              src="/batman-logo.jpg"
+              alt="Bat Cave"
+              width={42}
+              height={42}
+              style={{ borderRadius: "50%", border: `2px solid ${GOLD}`, display: "block" }}
+            />
+            <div style={{
+              position: "absolute", inset: -3, borderRadius: "50%",
+              boxShadow: `0 0 12px ${GOLD}55`, pointerEvents: "none"
+            }} />
+          </div>
+          <div>
+            <div style={{ color: GOLD, fontWeight: 800, fontSize: "15px", letterSpacing: "0.08em", lineHeight: 1 }}>
+              BAT CAVE
+            </div>
+            <div style={{ color: "rgba(245, 194, 0,0.45)", fontSize: "10px", letterSpacing: "0.12em", marginTop: "3px" }}>
+              COMMAND CENTER
+            </div>
+          </div>
         </Link>
+      </div>
 
-        {/* Nav Links */}
-        <div className="flex gap-1 ml-4">
-          {links.map(({ href, label }) => (
+      {/* Nav Links */}
+      <nav style={{ flex: 1, padding: "16px 12px" }}>
+        {links.map(({ href, label, icon }) => {
+          const active = pathname === href || pathname.startsWith(href + "/");
+          return (
             <Link
               key={href}
               href={href}
-              className={`px-3 py-1.5 rounded-md text-sm font-medium transition-colors ${
-                pathname === href || pathname.startsWith(href + "/")
-                  ? "bg-[#1A1A2E] text-blue-400"
-                  : "text-gray-400 hover:text-white hover:bg-[#1A1A2E]"
-              }`}
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "10px",
+                padding: "9px 12px",
+                borderRadius: "8px",
+                marginBottom: "2px",
+                textDecoration: "none",
+                fontSize: "13px",
+                fontWeight: active ? 700 : 400,
+                color: active ? GOLD : "rgba(255,255,255,0.55)",
+                background: active ? GOLD_DIM : "transparent",
+                borderLeft: active ? `3px solid ${GOLD}` : "3px solid transparent",
+                transition: "all 0.15s",
+              }}
+              onMouseEnter={e => {
+                if (!active) {
+                  (e.currentTarget as HTMLAnchorElement).style.color = "rgba(255,255,255,0.9)";
+                  (e.currentTarget as HTMLAnchorElement).style.background = "rgba(255,255,255,0.05)";
+                }
+              }}
+              onMouseLeave={e => {
+                if (!active) {
+                  (e.currentTarget as HTMLAnchorElement).style.color = "rgba(255,255,255,0.55)";
+                  (e.currentTarget as HTMLAnchorElement).style.background = "transparent";
+                }
+              }}
             >
-              {label}
+              <Image
+                src={icon}
+                alt={label}
+                width={22}
+                height={22}
+                style={{
+                  filter: active
+                    ? "invert(82%) sepia(100%) saturate(800%) hue-rotate(5deg) brightness(103%)"
+                    : "invert(1) opacity(0.5)",
+                  flexShrink: 0,
+                }}
+              />
+              <span style={{ letterSpacing: "0.03em" }}>{label}</span>
             </Link>
-          ))}
-        </div>
+          );
+        })}
+      </nav>
 
-        {/* Spacer */}
-        <div className="flex-1" />
-
-        {/* Gateway Status */}
-        <div className="flex items-center gap-2 text-sm">
-          <span
-            className={`w-2 h-2 rounded-full ${
-              healthy === null
-                ? "bg-yellow-400 animate-pulse"
-                : healthy
-                ? "bg-green-400"
-                : "bg-red-500 animate-pulse"
-            }`}
-          />
-          <span className="text-gray-400 hidden sm:block">
-            {healthy === null ? "Connecting…" : healthy ? "Gateway OK" : "Gateway offline"}
-          </span>
-        </div>
+      {/* Batman Image */}
+      <div style={{ padding: "0", overflow: "hidden" }}>
+        <Image
+          src="/batman-face.png"
+          alt="Batman"
+          width={220}
+          height={165}
+          style={{ display: "block", width: "100%", height: "auto", opacity: 0.85 }}
+        />
       </div>
-    </nav>
+
+      {/* Gateway Status */}
+      <div style={{
+        padding: "16px 20px",
+        borderTop: `1px solid ${GOLD_BORDER}`,
+        display: "flex",
+        alignItems: "center",
+        gap: "8px",
+      }}>
+        <span style={{
+          width: "8px", height: "8px", borderRadius: "50%", flexShrink: 0,
+          background: healthy === null ? GOLD : healthy ? "#22c55e" : "#ef4444",
+          boxShadow: healthy ? "0 0 6px #22c55e88" : healthy === false ? "0 0 6px #ef444488" : `0 0 6px ${GOLD}88`,
+        }} />
+        <span style={{ fontSize: "11px", color: "rgba(255,255,255,0.4)", letterSpacing: "0.05em" }}>
+          {healthy === null ? "CONNECTING…" : healthy ? "GATEWAY ONLINE" : "GATEWAY OFFLINE"}
+        </span>
+      </div>
+
+      {/* Gold bottom accent */}
+      <div style={{ height: "3px", background: `linear-gradient(90deg, ${GOLD}, transparent)` }} />
+    </aside>
   );
 }

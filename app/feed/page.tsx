@@ -1,6 +1,7 @@
 import { invokeTool } from "@/app/lib/openclaw";
 import AgentBanner from "@/app/components/AgentBanner";
 import FeedClient from "./FeedClient";
+import PageHeader from "@/app/components/PageHeader";
 
 interface Session {
   key: string;
@@ -75,15 +76,12 @@ export default async function FeedPage() {
   const messages = await loadFeed();
 
   return (
-    <div className="max-w-4xl mx-auto px-4 py-8">
-      <AgentBanner />
-      <div className="mb-6">
-        <h1 className="text-2xl font-bold text-white">Activity Feed</h1>
-        <p className="text-gray-400 text-sm mt-1">
-          Real-time session messages across all agents
-        </p>
+    <div>
+      <PageHeader title="Activity Feed" subtitle="Real-time session messages across all agents" icon="📡" />
+      <div className="max-w-4xl mx-auto px-4 py-8">
+        <AgentBanner />
+        <FeedClient initialMessages={messages} />
       </div>
-      <FeedClient initialMessages={messages} />
     </div>
   );
 }

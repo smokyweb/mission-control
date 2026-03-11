@@ -1,6 +1,7 @@
 import AgentBanner from "@/app/components/AgentBanner";
 import { invokeTool } from "@/app/lib/openclaw";
 import TeamClient from "./TeamClient";
+import PageHeader from "@/app/components/PageHeader";
 
 interface Session {
   key?: string;
@@ -31,15 +32,12 @@ export default async function TeamPage() {
   const subAgents = await getSubAgents();
 
   return (
-    <div className="max-w-5xl mx-auto px-4 py-8">
-      <AgentBanner />
-      <div className="mb-6">
-        <h1 className="text-2xl font-bold text-white">Team</h1>
-        <p className="text-gray-400 text-sm mt-1">
-          Axel&apos;s team structure and sub-agents
-        </p>
+    <div>
+      <PageHeader title="Team" subtitle="Axel's team structure and sub-agents" icon="👥" />
+      <div className="max-w-5xl mx-auto px-4 py-8">
+        <AgentBanner />
+        <TeamClient initialSubAgents={subAgents} />
       </div>
-      <TeamClient initialSubAgents={subAgents} />
     </div>
   );
 }

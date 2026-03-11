@@ -1,0 +1,1620 @@
+2026-03-01 08:42:23: C:\Users\kevin\projects\mission-control\node_modules\.bin\next:2
+2026-03-01 08:42:23: basedir=$(dirname "$(echo "$0" | sed -e 's,\\,/,g')")
+2026-03-01 08:42:23:           ^^^^^^^
+2026-03-01 08:42:23: 
+2026-03-01 08:42:23: SyntaxError: missing ) after argument list
+2026-03-01 08:42:23:     at wrapSafe (node:internal/modules/cjs/loader:1624:18)
+2026-03-01 08:42:23:     at Module._compile (node:internal/modules/cjs/loader:1666:20)
+2026-03-01 08:42:23:     at Object..js (node:internal/modules/cjs/loader:1824:10)
+2026-03-01 08:42:23:     at Module.load (node:internal/modules/cjs/loader:1427:32)
+2026-03-01 08:42:23:     at Module._load (node:internal/modules/cjs/loader:1250:12)
+2026-03-01 08:42:23:     at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+2026-03-01 08:42:23:     at wrapModuleLoad (node:internal/modules/cjs/loader:235:24)
+2026-03-01 08:42:23:     at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:152:5)
+2026-03-01 08:42:23:     at node:internal/main/run_main_module:33:47
+2026-03-01 08:42:23: 
+2026-03-01 08:42:23: Node.js v24.4.1
+2026-03-01 08:42:23: C:\Users\kevin\projects\mission-control\node_modules\.bin\next:2
+2026-03-01 08:42:23: basedir=$(dirname "$(echo "$0" | sed -e 's,\\,/,g')")
+2026-03-01 08:42:23:           ^^^^^^^
+2026-03-01 08:42:23: 
+2026-03-01 08:42:23: SyntaxError: missing ) after argument list
+2026-03-01 08:42:23:     at wrapSafe (node:internal/modules/cjs/loader:1624:18)
+2026-03-01 08:42:23:     at Module._compile (node:internal/modules/cjs/loader:1666:20)
+2026-03-01 08:42:23:     at Object..js (node:internal/modules/cjs/loader:1824:10)
+2026-03-01 08:42:23:     at Module.load (node:internal/modules/cjs/loader:1427:32)
+2026-03-01 08:42:23:     at Module._load (node:internal/modules/cjs/loader:1250:12)
+2026-03-01 08:42:23:     at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+2026-03-01 08:42:23:     at wrapModuleLoad (node:internal/modules/cjs/loader:235:24)
+2026-03-01 08:42:23:     at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:152:5)
+2026-03-01 08:42:23:     at node:internal/main/run_main_module:33:47
+2026-03-01 08:42:23: 
+2026-03-01 08:42:23: Node.js v24.4.1
+2026-03-01 08:42:23: C:\Users\kevin\projects\mission-control\node_modules\.bin\next:2
+2026-03-01 08:42:23: basedir=$(dirname "$(echo "$0" | sed -e 's,\\,/,g')")
+2026-03-01 08:42:23:           ^^^^^^^
+2026-03-01 08:42:23: 
+2026-03-01 08:42:23: SyntaxError: missing ) after argument list
+2026-03-01 08:42:23:     at wrapSafe (node:internal/modules/cjs/loader:1624:18)
+2026-03-01 08:42:23:     at Module._compile (node:internal/modules/cjs/loader:1666:20)
+2026-03-01 08:42:23:     at Object..js (node:internal/modules/cjs/loader:1824:10)
+2026-03-01 08:42:23:     at Module.load (node:internal/modules/cjs/loader:1427:32)
+2026-03-01 08:42:23:     at Module._load (node:internal/modules/cjs/loader:1250:12)
+2026-03-01 08:42:23:     at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+2026-03-01 08:42:23:     at wrapModuleLoad (node:internal/modules/cjs/loader:235:24)
+2026-03-01 08:42:23:     at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:152:5)
+2026-03-01 08:42:23:     at node:internal/main/run_main_module:33:47
+2026-03-01 08:42:23: 
+2026-03-01 08:42:23: Node.js v24.4.1
+2026-03-01 08:42:23: C:\Users\kevin\projects\mission-control\node_modules\.bin\next:2
+2026-03-01 08:42:23: basedir=$(dirname "$(echo "$0" | sed -e 's,\\,/,g')")
+2026-03-01 08:42:23:           ^^^^^^^
+2026-03-01 08:42:23: 
+2026-03-01 08:42:23: SyntaxError: missing ) after argument list
+2026-03-01 08:42:23:     at wrapSafe (node:internal/modules/cjs/loader:1624:18)
+2026-03-01 08:42:23:     at Module._compile (node:internal/modules/cjs/loader:1666:20)
+2026-03-01 08:42:23:     at Object..js (node:internal/modules/cjs/loader:1824:10)
+2026-03-01 08:42:23:     at Module.load (node:internal/modules/cjs/loader:1427:32)
+2026-03-01 08:42:23:     at Module._load (node:internal/modules/cjs/loader:1250:12)
+2026-03-01 08:42:23:     at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+2026-03-01 08:42:23:     at wrapModuleLoad (node:internal/modules/cjs/loader:235:24)
+2026-03-01 08:42:23:     at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:152:5)
+2026-03-01 08:42:23:     at node:internal/main/run_main_module:33:47
+2026-03-01 08:42:23: 
+2026-03-01 08:42:23: Node.js v24.4.1
+2026-03-01 08:42:23: C:\Users\kevin\projects\mission-control\node_modules\.bin\next:2
+2026-03-01 08:42:23: basedir=$(dirname "$(echo "$0" | sed -e 's,\\,/,g')")
+2026-03-01 08:42:23:           ^^^^^^^
+2026-03-01 08:42:23: 
+2026-03-01 08:42:23: SyntaxError: missing ) after argument list
+2026-03-01 08:42:23:     at wrapSafe (node:internal/modules/cjs/loader:1624:18)
+2026-03-01 08:42:23:     at Module._compile (node:internal/modules/cjs/loader:1666:20)
+2026-03-01 08:42:23:     at Object..js (node:internal/modules/cjs/loader:1824:10)
+2026-03-01 08:42:23:     at Module.load (node:internal/modules/cjs/loader:1427:32)
+2026-03-01 08:42:23:     at Module._load (node:internal/modules/cjs/loader:1250:12)
+2026-03-01 08:42:23:     at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+2026-03-01 08:42:23:     at wrapModuleLoad (node:internal/modules/cjs/loader:235:24)
+2026-03-01 08:42:23:     at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:152:5)
+2026-03-01 08:42:23:     at node:internal/main/run_main_module:33:47
+2026-03-01 08:42:23: 
+2026-03-01 08:42:23: Node.js v24.4.1
+2026-03-01 08:42:23: C:\Users\kevin\projects\mission-control\node_modules\.bin\next:2
+2026-03-01 08:42:23: basedir=$(dirname "$(echo "$0" | sed -e 's,\\,/,g')")
+2026-03-01 08:42:23:           ^^^^^^^
+2026-03-01 08:42:23: 
+2026-03-01 08:42:23: SyntaxError: missing ) after argument list
+2026-03-01 08:42:23:     at wrapSafe (node:internal/modules/cjs/loader:1624:18)
+2026-03-01 08:42:23:     at Module._compile (node:internal/modules/cjs/loader:1666:20)
+2026-03-01 08:42:23:     at Object..js (node:internal/modules/cjs/loader:1824:10)
+2026-03-01 08:42:23:     at Module.load (node:internal/modules/cjs/loader:1427:32)
+2026-03-01 08:42:23:     at Module._load (node:internal/modules/cjs/loader:1250:12)
+2026-03-01 08:42:23:     at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+2026-03-01 08:42:23:     at wrapModuleLoad (node:internal/modules/cjs/loader:235:24)
+2026-03-01 08:42:23:     at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:152:5)
+2026-03-01 08:42:23:     at node:internal/main/run_main_module:33:47
+2026-03-01 08:42:23: 
+2026-03-01 08:42:23: Node.js v24.4.1
+2026-03-01 08:42:23: C:\Users\kevin\projects\mission-control\node_modules\.bin\next:2
+2026-03-01 08:42:23: basedir=$(dirname "$(echo "$0" | sed -e 's,\\,/,g')")
+2026-03-01 08:42:23:           ^^^^^^^
+2026-03-01 08:42:23: 
+2026-03-01 08:42:23: SyntaxError: missing ) after argument list
+2026-03-01 08:42:23:     at wrapSafe (node:internal/modules/cjs/loader:1624:18)
+2026-03-01 08:42:23:     at Module._compile (node:internal/modules/cjs/loader:1666:20)
+2026-03-01 08:42:23:     at Object..js (node:internal/modules/cjs/loader:1824:10)
+2026-03-01 08:42:23:     at Module.load (node:internal/modules/cjs/loader:1427:32)
+2026-03-01 08:42:23:     at Module._load (node:internal/modules/cjs/loader:1250:12)
+2026-03-01 08:42:23:     at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+2026-03-01 08:42:23:     at wrapModuleLoad (node:internal/modules/cjs/loader:235:24)
+2026-03-01 08:42:23:     at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:152:5)
+2026-03-01 08:42:23:     at node:internal/main/run_main_module:33:47
+2026-03-01 08:42:23: 
+2026-03-01 08:42:23: Node.js v24.4.1
+2026-03-01 08:42:23: C:\Users\kevin\projects\mission-control\node_modules\.bin\next:2
+2026-03-01 08:42:23: basedir=$(dirname "$(echo "$0" | sed -e 's,\\,/,g')")
+2026-03-01 08:42:23:           ^^^^^^^
+2026-03-01 08:42:23: 
+2026-03-01 08:42:23: SyntaxError: missing ) after argument list
+2026-03-01 08:42:23:     at wrapSafe (node:internal/modules/cjs/loader:1624:18)
+2026-03-01 08:42:23:     at Module._compile (node:internal/modules/cjs/loader:1666:20)
+2026-03-01 08:42:23:     at Object..js (node:internal/modules/cjs/loader:1824:10)
+2026-03-01 08:42:23:     at Module.load (node:internal/modules/cjs/loader:1427:32)
+2026-03-01 08:42:23:     at Module._load (node:internal/modules/cjs/loader:1250:12)
+2026-03-01 08:42:23:     at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+2026-03-01 08:42:23:     at wrapModuleLoad (node:internal/modules/cjs/loader:235:24)
+2026-03-01 08:42:23:     at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:152:5)
+2026-03-01 08:42:23:     at node:internal/main/run_main_module:33:47
+2026-03-01 08:42:23: 
+2026-03-01 08:42:23: Node.js v24.4.1
+2026-03-01 08:42:23: C:\Users\kevin\projects\mission-control\node_modules\.bin\next:2
+2026-03-01 08:42:23: basedir=$(dirname "$(echo "$0" | sed -e 's,\\,/,g')")
+2026-03-01 08:42:23:           ^^^^^^^
+2026-03-01 08:42:23: 
+2026-03-01 08:42:23: SyntaxError: missing ) after argument list
+2026-03-01 08:42:23:     at wrapSafe (node:internal/modules/cjs/loader:1624:18)
+2026-03-01 08:42:23:     at Module._compile (node:internal/modules/cjs/loader:1666:20)
+2026-03-01 08:42:23:     at Object..js (node:internal/modules/cjs/loader:1824:10)
+2026-03-01 08:42:23:     at Module.load (node:internal/modules/cjs/loader:1427:32)
+2026-03-01 08:42:23:     at Module._load (node:internal/modules/cjs/loader:1250:12)
+2026-03-01 08:42:23:     at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+2026-03-01 08:42:23:     at wrapModuleLoad (node:internal/modules/cjs/loader:235:24)
+2026-03-01 08:42:23:     at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:152:5)
+2026-03-01 08:42:23:     at node:internal/main/run_main_module:33:47
+2026-03-01 08:42:23: 
+2026-03-01 08:42:23: Node.js v24.4.1
+2026-03-01 08:42:23: C:\Users\kevin\projects\mission-control\node_modules\.bin\next:2
+2026-03-01 08:42:23: basedir=$(dirname "$(echo "$0" | sed -e 's,\\,/,g')")
+2026-03-01 08:42:23:           ^^^^^^^
+2026-03-01 08:42:23: 
+2026-03-01 08:42:23: SyntaxError: missing ) after argument list
+2026-03-01 08:42:23:     at wrapSafe (node:internal/modules/cjs/loader:1624:18)
+2026-03-01 08:42:23:     at Module._compile (node:internal/modules/cjs/loader:1666:20)
+2026-03-01 08:42:23:     at Object..js (node:internal/modules/cjs/loader:1824:10)
+2026-03-01 08:42:23:     at Module.load (node:internal/modules/cjs/loader:1427:32)
+2026-03-01 08:42:23:     at Module._load (node:internal/modules/cjs/loader:1250:12)
+2026-03-01 08:42:23:     at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+2026-03-01 08:42:23:     at wrapModuleLoad (node:internal/modules/cjs/loader:235:24)
+2026-03-01 08:42:23:     at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:152:5)
+2026-03-01 08:42:23:     at node:internal/main/run_main_module:33:47
+2026-03-01 08:42:23: 
+2026-03-01 08:42:23: Node.js v24.4.1
+2026-03-01 08:42:23: C:\Users\kevin\projects\mission-control\node_modules\.bin\next:2
+2026-03-01 08:42:23: basedir=$(dirname "$(echo "$0" | sed -e 's,\\,/,g')")
+2026-03-01 08:42:23:           ^^^^^^^
+2026-03-01 08:42:23: 
+2026-03-01 08:42:23: SyntaxError: missing ) after argument list
+2026-03-01 08:42:23:     at wrapSafe (node:internal/modules/cjs/loader:1624:18)
+2026-03-01 08:42:23:     at Module._compile (node:internal/modules/cjs/loader:1666:20)
+2026-03-01 08:42:23:     at Object..js (node:internal/modules/cjs/loader:1824:10)
+2026-03-01 08:42:23:     at Module.load (node:internal/modules/cjs/loader:1427:32)
+2026-03-01 08:42:23:     at Module._load (node:internal/modules/cjs/loader:1250:12)
+2026-03-01 08:42:23:     at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+2026-03-01 08:42:23:     at wrapModuleLoad (node:internal/modules/cjs/loader:235:24)
+2026-03-01 08:42:23:     at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:152:5)
+2026-03-01 08:42:23:     at node:internal/main/run_main_module:33:47
+2026-03-01 08:42:23: 
+2026-03-01 08:42:23: Node.js v24.4.1
+2026-03-01 08:42:23: C:\Users\kevin\projects\mission-control\node_modules\.bin\next:2
+2026-03-01 08:42:23: basedir=$(dirname "$(echo "$0" | sed -e 's,\\,/,g')")
+2026-03-01 08:42:23:           ^^^^^^^
+2026-03-01 08:42:23: 
+2026-03-01 08:42:23: SyntaxError: missing ) after argument list
+2026-03-01 08:42:23:     at wrapSafe (node:internal/modules/cjs/loader:1624:18)
+2026-03-01 08:42:23:     at Module._compile (node:internal/modules/cjs/loader:1666:20)
+2026-03-01 08:42:23:     at Object..js (node:internal/modules/cjs/loader:1824:10)
+2026-03-01 08:42:23:     at Module.load (node:internal/modules/cjs/loader:1427:32)
+2026-03-01 08:42:23:     at Module._load (node:internal/modules/cjs/loader:1250:12)
+2026-03-01 08:42:23:     at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+2026-03-01 08:42:23:     at wrapModuleLoad (node:internal/modules/cjs/loader:235:24)
+2026-03-01 08:42:23:     at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:152:5)
+2026-03-01 08:42:23:     at node:internal/main/run_main_module:33:47
+2026-03-01 08:42:23: 
+2026-03-01 08:42:23: Node.js v24.4.1
+2026-03-01 08:42:23: C:\Users\kevin\projects\mission-control\node_modules\.bin\next:2
+2026-03-01 08:42:23: basedir=$(dirname "$(echo "$0" | sed -e 's,\\,/,g')")
+2026-03-01 08:42:23:           ^^^^^^^
+2026-03-01 08:42:23: 
+2026-03-01 08:42:23: SyntaxError: missing ) after argument list
+2026-03-01 08:42:23:     at wrapSafe (node:internal/modules/cjs/loader:1624:18)
+2026-03-01 08:42:23:     at Module._compile (node:internal/modules/cjs/loader:1666:20)
+2026-03-01 08:42:23:     at Object..js (node:internal/modules/cjs/loader:1824:10)
+2026-03-01 08:42:23:     at Module.load (node:internal/modules/cjs/loader:1427:32)
+2026-03-01 08:42:23:     at Module._load (node:internal/modules/cjs/loader:1250:12)
+2026-03-01 08:42:23:     at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+2026-03-01 08:42:23:     at wrapModuleLoad (node:internal/modules/cjs/loader:235:24)
+2026-03-01 08:42:23:     at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:152:5)
+2026-03-01 08:42:23:     at node:internal/main/run_main_module:33:47
+2026-03-01 08:42:23: 
+2026-03-01 08:42:23: Node.js v24.4.1
+2026-03-01 08:42:23: C:\Users\kevin\projects\mission-control\node_modules\.bin\next:2
+2026-03-01 08:42:23: basedir=$(dirname "$(echo "$0" | sed -e 's,\\,/,g')")
+2026-03-01 08:42:23:           ^^^^^^^
+2026-03-01 08:42:23: 
+2026-03-01 08:42:23: SyntaxError: missing ) after argument list
+2026-03-01 08:42:23:     at wrapSafe (node:internal/modules/cjs/loader:1624:18)
+2026-03-01 08:42:23:     at Module._compile (node:internal/modules/cjs/loader:1666:20)
+2026-03-01 08:42:23:     at Object..js (node:internal/modules/cjs/loader:1824:10)
+2026-03-01 08:42:23:     at Module.load (node:internal/modules/cjs/loader:1427:32)
+2026-03-01 08:42:23:     at Module._load (node:internal/modules/cjs/loader:1250:12)
+2026-03-01 08:42:23:     at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+2026-03-01 08:42:23:     at wrapModuleLoad (node:internal/modules/cjs/loader:235:24)
+2026-03-01 08:42:23:     at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:152:5)
+2026-03-01 08:42:23:     at node:internal/main/run_main_module:33:47
+2026-03-01 08:42:23: 
+2026-03-01 08:42:23: Node.js v24.4.1
+2026-03-01 08:42:23: C:\Users\kevin\projects\mission-control\node_modules\.bin\next:2
+2026-03-01 08:42:23: basedir=$(dirname "$(echo "$0" | sed -e 's,\\,/,g')")
+2026-03-01 08:42:23:           ^^^^^^^
+2026-03-01 08:42:23: 
+2026-03-01 08:42:23: SyntaxError: missing ) after argument list
+2026-03-01 08:42:23:     at wrapSafe (node:internal/modules/cjs/loader:1624:18)
+2026-03-01 08:42:23:     at Module._compile (node:internal/modules/cjs/loader:1666:20)
+2026-03-01 08:42:23:     at Object..js (node:internal/modules/cjs/loader:1824:10)
+2026-03-01 08:42:23:     at Module.load (node:internal/modules/cjs/loader:1427:32)
+2026-03-01 08:42:23:     at Module._load (node:internal/modules/cjs/loader:1250:12)
+2026-03-01 08:42:23:     at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+2026-03-01 08:42:23:     at wrapModuleLoad (node:internal/modules/cjs/loader:235:24)
+2026-03-01 08:42:23:     at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:152:5)
+2026-03-01 08:42:23:     at node:internal/main/run_main_module:33:47
+2026-03-01 08:42:23: 
+2026-03-01 08:42:23: Node.js v24.4.1
+2026-03-01 08:42:23: C:\Users\kevin\projects\mission-control\node_modules\.bin\next:2
+2026-03-01 08:42:23: basedir=$(dirname "$(echo "$0" | sed -e 's,\\,/,g')")
+2026-03-01 08:42:23:           ^^^^^^^
+2026-03-01 08:42:23: 
+2026-03-01 08:42:23: SyntaxError: missing ) after argument list
+2026-03-01 08:42:23:     at wrapSafe (node:internal/modules/cjs/loader:1624:18)
+2026-03-01 08:42:23:     at Module._compile (node:internal/modules/cjs/loader:1666:20)
+2026-03-01 08:42:23:     at Object..js (node:internal/modules/cjs/loader:1824:10)
+2026-03-01 08:42:23:     at Module.load (node:internal/modules/cjs/loader:1427:32)
+2026-03-01 08:42:23:     at Module._load (node:internal/modules/cjs/loader:1250:12)
+2026-03-01 08:42:23:     at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+2026-03-01 08:42:23:     at wrapModuleLoad (node:internal/modules/cjs/loader:235:24)
+2026-03-01 08:42:23:     at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:152:5)
+2026-03-01 08:42:23:     at node:internal/main/run_main_module:33:47
+2026-03-01 08:42:23: 
+2026-03-01 08:42:23: Node.js v24.4.1
+2026-03-03 17:30:27: C:\Users\kevin\projects\mission-control\node_modules\.bin\next:2
+2026-03-03 17:30:27: basedir=$(dirname "$(echo "$0" | sed -e 's,\\,/,g')")
+2026-03-03 17:30:27:           ^^^^^^^
+2026-03-03 17:30:27: 
+2026-03-03 17:30:27: SyntaxError: missing ) after argument list
+2026-03-03 17:30:27:     at wrapSafe (node:internal/modules/cjs/loader:1624:18)
+2026-03-03 17:30:27:     at Module._compile (node:internal/modules/cjs/loader:1666:20)
+2026-03-03 17:30:27:     at Object..js (node:internal/modules/cjs/loader:1824:10)
+2026-03-03 17:30:27:     at Module.load (node:internal/modules/cjs/loader:1427:32)
+2026-03-03 17:30:27:     at Module._load (node:internal/modules/cjs/loader:1250:12)
+2026-03-03 17:30:27:     at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+2026-03-03 17:30:27:     at wrapModuleLoad (node:internal/modules/cjs/loader:235:24)
+2026-03-03 17:30:27:     at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:152:5)
+2026-03-03 17:30:27:     at node:internal/main/run_main_module:33:47
+2026-03-03 17:30:27: 
+2026-03-03 17:30:27: Node.js v24.4.1
+2026-03-03 17:30:27: C:\Users\kevin\projects\mission-control\node_modules\.bin\next:2
+2026-03-03 17:30:27: basedir=$(dirname "$(echo "$0" | sed -e 's,\\,/,g')")
+2026-03-03 17:30:27:           ^^^^^^^
+2026-03-03 17:30:27: 
+2026-03-03 17:30:27: SyntaxError: missing ) after argument list
+2026-03-03 17:30:27:     at wrapSafe (node:internal/modules/cjs/loader:1624:18)
+2026-03-03 17:30:27:     at Module._compile (node:internal/modules/cjs/loader:1666:20)
+2026-03-03 17:30:27:     at Object..js (node:internal/modules/cjs/loader:1824:10)
+2026-03-03 17:30:27:     at Module.load (node:internal/modules/cjs/loader:1427:32)
+2026-03-03 17:30:27:     at Module._load (node:internal/modules/cjs/loader:1250:12)
+2026-03-03 17:30:27:     at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+2026-03-03 17:30:27:     at wrapModuleLoad (node:internal/modules/cjs/loader:235:24)
+2026-03-03 17:30:27:     at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:152:5)
+2026-03-03 17:30:27:     at node:internal/main/run_main_module:33:47
+2026-03-03 17:30:27: 
+2026-03-03 17:30:27: Node.js v24.4.1
+2026-03-03 17:30:27: C:\Users\kevin\projects\mission-control\node_modules\.bin\next:2
+2026-03-03 17:30:27: basedir=$(dirname "$(echo "$0" | sed -e 's,\\,/,g')")
+2026-03-03 17:30:27:           ^^^^^^^
+2026-03-03 17:30:27: 
+2026-03-03 17:30:27: SyntaxError: missing ) after argument list
+2026-03-03 17:30:27:     at wrapSafe (node:internal/modules/cjs/loader:1624:18)
+2026-03-03 17:30:27:     at Module._compile (node:internal/modules/cjs/loader:1666:20)
+2026-03-03 17:30:27:     at Object..js (node:internal/modules/cjs/loader:1824:10)
+2026-03-03 17:30:27:     at Module.load (node:internal/modules/cjs/loader:1427:32)
+2026-03-03 17:30:27:     at Module._load (node:internal/modules/cjs/loader:1250:12)
+2026-03-03 17:30:27:     at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+2026-03-03 17:30:27:     at wrapModuleLoad (node:internal/modules/cjs/loader:235:24)
+2026-03-03 17:30:27:     at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:152:5)
+2026-03-03 17:30:27:     at node:internal/main/run_main_module:33:47
+2026-03-03 17:30:27: 
+2026-03-03 17:30:27: Node.js v24.4.1
+2026-03-03 17:30:27: C:\Users\kevin\projects\mission-control\node_modules\.bin\next:2
+2026-03-03 17:30:27: basedir=$(dirname "$(echo "$0" | sed -e 's,\\,/,g')")
+2026-03-03 17:30:27:           ^^^^^^^
+2026-03-03 17:30:27: 
+2026-03-03 17:30:27: SyntaxError: missing ) after argument list
+2026-03-03 17:30:27:     at wrapSafe (node:internal/modules/cjs/loader:1624:18)
+2026-03-03 17:30:27:     at Module._compile (node:internal/modules/cjs/loader:1666:20)
+2026-03-03 17:30:27:     at Object..js (node:internal/modules/cjs/loader:1824:10)
+2026-03-03 17:30:27:     at Module.load (node:internal/modules/cjs/loader:1427:32)
+2026-03-03 17:30:27:     at Module._load (node:internal/modules/cjs/loader:1250:12)
+2026-03-03 17:30:27:     at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+2026-03-03 17:30:27:     at wrapModuleLoad (node:internal/modules/cjs/loader:235:24)
+2026-03-03 17:30:27:     at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:152:5)
+2026-03-03 17:30:27:     at node:internal/main/run_main_module:33:47
+2026-03-03 17:30:27: 
+2026-03-03 17:30:27: Node.js v24.4.1
+2026-03-03 17:30:27: C:\Users\kevin\projects\mission-control\node_modules\.bin\next:2
+2026-03-03 17:30:27: basedir=$(dirname "$(echo "$0" | sed -e 's,\\,/,g')")
+2026-03-03 17:30:27:           ^^^^^^^
+2026-03-03 17:30:27: 
+2026-03-03 17:30:27: SyntaxError: missing ) after argument list
+2026-03-03 17:30:27:     at wrapSafe (node:internal/modules/cjs/loader:1624:18)
+2026-03-03 17:30:27:     at Module._compile (node:internal/modules/cjs/loader:1666:20)
+2026-03-03 17:30:27:     at Object..js (node:internal/modules/cjs/loader:1824:10)
+2026-03-03 17:30:27:     at Module.load (node:internal/modules/cjs/loader:1427:32)
+2026-03-03 17:30:27:     at Module._load (node:internal/modules/cjs/loader:1250:12)
+2026-03-03 17:30:27:     at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+2026-03-03 17:30:27:     at wrapModuleLoad (node:internal/modules/cjs/loader:235:24)
+2026-03-03 17:30:27:     at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:152:5)
+2026-03-03 17:30:27:     at node:internal/main/run_main_module:33:47
+2026-03-03 17:30:27: 
+2026-03-03 17:30:27: Node.js v24.4.1
+2026-03-03 17:30:27: C:\Users\kevin\projects\mission-control\node_modules\.bin\next:2
+2026-03-03 17:30:27: basedir=$(dirname "$(echo "$0" | sed -e 's,\\,/,g')")
+2026-03-03 17:30:27:           ^^^^^^^
+2026-03-03 17:30:27: 
+2026-03-03 17:30:27: SyntaxError: missing ) after argument list
+2026-03-03 17:30:27:     at wrapSafe (node:internal/modules/cjs/loader:1624:18)
+2026-03-03 17:30:27:     at Module._compile (node:internal/modules/cjs/loader:1666:20)
+2026-03-03 17:30:27:     at Object..js (node:internal/modules/cjs/loader:1824:10)
+2026-03-03 17:30:27:     at Module.load (node:internal/modules/cjs/loader:1427:32)
+2026-03-03 17:30:27:     at Module._load (node:internal/modules/cjs/loader:1250:12)
+2026-03-03 17:30:27:     at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+2026-03-03 17:30:27:     at wrapModuleLoad (node:internal/modules/cjs/loader:235:24)
+2026-03-03 17:30:27:     at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:152:5)
+2026-03-03 17:30:27:     at node:internal/main/run_main_module:33:47
+2026-03-03 17:30:27: 
+2026-03-03 17:30:27: Node.js v24.4.1
+2026-03-03 17:30:27: C:\Users\kevin\projects\mission-control\node_modules\.bin\next:2
+2026-03-03 17:30:27: basedir=$(dirname "$(echo "$0" | sed -e 's,\\,/,g')")
+2026-03-03 17:30:27:           ^^^^^^^
+2026-03-03 17:30:27: 
+2026-03-03 17:30:27: SyntaxError: missing ) after argument list
+2026-03-03 17:30:27:     at wrapSafe (node:internal/modules/cjs/loader:1624:18)
+2026-03-03 17:30:27:     at Module._compile (node:internal/modules/cjs/loader:1666:20)
+2026-03-03 17:30:27:     at Object..js (node:internal/modules/cjs/loader:1824:10)
+2026-03-03 17:30:27:     at Module.load (node:internal/modules/cjs/loader:1427:32)
+2026-03-03 17:30:27:     at Module._load (node:internal/modules/cjs/loader:1250:12)
+2026-03-03 17:30:27:     at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+2026-03-03 17:30:27:     at wrapModuleLoad (node:internal/modules/cjs/loader:235:24)
+2026-03-03 17:30:27:     at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:152:5)
+2026-03-03 17:30:27:     at node:internal/main/run_main_module:33:47
+2026-03-03 17:30:27: 
+2026-03-03 17:30:27: Node.js v24.4.1
+2026-03-03 17:30:27: C:\Users\kevin\projects\mission-control\node_modules\.bin\next:2
+2026-03-03 17:30:27: basedir=$(dirname "$(echo "$0" | sed -e 's,\\,/,g')")
+2026-03-03 17:30:27:           ^^^^^^^
+2026-03-03 17:30:27: 
+2026-03-03 17:30:27: SyntaxError: missing ) after argument list
+2026-03-03 17:30:27:     at wrapSafe (node:internal/modules/cjs/loader:1624:18)
+2026-03-03 17:30:27:     at Module._compile (node:internal/modules/cjs/loader:1666:20)
+2026-03-03 17:30:27:     at Object..js (node:internal/modules/cjs/loader:1824:10)
+2026-03-03 17:30:27:     at Module.load (node:internal/modules/cjs/loader:1427:32)
+2026-03-03 17:30:27:     at Module._load (node:internal/modules/cjs/loader:1250:12)
+2026-03-03 17:30:27:     at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+2026-03-03 17:30:27:     at wrapModuleLoad (node:internal/modules/cjs/loader:235:24)
+2026-03-03 17:30:27:     at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:152:5)
+2026-03-03 17:30:27:     at node:internal/main/run_main_module:33:47
+2026-03-03 17:30:27: 
+2026-03-03 17:30:27: Node.js v24.4.1
+2026-03-03 17:30:27: C:\Users\kevin\projects\mission-control\node_modules\.bin\next:2
+2026-03-03 17:30:27: basedir=$(dirname "$(echo "$0" | sed -e 's,\\,/,g')")
+2026-03-03 17:30:27:           ^^^^^^^
+2026-03-03 17:30:27: 
+2026-03-03 17:30:27: SyntaxError: missing ) after argument list
+2026-03-03 17:30:27:     at wrapSafe (node:internal/modules/cjs/loader:1624:18)
+2026-03-03 17:30:27:     at Module._compile (node:internal/modules/cjs/loader:1666:20)
+2026-03-03 17:30:27:     at Object..js (node:internal/modules/cjs/loader:1824:10)
+2026-03-03 17:30:27:     at Module.load (node:internal/modules/cjs/loader:1427:32)
+2026-03-03 17:30:27:     at Module._load (node:internal/modules/cjs/loader:1250:12)
+2026-03-03 17:30:27:     at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+2026-03-03 17:30:27:     at wrapModuleLoad (node:internal/modules/cjs/loader:235:24)
+2026-03-03 17:30:27:     at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:152:5)
+2026-03-03 17:30:27:     at node:internal/main/run_main_module:33:47
+2026-03-03 17:30:27: 
+2026-03-03 17:30:27: Node.js v24.4.1
+2026-03-03 17:30:27: C:\Users\kevin\projects\mission-control\node_modules\.bin\next:2
+2026-03-03 17:30:27: basedir=$(dirname "$(echo "$0" | sed -e 's,\\,/,g')")
+2026-03-03 17:30:27:           ^^^^^^^
+2026-03-03 17:30:27: 
+2026-03-03 17:30:27: SyntaxError: missing ) after argument list
+2026-03-03 17:30:27:     at wrapSafe (node:internal/modules/cjs/loader:1624:18)
+2026-03-03 17:30:27:     at Module._compile (node:internal/modules/cjs/loader:1666:20)
+2026-03-03 17:30:27:     at Object..js (node:internal/modules/cjs/loader:1824:10)
+2026-03-03 17:30:27:     at Module.load (node:internal/modules/cjs/loader:1427:32)
+2026-03-03 17:30:27:     at Module._load (node:internal/modules/cjs/loader:1250:12)
+2026-03-03 17:30:27:     at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+2026-03-03 17:30:27:     at wrapModuleLoad (node:internal/modules/cjs/loader:235:24)
+2026-03-03 17:30:27:     at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:152:5)
+2026-03-03 17:30:27:     at node:internal/main/run_main_module:33:47
+2026-03-03 17:30:27: 
+2026-03-03 17:30:27: Node.js v24.4.1
+2026-03-03 17:30:27: C:\Users\kevin\projects\mission-control\node_modules\.bin\next:2
+2026-03-03 17:30:27: basedir=$(dirname "$(echo "$0" | sed -e 's,\\,/,g')")
+2026-03-03 17:30:27:           ^^^^^^^
+2026-03-03 17:30:27: 
+2026-03-03 17:30:27: SyntaxError: missing ) after argument list
+2026-03-03 17:30:27:     at wrapSafe (node:internal/modules/cjs/loader:1624:18)
+2026-03-03 17:30:27:     at Module._compile (node:internal/modules/cjs/loader:1666:20)
+2026-03-03 17:30:27:     at Object..js (node:internal/modules/cjs/loader:1824:10)
+2026-03-03 17:30:27:     at Module.load (node:internal/modules/cjs/loader:1427:32)
+2026-03-03 17:30:27:     at Module._load (node:internal/modules/cjs/loader:1250:12)
+2026-03-03 17:30:27:     at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+2026-03-03 17:30:27:     at wrapModuleLoad (node:internal/modules/cjs/loader:235:24)
+2026-03-03 17:30:27:     at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:152:5)
+2026-03-03 17:30:27:     at node:internal/main/run_main_module:33:47
+2026-03-03 17:30:27: 
+2026-03-03 17:30:27: Node.js v24.4.1
+2026-03-03 17:30:27: C:\Users\kevin\projects\mission-control\node_modules\.bin\next:2
+2026-03-03 17:30:27: basedir=$(dirname "$(echo "$0" | sed -e 's,\\,/,g')")
+2026-03-03 17:30:27:           ^^^^^^^
+2026-03-03 17:30:27: 
+2026-03-03 17:30:27: SyntaxError: missing ) after argument list
+2026-03-03 17:30:27:     at wrapSafe (node:internal/modules/cjs/loader:1624:18)
+2026-03-03 17:30:27:     at Module._compile (node:internal/modules/cjs/loader:1666:20)
+2026-03-03 17:30:27:     at Object..js (node:internal/modules/cjs/loader:1824:10)
+2026-03-03 17:30:27:     at Module.load (node:internal/modules/cjs/loader:1427:32)
+2026-03-03 17:30:27:     at Module._load (node:internal/modules/cjs/loader:1250:12)
+2026-03-03 17:30:27:     at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+2026-03-03 17:30:27:     at wrapModuleLoad (node:internal/modules/cjs/loader:235:24)
+2026-03-03 17:30:27:     at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:152:5)
+2026-03-03 17:30:27:     at node:internal/main/run_main_module:33:47
+2026-03-03 17:30:27: 
+2026-03-03 17:30:27: Node.js v24.4.1
+2026-03-03 17:30:27: C:\Users\kevin\projects\mission-control\node_modules\.bin\next:2
+2026-03-03 17:30:27: basedir=$(dirname "$(echo "$0" | sed -e 's,\\,/,g')")
+2026-03-03 17:30:27:           ^^^^^^^
+2026-03-03 17:30:27: 
+2026-03-03 17:30:27: SyntaxError: missing ) after argument list
+2026-03-03 17:30:27:     at wrapSafe (node:internal/modules/cjs/loader:1624:18)
+2026-03-03 17:30:27:     at Module._compile (node:internal/modules/cjs/loader:1666:20)
+2026-03-03 17:30:27:     at Object..js (node:internal/modules/cjs/loader:1824:10)
+2026-03-03 17:30:27:     at Module.load (node:internal/modules/cjs/loader:1427:32)
+2026-03-03 17:30:27:     at Module._load (node:internal/modules/cjs/loader:1250:12)
+2026-03-03 17:30:27:     at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+2026-03-03 17:30:27:     at wrapModuleLoad (node:internal/modules/cjs/loader:235:24)
+2026-03-03 17:30:27:     at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:152:5)
+2026-03-03 17:30:27:     at node:internal/main/run_main_module:33:47
+2026-03-03 17:30:27: 
+2026-03-03 17:30:27: Node.js v24.4.1
+2026-03-03 17:30:27: C:\Users\kevin\projects\mission-control\node_modules\.bin\next:2
+2026-03-03 17:30:27: basedir=$(dirname "$(echo "$0" | sed -e 's,\\,/,g')")
+2026-03-03 17:30:27:           ^^^^^^^
+2026-03-03 17:30:27: 
+2026-03-03 17:30:27: SyntaxError: missing ) after argument list
+2026-03-03 17:30:27:     at wrapSafe (node:internal/modules/cjs/loader:1624:18)
+2026-03-03 17:30:27:     at Module._compile (node:internal/modules/cjs/loader:1666:20)
+2026-03-03 17:30:27:     at Object..js (node:internal/modules/cjs/loader:1824:10)
+2026-03-03 17:30:27:     at Module.load (node:internal/modules/cjs/loader:1427:32)
+2026-03-03 17:30:27:     at Module._load (node:internal/modules/cjs/loader:1250:12)
+2026-03-03 17:30:27:     at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+2026-03-03 17:30:27:     at wrapModuleLoad (node:internal/modules/cjs/loader:235:24)
+2026-03-03 17:30:27:     at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:152:5)
+2026-03-03 17:30:27:     at node:internal/main/run_main_module:33:47
+2026-03-03 17:30:27: 
+2026-03-03 17:30:27: Node.js v24.4.1
+2026-03-03 17:30:27: C:\Users\kevin\projects\mission-control\node_modules\.bin\next:2
+2026-03-03 17:30:27: basedir=$(dirname "$(echo "$0" | sed -e 's,\\,/,g')")
+2026-03-03 17:30:27:           ^^^^^^^
+2026-03-03 17:30:27: 
+2026-03-03 17:30:27: SyntaxError: missing ) after argument list
+2026-03-03 17:30:27:     at wrapSafe (node:internal/modules/cjs/loader:1624:18)
+2026-03-03 17:30:27:     at Module._compile (node:internal/modules/cjs/loader:1666:20)
+2026-03-03 17:30:27:     at Object..js (node:internal/modules/cjs/loader:1824:10)
+2026-03-03 17:30:27:     at Module.load (node:internal/modules/cjs/loader:1427:32)
+2026-03-03 17:30:27:     at Module._load (node:internal/modules/cjs/loader:1250:12)
+2026-03-03 17:30:27:     at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+2026-03-03 17:30:27:     at wrapModuleLoad (node:internal/modules/cjs/loader:235:24)
+2026-03-03 17:30:27:     at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:152:5)
+2026-03-03 17:30:27:     at node:internal/main/run_main_module:33:47
+2026-03-03 17:30:27: 
+2026-03-03 17:30:27: Node.js v24.4.1
+2026-03-03 17:30:27: C:\Users\kevin\projects\mission-control\node_modules\.bin\next:2
+2026-03-03 17:30:27: basedir=$(dirname "$(echo "$0" | sed -e 's,\\,/,g')")
+2026-03-03 17:30:27:           ^^^^^^^
+2026-03-03 17:30:27: 
+2026-03-03 17:30:27: SyntaxError: missing ) after argument list
+2026-03-03 17:30:27:     at wrapSafe (node:internal/modules/cjs/loader:1624:18)
+2026-03-03 17:30:27:     at Module._compile (node:internal/modules/cjs/loader:1666:20)
+2026-03-03 17:30:27:     at Object..js (node:internal/modules/cjs/loader:1824:10)
+2026-03-03 17:30:27:     at Module.load (node:internal/modules/cjs/loader:1427:32)
+2026-03-03 17:30:27:     at Module._load (node:internal/modules/cjs/loader:1250:12)
+2026-03-03 17:30:27:     at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+2026-03-03 17:30:27:     at wrapModuleLoad (node:internal/modules/cjs/loader:235:24)
+2026-03-03 17:30:27:     at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:152:5)
+2026-03-03 17:30:27:     at node:internal/main/run_main_module:33:47
+2026-03-03 17:30:27: 
+2026-03-03 17:30:27: Node.js v24.4.1
+2026-03-03 17:30:47: C:\Users\kevin\projects\mission-control\node_modules\.bin\next:2
+2026-03-03 17:30:47: basedir=$(dirname "$(echo "$0" | sed -e 's,\\,/,g')")
+2026-03-03 17:30:47:           ^^^^^^^
+2026-03-03 17:30:47: 
+2026-03-03 17:30:47: SyntaxError: missing ) after argument list
+2026-03-03 17:30:47:     at wrapSafe (node:internal/modules/cjs/loader:1624:18)
+2026-03-03 17:30:47:     at Module._compile (node:internal/modules/cjs/loader:1666:20)
+2026-03-03 17:30:47:     at Object..js (node:internal/modules/cjs/loader:1824:10)
+2026-03-03 17:30:47:     at Module.load (node:internal/modules/cjs/loader:1427:32)
+2026-03-03 17:30:47:     at Module._load (node:internal/modules/cjs/loader:1250:12)
+2026-03-03 17:30:47:     at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+2026-03-03 17:30:47:     at wrapModuleLoad (node:internal/modules/cjs/loader:235:24)
+2026-03-03 17:30:47:     at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:152:5)
+2026-03-03 17:30:47:     at node:internal/main/run_main_module:33:47
+2026-03-03 17:30:47: 
+2026-03-03 17:30:47: Node.js v24.4.1
+2026-03-03 17:30:47: C:\Users\kevin\projects\mission-control\node_modules\.bin\next:2
+2026-03-03 17:30:47: basedir=$(dirname "$(echo "$0" | sed -e 's,\\,/,g')")
+2026-03-03 17:30:47:           ^^^^^^^
+2026-03-03 17:30:47: 
+2026-03-03 17:30:47: SyntaxError: missing ) after argument list
+2026-03-03 17:30:47:     at wrapSafe (node:internal/modules/cjs/loader:1624:18)
+2026-03-03 17:30:47:     at Module._compile (node:internal/modules/cjs/loader:1666:20)
+2026-03-03 17:30:47:     at Object..js (node:internal/modules/cjs/loader:1824:10)
+2026-03-03 17:30:47:     at Module.load (node:internal/modules/cjs/loader:1427:32)
+2026-03-03 17:30:47:     at Module._load (node:internal/modules/cjs/loader:1250:12)
+2026-03-03 17:30:47:     at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+2026-03-03 17:30:47:     at wrapModuleLoad (node:internal/modules/cjs/loader:235:24)
+2026-03-03 17:30:47:     at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:152:5)
+2026-03-03 17:30:47:     at node:internal/main/run_main_module:33:47
+2026-03-03 17:30:47: 
+2026-03-03 17:30:47: Node.js v24.4.1
+2026-03-03 17:30:47: C:\Users\kevin\projects\mission-control\node_modules\.bin\next:2
+2026-03-03 17:30:47: basedir=$(dirname "$(echo "$0" | sed -e 's,\\,/,g')")
+2026-03-03 17:30:47:           ^^^^^^^
+2026-03-03 17:30:47: 
+2026-03-03 17:30:47: SyntaxError: missing ) after argument list
+2026-03-03 17:30:47:     at wrapSafe (node:internal/modules/cjs/loader:1624:18)
+2026-03-03 17:30:47:     at Module._compile (node:internal/modules/cjs/loader:1666:20)
+2026-03-03 17:30:47:     at Object..js (node:internal/modules/cjs/loader:1824:10)
+2026-03-03 17:30:47:     at Module.load (node:internal/modules/cjs/loader:1427:32)
+2026-03-03 17:30:47:     at Module._load (node:internal/modules/cjs/loader:1250:12)
+2026-03-03 17:30:47:     at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+2026-03-03 17:30:47:     at wrapModuleLoad (node:internal/modules/cjs/loader:235:24)
+2026-03-03 17:30:47:     at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:152:5)
+2026-03-03 17:30:47:     at node:internal/main/run_main_module:33:47
+2026-03-03 17:30:47: 
+2026-03-03 17:30:47: Node.js v24.4.1
+2026-03-03 17:30:47: C:\Users\kevin\projects\mission-control\node_modules\.bin\next:2
+2026-03-03 17:30:47: basedir=$(dirname "$(echo "$0" | sed -e 's,\\,/,g')")
+2026-03-03 17:30:47:           ^^^^^^^
+2026-03-03 17:30:47: 
+2026-03-03 17:30:47: SyntaxError: missing ) after argument list
+2026-03-03 17:30:47:     at wrapSafe (node:internal/modules/cjs/loader:1624:18)
+2026-03-03 17:30:47:     at Module._compile (node:internal/modules/cjs/loader:1666:20)
+2026-03-03 17:30:47:     at Object..js (node:internal/modules/cjs/loader:1824:10)
+2026-03-03 17:30:47:     at Module.load (node:internal/modules/cjs/loader:1427:32)
+2026-03-03 17:30:47:     at Module._load (node:internal/modules/cjs/loader:1250:12)
+2026-03-03 17:30:47:     at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+2026-03-03 17:30:47:     at wrapModuleLoad (node:internal/modules/cjs/loader:235:24)
+2026-03-03 17:30:47:     at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:152:5)
+2026-03-03 17:30:47:     at node:internal/main/run_main_module:33:47
+2026-03-03 17:30:47: 
+2026-03-03 17:30:47: Node.js v24.4.1
+2026-03-03 17:30:47: C:\Users\kevin\projects\mission-control\node_modules\.bin\next:2
+2026-03-03 17:30:47: basedir=$(dirname "$(echo "$0" | sed -e 's,\\,/,g')")
+2026-03-03 17:30:47:           ^^^^^^^
+2026-03-03 17:30:47: 
+2026-03-03 17:30:47: SyntaxError: missing ) after argument list
+2026-03-03 17:30:47:     at wrapSafe (node:internal/modules/cjs/loader:1624:18)
+2026-03-03 17:30:47:     at Module._compile (node:internal/modules/cjs/loader:1666:20)
+2026-03-03 17:30:47:     at Object..js (node:internal/modules/cjs/loader:1824:10)
+2026-03-03 17:30:47:     at Module.load (node:internal/modules/cjs/loader:1427:32)
+2026-03-03 17:30:47:     at Module._load (node:internal/modules/cjs/loader:1250:12)
+2026-03-03 17:30:47:     at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+2026-03-03 17:30:47:     at wrapModuleLoad (node:internal/modules/cjs/loader:235:24)
+2026-03-03 17:30:47:     at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:152:5)
+2026-03-03 17:30:47:     at node:internal/main/run_main_module:33:47
+2026-03-03 17:30:47: 
+2026-03-03 17:30:47: Node.js v24.4.1
+2026-03-03 17:30:47: C:\Users\kevin\projects\mission-control\node_modules\.bin\next:2
+2026-03-03 17:30:47: basedir=$(dirname "$(echo "$0" | sed -e 's,\\,/,g')")
+2026-03-03 17:30:47:           ^^^^^^^
+2026-03-03 17:30:47: 
+2026-03-03 17:30:47: SyntaxError: missing ) after argument list
+2026-03-03 17:30:47:     at wrapSafe (node:internal/modules/cjs/loader:1624:18)
+2026-03-03 17:30:47:     at Module._compile (node:internal/modules/cjs/loader:1666:20)
+2026-03-03 17:30:47:     at Object..js (node:internal/modules/cjs/loader:1824:10)
+2026-03-03 17:30:47:     at Module.load (node:internal/modules/cjs/loader:1427:32)
+2026-03-03 17:30:47:     at Module._load (node:internal/modules/cjs/loader:1250:12)
+2026-03-03 17:30:47:     at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+2026-03-03 17:30:47:     at wrapModuleLoad (node:internal/modules/cjs/loader:235:24)
+2026-03-03 17:30:47:     at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:152:5)
+2026-03-03 17:30:47:     at node:internal/main/run_main_module:33:47
+2026-03-03 17:30:47: 
+2026-03-03 17:30:47: Node.js v24.4.1
+2026-03-03 17:30:47: C:\Users\kevin\projects\mission-control\node_modules\.bin\next:2
+2026-03-03 17:30:47: basedir=$(dirname "$(echo "$0" | sed -e 's,\\,/,g')")
+2026-03-03 17:30:47:           ^^^^^^^
+2026-03-03 17:30:47: 
+2026-03-03 17:30:47: SyntaxError: missing ) after argument list
+2026-03-03 17:30:47:     at wrapSafe (node:internal/modules/cjs/loader:1624:18)
+2026-03-03 17:30:47:     at Module._compile (node:internal/modules/cjs/loader:1666:20)
+2026-03-03 17:30:47:     at Object..js (node:internal/modules/cjs/loader:1824:10)
+2026-03-03 17:30:47:     at Module.load (node:internal/modules/cjs/loader:1427:32)
+2026-03-03 17:30:47:     at Module._load (node:internal/modules/cjs/loader:1250:12)
+2026-03-03 17:30:47:     at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+2026-03-03 17:30:47:     at wrapModuleLoad (node:internal/modules/cjs/loader:235:24)
+2026-03-03 17:30:47:     at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:152:5)
+2026-03-03 17:30:47:     at node:internal/main/run_main_module:33:47
+2026-03-03 17:30:47: 
+2026-03-03 17:30:47: Node.js v24.4.1
+2026-03-03 17:30:47: C:\Users\kevin\projects\mission-control\node_modules\.bin\next:2
+2026-03-03 17:30:47: basedir=$(dirname "$(echo "$0" | sed -e 's,\\,/,g')")
+2026-03-03 17:30:47:           ^^^^^^^
+2026-03-03 17:30:47: 
+2026-03-03 17:30:47: SyntaxError: missing ) after argument list
+2026-03-03 17:30:47:     at wrapSafe (node:internal/modules/cjs/loader:1624:18)
+2026-03-03 17:30:47:     at Module._compile (node:internal/modules/cjs/loader:1666:20)
+2026-03-03 17:30:47:     at Object..js (node:internal/modules/cjs/loader:1824:10)
+2026-03-03 17:30:47:     at Module.load (node:internal/modules/cjs/loader:1427:32)
+2026-03-03 17:30:47:     at Module._load (node:internal/modules/cjs/loader:1250:12)
+2026-03-03 17:30:47:     at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+2026-03-03 17:30:47:     at wrapModuleLoad (node:internal/modules/cjs/loader:235:24)
+2026-03-03 17:30:47:     at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:152:5)
+2026-03-03 17:30:47:     at node:internal/main/run_main_module:33:47
+2026-03-03 17:30:47: 
+2026-03-03 17:30:47: Node.js v24.4.1
+2026-03-03 17:30:47: C:\Users\kevin\projects\mission-control\node_modules\.bin\next:2
+2026-03-03 17:30:47: basedir=$(dirname "$(echo "$0" | sed -e 's,\\,/,g')")
+2026-03-03 17:30:47:           ^^^^^^^
+2026-03-03 17:30:47: 
+2026-03-03 17:30:47: SyntaxError: missing ) after argument list
+2026-03-03 17:30:47:     at wrapSafe (node:internal/modules/cjs/loader:1624:18)
+2026-03-03 17:30:47:     at Module._compile (node:internal/modules/cjs/loader:1666:20)
+2026-03-03 17:30:47:     at Object..js (node:internal/modules/cjs/loader:1824:10)
+2026-03-03 17:30:47:     at Module.load (node:internal/modules/cjs/loader:1427:32)
+2026-03-03 17:30:47:     at Module._load (node:internal/modules/cjs/loader:1250:12)
+2026-03-03 17:30:47:     at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+2026-03-03 17:30:47:     at wrapModuleLoad (node:internal/modules/cjs/loader:235:24)
+2026-03-03 17:30:47:     at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:152:5)
+2026-03-03 17:30:47:     at node:internal/main/run_main_module:33:47
+2026-03-03 17:30:47: 
+2026-03-03 17:30:47: Node.js v24.4.1
+2026-03-03 17:30:47: C:\Users\kevin\projects\mission-control\node_modules\.bin\next:2
+2026-03-03 17:30:47: basedir=$(dirname "$(echo "$0" | sed -e 's,\\,/,g')")
+2026-03-03 17:30:47:           ^^^^^^^
+2026-03-03 17:30:47: 
+2026-03-03 17:30:47: SyntaxError: missing ) after argument list
+2026-03-03 17:30:47:     at wrapSafe (node:internal/modules/cjs/loader:1624:18)
+2026-03-03 17:30:47:     at Module._compile (node:internal/modules/cjs/loader:1666:20)
+2026-03-03 17:30:47:     at Object..js (node:internal/modules/cjs/loader:1824:10)
+2026-03-03 17:30:47:     at Module.load (node:internal/modules/cjs/loader:1427:32)
+2026-03-03 17:30:47:     at Module._load (node:internal/modules/cjs/loader:1250:12)
+2026-03-03 17:30:47:     at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+2026-03-03 17:30:47:     at wrapModuleLoad (node:internal/modules/cjs/loader:235:24)
+2026-03-03 17:30:47:     at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:152:5)
+2026-03-03 17:30:47:     at node:internal/main/run_main_module:33:47
+2026-03-03 17:30:47: 
+2026-03-03 17:30:47: Node.js v24.4.1
+2026-03-03 17:30:48: C:\Users\kevin\projects\mission-control\node_modules\.bin\next:2
+2026-03-03 17:30:48: basedir=$(dirname "$(echo "$0" | sed -e 's,\\,/,g')")
+2026-03-03 17:30:48:           ^^^^^^^
+2026-03-03 17:30:48: 
+2026-03-03 17:30:48: SyntaxError: missing ) after argument list
+2026-03-03 17:30:48:     at wrapSafe (node:internal/modules/cjs/loader:1624:18)
+2026-03-03 17:30:48:     at Module._compile (node:internal/modules/cjs/loader:1666:20)
+2026-03-03 17:30:48:     at Object..js (node:internal/modules/cjs/loader:1824:10)
+2026-03-03 17:30:48:     at Module.load (node:internal/modules/cjs/loader:1427:32)
+2026-03-03 17:30:48:     at Module._load (node:internal/modules/cjs/loader:1250:12)
+2026-03-03 17:30:48:     at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+2026-03-03 17:30:48:     at wrapModuleLoad (node:internal/modules/cjs/loader:235:24)
+2026-03-03 17:30:48:     at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:152:5)
+2026-03-03 17:30:48:     at node:internal/main/run_main_module:33:47
+2026-03-03 17:30:48: 
+2026-03-03 17:30:48: Node.js v24.4.1
+2026-03-03 17:30:48: C:\Users\kevin\projects\mission-control\node_modules\.bin\next:2
+2026-03-03 17:30:48: basedir=$(dirname "$(echo "$0" | sed -e 's,\\,/,g')")
+2026-03-03 17:30:48:           ^^^^^^^
+2026-03-03 17:30:48: 
+2026-03-03 17:30:48: SyntaxError: missing ) after argument list
+2026-03-03 17:30:48:     at wrapSafe (node:internal/modules/cjs/loader:1624:18)
+2026-03-03 17:30:48:     at Module._compile (node:internal/modules/cjs/loader:1666:20)
+2026-03-03 17:30:48:     at Object..js (node:internal/modules/cjs/loader:1824:10)
+2026-03-03 17:30:48:     at Module.load (node:internal/modules/cjs/loader:1427:32)
+2026-03-03 17:30:48:     at Module._load (node:internal/modules/cjs/loader:1250:12)
+2026-03-03 17:30:48:     at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+2026-03-03 17:30:48:     at wrapModuleLoad (node:internal/modules/cjs/loader:235:24)
+2026-03-03 17:30:48:     at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:152:5)
+2026-03-03 17:30:48:     at node:internal/main/run_main_module:33:47
+2026-03-03 17:30:48: 
+2026-03-03 17:30:48: Node.js v24.4.1
+2026-03-03 17:30:48: C:\Users\kevin\projects\mission-control\node_modules\.bin\next:2
+2026-03-03 17:30:48: basedir=$(dirname "$(echo "$0" | sed -e 's,\\,/,g')")
+2026-03-03 17:30:48:           ^^^^^^^
+2026-03-03 17:30:48: 
+2026-03-03 17:30:48: SyntaxError: missing ) after argument list
+2026-03-03 17:30:48:     at wrapSafe (node:internal/modules/cjs/loader:1624:18)
+2026-03-03 17:30:48:     at Module._compile (node:internal/modules/cjs/loader:1666:20)
+2026-03-03 17:30:48:     at Object..js (node:internal/modules/cjs/loader:1824:10)
+2026-03-03 17:30:48:     at Module.load (node:internal/modules/cjs/loader:1427:32)
+2026-03-03 17:30:48:     at Module._load (node:internal/modules/cjs/loader:1250:12)
+2026-03-03 17:30:48:     at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+2026-03-03 17:30:48:     at wrapModuleLoad (node:internal/modules/cjs/loader:235:24)
+2026-03-03 17:30:48:     at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:152:5)
+2026-03-03 17:30:48:     at node:internal/main/run_main_module:33:47
+2026-03-03 17:30:48: 
+2026-03-03 17:30:48: Node.js v24.4.1
+2026-03-03 17:30:48: C:\Users\kevin\projects\mission-control\node_modules\.bin\next:2
+2026-03-03 17:30:48: basedir=$(dirname "$(echo "$0" | sed -e 's,\\,/,g')")
+2026-03-03 17:30:48:           ^^^^^^^
+2026-03-03 17:30:48: 
+2026-03-03 17:30:48: SyntaxError: missing ) after argument list
+2026-03-03 17:30:48:     at wrapSafe (node:internal/modules/cjs/loader:1624:18)
+2026-03-03 17:30:48:     at Module._compile (node:internal/modules/cjs/loader:1666:20)
+2026-03-03 17:30:48:     at Object..js (node:internal/modules/cjs/loader:1824:10)
+2026-03-03 17:30:48:     at Module.load (node:internal/modules/cjs/loader:1427:32)
+2026-03-03 17:30:48:     at Module._load (node:internal/modules/cjs/loader:1250:12)
+2026-03-03 17:30:48:     at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+2026-03-03 17:30:48:     at wrapModuleLoad (node:internal/modules/cjs/loader:235:24)
+2026-03-03 17:30:48:     at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:152:5)
+2026-03-03 17:30:48:     at node:internal/main/run_main_module:33:47
+2026-03-03 17:30:48: 
+2026-03-03 17:30:48: Node.js v24.4.1
+2026-03-03 17:30:48: C:\Users\kevin\projects\mission-control\node_modules\.bin\next:2
+2026-03-03 17:30:48: basedir=$(dirname "$(echo "$0" | sed -e 's,\\,/,g')")
+2026-03-03 17:30:48:           ^^^^^^^
+2026-03-03 17:30:48: 
+2026-03-03 17:30:48: SyntaxError: missing ) after argument list
+2026-03-03 17:30:48:     at wrapSafe (node:internal/modules/cjs/loader:1624:18)
+2026-03-03 17:30:48:     at Module._compile (node:internal/modules/cjs/loader:1666:20)
+2026-03-03 17:30:48:     at Object..js (node:internal/modules/cjs/loader:1824:10)
+2026-03-03 17:30:48:     at Module.load (node:internal/modules/cjs/loader:1427:32)
+2026-03-03 17:30:48:     at Module._load (node:internal/modules/cjs/loader:1250:12)
+2026-03-03 17:30:48:     at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+2026-03-03 17:30:48:     at wrapModuleLoad (node:internal/modules/cjs/loader:235:24)
+2026-03-03 17:30:48:     at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:152:5)
+2026-03-03 17:30:48:     at node:internal/main/run_main_module:33:47
+2026-03-03 17:30:48: 
+2026-03-03 17:30:48: Node.js v24.4.1
+2026-03-03 17:30:48: C:\Users\kevin\projects\mission-control\node_modules\.bin\next:2
+2026-03-03 17:30:48: basedir=$(dirname "$(echo "$0" | sed -e 's,\\,/,g')")
+2026-03-03 17:30:48:           ^^^^^^^
+2026-03-03 17:30:48: 
+2026-03-03 17:30:48: SyntaxError: missing ) after argument list
+2026-03-03 17:30:48:     at wrapSafe (node:internal/modules/cjs/loader:1624:18)
+2026-03-03 17:30:48:     at Module._compile (node:internal/modules/cjs/loader:1666:20)
+2026-03-03 17:30:48:     at Object..js (node:internal/modules/cjs/loader:1824:10)
+2026-03-03 17:30:48:     at Module.load (node:internal/modules/cjs/loader:1427:32)
+2026-03-03 17:30:48:     at Module._load (node:internal/modules/cjs/loader:1250:12)
+2026-03-03 17:30:48:     at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+2026-03-03 17:30:48:     at wrapModuleLoad (node:internal/modules/cjs/loader:235:24)
+2026-03-03 17:30:48:     at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:152:5)
+2026-03-03 17:30:48:     at node:internal/main/run_main_module:33:47
+2026-03-03 17:30:48: 
+2026-03-03 17:30:48: Node.js v24.4.1
+2026-03-03 17:30:56: C:\Users\kevin\projects\mission-control\node_modules\.bin\next.cmd:1
+2026-03-03 17:30:56: @ECHO off
+2026-03-03 17:30:56: ^
+2026-03-03 17:30:56: 
+2026-03-03 17:30:56: SyntaxError: Invalid or unexpected token
+2026-03-03 17:30:56:     at wrapSafe (node:internal/modules/cjs/loader:1624:18)
+2026-03-03 17:30:56:     at Module._compile (node:internal/modules/cjs/loader:1666:20)
+2026-03-03 17:30:56:     at Object..js (node:internal/modules/cjs/loader:1824:10)
+2026-03-03 17:30:56:     at Module.load (node:internal/modules/cjs/loader:1427:32)
+2026-03-03 17:30:56:     at Module._load (node:internal/modules/cjs/loader:1250:12)
+2026-03-03 17:30:56:     at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+2026-03-03 17:30:56:     at wrapModuleLoad (node:internal/modules/cjs/loader:235:24)
+2026-03-03 17:30:56:     at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:152:5)
+2026-03-03 17:30:56:     at node:internal/main/run_main_module:33:47
+2026-03-03 17:30:56: 
+2026-03-03 17:30:56: Node.js v24.4.1
+2026-03-03 17:30:56: C:\Users\kevin\projects\mission-control\node_modules\.bin\next.cmd:1
+2026-03-03 17:30:56: @ECHO off
+2026-03-03 17:30:56: ^
+2026-03-03 17:30:56: 
+2026-03-03 17:30:56: SyntaxError: Invalid or unexpected token
+2026-03-03 17:30:56:     at wrapSafe (node:internal/modules/cjs/loader:1624:18)
+2026-03-03 17:30:56:     at Module._compile (node:internal/modules/cjs/loader:1666:20)
+2026-03-03 17:30:56:     at Object..js (node:internal/modules/cjs/loader:1824:10)
+2026-03-03 17:30:56:     at Module.load (node:internal/modules/cjs/loader:1427:32)
+2026-03-03 17:30:56:     at Module._load (node:internal/modules/cjs/loader:1250:12)
+2026-03-03 17:30:56:     at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+2026-03-03 17:30:56:     at wrapModuleLoad (node:internal/modules/cjs/loader:235:24)
+2026-03-03 17:30:56:     at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:152:5)
+2026-03-03 17:30:56:     at node:internal/main/run_main_module:33:47
+2026-03-03 17:30:56: 
+2026-03-03 17:30:56: Node.js v24.4.1
+2026-03-03 17:30:56: C:\Users\kevin\projects\mission-control\node_modules\.bin\next.cmd:1
+2026-03-03 17:30:56: @ECHO off
+2026-03-03 17:30:56: ^
+2026-03-03 17:30:56: 
+2026-03-03 17:30:56: SyntaxError: Invalid or unexpected token
+2026-03-03 17:30:56:     at wrapSafe (node:internal/modules/cjs/loader:1624:18)
+2026-03-03 17:30:56:     at Module._compile (node:internal/modules/cjs/loader:1666:20)
+2026-03-03 17:30:56:     at Object..js (node:internal/modules/cjs/loader:1824:10)
+2026-03-03 17:30:56:     at Module.load (node:internal/modules/cjs/loader:1427:32)
+2026-03-03 17:30:56:     at Module._load (node:internal/modules/cjs/loader:1250:12)
+2026-03-03 17:30:56:     at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+2026-03-03 17:30:56:     at wrapModuleLoad (node:internal/modules/cjs/loader:235:24)
+2026-03-03 17:30:56:     at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:152:5)
+2026-03-03 17:30:56:     at node:internal/main/run_main_module:33:47
+2026-03-03 17:30:56: 
+2026-03-03 17:30:56: Node.js v24.4.1
+2026-03-03 17:30:56: C:\Users\kevin\projects\mission-control\node_modules\.bin\next.cmd:1
+2026-03-03 17:30:56: @ECHO off
+2026-03-03 17:30:56: ^
+2026-03-03 17:30:56: 
+2026-03-03 17:30:56: SyntaxError: Invalid or unexpected token
+2026-03-03 17:30:56:     at wrapSafe (node:internal/modules/cjs/loader:1624:18)
+2026-03-03 17:30:56:     at Module._compile (node:internal/modules/cjs/loader:1666:20)
+2026-03-03 17:30:56:     at Object..js (node:internal/modules/cjs/loader:1824:10)
+2026-03-03 17:30:56:     at Module.load (node:internal/modules/cjs/loader:1427:32)
+2026-03-03 17:30:56:     at Module._load (node:internal/modules/cjs/loader:1250:12)
+2026-03-03 17:30:56:     at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+2026-03-03 17:30:56:     at wrapModuleLoad (node:internal/modules/cjs/loader:235:24)
+2026-03-03 17:30:56:     at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:152:5)
+2026-03-03 17:30:56:     at node:internal/main/run_main_module:33:47
+2026-03-03 17:30:56: 
+2026-03-03 17:30:56: Node.js v24.4.1
+2026-03-03 17:30:56: C:\Users\kevin\projects\mission-control\node_modules\.bin\next.cmd:1
+2026-03-03 17:30:56: @ECHO off
+2026-03-03 17:30:56: ^
+2026-03-03 17:30:56: 
+2026-03-03 17:30:56: SyntaxError: Invalid or unexpected token
+2026-03-03 17:30:56:     at wrapSafe (node:internal/modules/cjs/loader:1624:18)
+2026-03-03 17:30:56:     at Module._compile (node:internal/modules/cjs/loader:1666:20)
+2026-03-03 17:30:56:     at Object..js (node:internal/modules/cjs/loader:1824:10)
+2026-03-03 17:30:56:     at Module.load (node:internal/modules/cjs/loader:1427:32)
+2026-03-03 17:30:56:     at Module._load (node:internal/modules/cjs/loader:1250:12)
+2026-03-03 17:30:56:     at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+2026-03-03 17:30:56:     at wrapModuleLoad (node:internal/modules/cjs/loader:235:24)
+2026-03-03 17:30:56:     at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:152:5)
+2026-03-03 17:30:56:     at node:internal/main/run_main_module:33:47
+2026-03-03 17:30:56: 
+2026-03-03 17:30:56: Node.js v24.4.1
+2026-03-03 17:30:56: C:\Users\kevin\projects\mission-control\node_modules\.bin\next.cmd:1
+2026-03-03 17:30:56: @ECHO off
+2026-03-03 17:30:56: ^
+2026-03-03 17:30:56: 
+2026-03-03 17:30:56: SyntaxError: Invalid or unexpected token
+2026-03-03 17:30:56:     at wrapSafe (node:internal/modules/cjs/loader:1624:18)
+2026-03-03 17:30:56:     at Module._compile (node:internal/modules/cjs/loader:1666:20)
+2026-03-03 17:30:56:     at Object..js (node:internal/modules/cjs/loader:1824:10)
+2026-03-03 17:30:56:     at Module.load (node:internal/modules/cjs/loader:1427:32)
+2026-03-03 17:30:56:     at Module._load (node:internal/modules/cjs/loader:1250:12)
+2026-03-03 17:30:56:     at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+2026-03-03 17:30:56:     at wrapModuleLoad (node:internal/modules/cjs/loader:235:24)
+2026-03-03 17:30:56:     at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:152:5)
+2026-03-03 17:30:56:     at node:internal/main/run_main_module:33:47
+2026-03-03 17:30:56: 
+2026-03-03 17:30:56: Node.js v24.4.1
+2026-03-03 17:30:56: C:\Users\kevin\projects\mission-control\node_modules\.bin\next.cmd:1
+2026-03-03 17:30:56: @ECHO off
+2026-03-03 17:30:56: ^
+2026-03-03 17:30:56: 
+2026-03-03 17:30:56: SyntaxError: Invalid or unexpected token
+2026-03-03 17:30:56:     at wrapSafe (node:internal/modules/cjs/loader:1624:18)
+2026-03-03 17:30:56:     at Module._compile (node:internal/modules/cjs/loader:1666:20)
+2026-03-03 17:30:56:     at Object..js (node:internal/modules/cjs/loader:1824:10)
+2026-03-03 17:30:56:     at Module.load (node:internal/modules/cjs/loader:1427:32)
+2026-03-03 17:30:56:     at Module._load (node:internal/modules/cjs/loader:1250:12)
+2026-03-03 17:30:56:     at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+2026-03-03 17:30:56:     at wrapModuleLoad (node:internal/modules/cjs/loader:235:24)
+2026-03-03 17:30:56:     at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:152:5)
+2026-03-03 17:30:56:     at node:internal/main/run_main_module:33:47
+2026-03-03 17:30:56: 
+2026-03-03 17:30:56: Node.js v24.4.1
+2026-03-03 17:30:56: C:\Users\kevin\projects\mission-control\node_modules\.bin\next.cmd:1
+2026-03-03 17:30:56: @ECHO off
+2026-03-03 17:30:56: ^
+2026-03-03 17:30:56: 
+2026-03-03 17:30:56: SyntaxError: Invalid or unexpected token
+2026-03-03 17:30:56:     at wrapSafe (node:internal/modules/cjs/loader:1624:18)
+2026-03-03 17:30:56:     at Module._compile (node:internal/modules/cjs/loader:1666:20)
+2026-03-03 17:30:56:     at Object..js (node:internal/modules/cjs/loader:1824:10)
+2026-03-03 17:30:56:     at Module.load (node:internal/modules/cjs/loader:1427:32)
+2026-03-03 17:30:56:     at Module._load (node:internal/modules/cjs/loader:1250:12)
+2026-03-03 17:30:56:     at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+2026-03-03 17:30:56:     at wrapModuleLoad (node:internal/modules/cjs/loader:235:24)
+2026-03-03 17:30:56:     at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:152:5)
+2026-03-03 17:30:56:     at node:internal/main/run_main_module:33:47
+2026-03-03 17:30:56: 
+2026-03-03 17:30:56: Node.js v24.4.1
+2026-03-03 17:30:56: C:\Users\kevin\projects\mission-control\node_modules\.bin\next.cmd:1
+2026-03-03 17:30:56: @ECHO off
+2026-03-03 17:30:56: ^
+2026-03-03 17:30:56: 
+2026-03-03 17:30:56: SyntaxError: Invalid or unexpected token
+2026-03-03 17:30:56:     at wrapSafe (node:internal/modules/cjs/loader:1624:18)
+2026-03-03 17:30:56:     at Module._compile (node:internal/modules/cjs/loader:1666:20)
+2026-03-03 17:30:56:     at Object..js (node:internal/modules/cjs/loader:1824:10)
+2026-03-03 17:30:56:     at Module.load (node:internal/modules/cjs/loader:1427:32)
+2026-03-03 17:30:56:     at Module._load (node:internal/modules/cjs/loader:1250:12)
+2026-03-03 17:30:56:     at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+2026-03-03 17:30:56:     at wrapModuleLoad (node:internal/modules/cjs/loader:235:24)
+2026-03-03 17:30:56:     at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:152:5)
+2026-03-03 17:30:56:     at node:internal/main/run_main_module:33:47
+2026-03-03 17:30:56: 
+2026-03-03 17:30:56: Node.js v24.4.1
+2026-03-03 17:30:56: C:\Users\kevin\projects\mission-control\node_modules\.bin\next.cmd:1
+2026-03-03 17:30:56: @ECHO off
+2026-03-03 17:30:56: ^
+2026-03-03 17:30:56: 
+2026-03-03 17:30:56: SyntaxError: Invalid or unexpected token
+2026-03-03 17:30:56:     at wrapSafe (node:internal/modules/cjs/loader:1624:18)
+2026-03-03 17:30:56:     at Module._compile (node:internal/modules/cjs/loader:1666:20)
+2026-03-03 17:30:56:     at Object..js (node:internal/modules/cjs/loader:1824:10)
+2026-03-03 17:30:56:     at Module.load (node:internal/modules/cjs/loader:1427:32)
+2026-03-03 17:30:56:     at Module._load (node:internal/modules/cjs/loader:1250:12)
+2026-03-03 17:30:56:     at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+2026-03-03 17:30:56:     at wrapModuleLoad (node:internal/modules/cjs/loader:235:24)
+2026-03-03 17:30:56:     at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:152:5)
+2026-03-03 17:30:56:     at node:internal/main/run_main_module:33:47
+2026-03-03 17:30:56: 
+2026-03-03 17:30:56: Node.js v24.4.1
+2026-03-03 17:30:56: C:\Users\kevin\projects\mission-control\node_modules\.bin\next.cmd:1
+2026-03-03 17:30:56: @ECHO off
+2026-03-03 17:30:56: ^
+2026-03-03 17:30:56: 
+2026-03-03 17:30:56: SyntaxError: Invalid or unexpected token
+2026-03-03 17:30:56:     at wrapSafe (node:internal/modules/cjs/loader:1624:18)
+2026-03-03 17:30:56:     at Module._compile (node:internal/modules/cjs/loader:1666:20)
+2026-03-03 17:30:56:     at Object..js (node:internal/modules/cjs/loader:1824:10)
+2026-03-03 17:30:56:     at Module.load (node:internal/modules/cjs/loader:1427:32)
+2026-03-03 17:30:56:     at Module._load (node:internal/modules/cjs/loader:1250:12)
+2026-03-03 17:30:56:     at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+2026-03-03 17:30:56:     at wrapModuleLoad (node:internal/modules/cjs/loader:235:24)
+2026-03-03 17:30:56:     at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:152:5)
+2026-03-03 17:30:56:     at node:internal/main/run_main_module:33:47
+2026-03-03 17:30:56: 
+2026-03-03 17:30:56: Node.js v24.4.1
+2026-03-03 17:30:56: C:\Users\kevin\projects\mission-control\node_modules\.bin\next.cmd:1
+2026-03-03 17:30:56: @ECHO off
+2026-03-03 17:30:56: ^
+2026-03-03 17:30:56: 
+2026-03-03 17:30:56: SyntaxError: Invalid or unexpected token
+2026-03-03 17:30:56:     at wrapSafe (node:internal/modules/cjs/loader:1624:18)
+2026-03-03 17:30:56:     at Module._compile (node:internal/modules/cjs/loader:1666:20)
+2026-03-03 17:30:56:     at Object..js (node:internal/modules/cjs/loader:1824:10)
+2026-03-03 17:30:56:     at Module.load (node:internal/modules/cjs/loader:1427:32)
+2026-03-03 17:30:56:     at Module._load (node:internal/modules/cjs/loader:1250:12)
+2026-03-03 17:30:56:     at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+2026-03-03 17:30:56:     at wrapModuleLoad (node:internal/modules/cjs/loader:235:24)
+2026-03-03 17:30:56:     at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:152:5)
+2026-03-03 17:30:56:     at node:internal/main/run_main_module:33:47
+2026-03-03 17:30:56: 
+2026-03-03 17:30:56: Node.js v24.4.1
+2026-03-03 17:30:56: C:\Users\kevin\projects\mission-control\node_modules\.bin\next.cmd:1
+2026-03-03 17:30:56: @ECHO off
+2026-03-03 17:30:56: ^
+2026-03-03 17:30:56: 
+2026-03-03 17:30:56: SyntaxError: Invalid or unexpected token
+2026-03-03 17:30:56:     at wrapSafe (node:internal/modules/cjs/loader:1624:18)
+2026-03-03 17:30:56:     at Module._compile (node:internal/modules/cjs/loader:1666:20)
+2026-03-03 17:30:56:     at Object..js (node:internal/modules/cjs/loader:1824:10)
+2026-03-03 17:30:56:     at Module.load (node:internal/modules/cjs/loader:1427:32)
+2026-03-03 17:30:56:     at Module._load (node:internal/modules/cjs/loader:1250:12)
+2026-03-03 17:30:56:     at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+2026-03-03 17:30:56:     at wrapModuleLoad (node:internal/modules/cjs/loader:235:24)
+2026-03-03 17:30:56:     at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:152:5)
+2026-03-03 17:30:56:     at node:internal/main/run_main_module:33:47
+2026-03-03 17:30:56: 
+2026-03-03 17:30:56: Node.js v24.4.1
+2026-03-03 17:30:56: C:\Users\kevin\projects\mission-control\node_modules\.bin\next.cmd:1
+2026-03-03 17:30:56: @ECHO off
+2026-03-03 17:30:56: ^
+2026-03-03 17:30:56: 
+2026-03-03 17:30:56: SyntaxError: Invalid or unexpected token
+2026-03-03 17:30:56:     at wrapSafe (node:internal/modules/cjs/loader:1624:18)
+2026-03-03 17:30:56:     at Module._compile (node:internal/modules/cjs/loader:1666:20)
+2026-03-03 17:30:56:     at Object..js (node:internal/modules/cjs/loader:1824:10)
+2026-03-03 17:30:56:     at Module.load (node:internal/modules/cjs/loader:1427:32)
+2026-03-03 17:30:56:     at Module._load (node:internal/modules/cjs/loader:1250:12)
+2026-03-03 17:30:56:     at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+2026-03-03 17:30:56:     at wrapModuleLoad (node:internal/modules/cjs/loader:235:24)
+2026-03-03 17:30:56:     at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:152:5)
+2026-03-03 17:30:56:     at node:internal/main/run_main_module:33:47
+2026-03-03 17:30:56: 
+2026-03-03 17:30:56: Node.js v24.4.1
+2026-03-03 17:30:56: C:\Users\kevin\projects\mission-control\node_modules\.bin\next.cmd:1
+2026-03-03 17:30:56: @ECHO off
+2026-03-03 17:30:56: ^
+2026-03-03 17:30:56: 
+2026-03-03 17:30:56: SyntaxError: Invalid or unexpected token
+2026-03-03 17:30:56:     at wrapSafe (node:internal/modules/cjs/loader:1624:18)
+2026-03-03 17:30:56:     at Module._compile (node:internal/modules/cjs/loader:1666:20)
+2026-03-03 17:30:56:     at Object..js (node:internal/modules/cjs/loader:1824:10)
+2026-03-03 17:30:56:     at Module.load (node:internal/modules/cjs/loader:1427:32)
+2026-03-03 17:30:56:     at Module._load (node:internal/modules/cjs/loader:1250:12)
+2026-03-03 17:30:56:     at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+2026-03-03 17:30:56:     at wrapModuleLoad (node:internal/modules/cjs/loader:235:24)
+2026-03-03 17:30:56:     at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:152:5)
+2026-03-03 17:30:56:     at node:internal/main/run_main_module:33:47
+2026-03-03 17:30:56: 
+2026-03-03 17:30:56: Node.js v24.4.1
+2026-03-03 17:30:56: C:\Users\kevin\projects\mission-control\node_modules\.bin\next.cmd:1
+2026-03-03 17:30:56: @ECHO off
+2026-03-03 17:30:56: ^
+2026-03-03 17:30:56: 
+2026-03-03 17:30:56: SyntaxError: Invalid or unexpected token
+2026-03-03 17:30:56:     at wrapSafe (node:internal/modules/cjs/loader:1624:18)
+2026-03-03 17:30:56:     at Module._compile (node:internal/modules/cjs/loader:1666:20)
+2026-03-03 17:30:56:     at Object..js (node:internal/modules/cjs/loader:1824:10)
+2026-03-03 17:30:56:     at Module.load (node:internal/modules/cjs/loader:1427:32)
+2026-03-03 17:30:56:     at Module._load (node:internal/modules/cjs/loader:1250:12)
+2026-03-03 17:30:56:     at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+2026-03-03 17:30:56:     at wrapModuleLoad (node:internal/modules/cjs/loader:235:24)
+2026-03-03 17:30:56:     at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:152:5)
+2026-03-03 17:30:56:     at node:internal/main/run_main_module:33:47
+2026-03-03 17:30:56: 
+2026-03-03 17:30:56: Node.js v24.4.1
+2026-03-03 17:32:02: ⨯ Failed to start server
+2026-03-03 17:32:02: Error: listen EADDRINUSE: address already in use :::3000
+2026-03-03 17:32:02:     at <unknown> (Error: listen EADDRINUSE: address already in use :::3000)
+2026-03-03 17:32:02:     at new Promise (<anonymous>) {
+2026-03-03 17:32:02:   code: 'EADDRINUSE',
+2026-03-03 17:32:02:   errno: -4091,
+2026-03-03 17:32:02:   syscall: 'listen',
+2026-03-03 17:32:02:   address: '::',
+2026-03-03 17:32:02:   port: 3000
+2026-03-03 17:32:02: }
+2026-03-03 17:32:03: ⨯ Failed to start server
+2026-03-03 17:32:03: Error: listen EADDRINUSE: address already in use :::3000
+2026-03-03 17:32:03:     at <unknown> (Error: listen EADDRINUSE: address already in use :::3000)
+2026-03-03 17:32:03:     at new Promise (<anonymous>) {
+2026-03-03 17:32:03:   code: 'EADDRINUSE',
+2026-03-03 17:32:03:   errno: -4091,
+2026-03-03 17:32:03:   syscall: 'listen',
+2026-03-03 17:32:03:   address: '::',
+2026-03-03 17:32:03:   port: 3000
+2026-03-03 17:32:03: }
+2026-03-03 17:32:03: ⨯ Failed to start server
+2026-03-03 17:32:03: Error: listen EADDRINUSE: address already in use :::3000
+2026-03-03 17:32:03:     at <unknown> (Error: listen EADDRINUSE: address already in use :::3000)
+2026-03-03 17:32:03:     at new Promise (<anonymous>) {
+2026-03-03 17:32:03:   code: 'EADDRINUSE',
+2026-03-03 17:32:03:   errno: -4091,
+2026-03-03 17:32:03:   syscall: 'listen',
+2026-03-03 17:32:03:   address: '::',
+2026-03-03 17:32:03:   port: 3000
+2026-03-03 17:32:03: }
+2026-03-03 17:32:03: ⨯ Failed to start server
+2026-03-03 17:32:03: Error: listen EADDRINUSE: address already in use :::3000
+2026-03-03 17:32:03:     at <unknown> (Error: listen EADDRINUSE: address already in use :::3000)
+2026-03-03 17:32:03:     at new Promise (<anonymous>) {
+2026-03-03 17:32:03:   code: 'EADDRINUSE',
+2026-03-03 17:32:03:   errno: -4091,
+2026-03-03 17:32:03:   syscall: 'listen',
+2026-03-03 17:32:03:   address: '::',
+2026-03-03 17:32:03:   port: 3000
+2026-03-03 17:32:03: }
+2026-03-03 17:32:04: ⨯ Failed to start server
+2026-03-03 17:32:04: Error: listen EADDRINUSE: address already in use :::3000
+2026-03-03 17:32:04:     at <unknown> (Error: listen EADDRINUSE: address already in use :::3000)
+2026-03-03 17:32:04:     at new Promise (<anonymous>) {
+2026-03-03 17:32:04:   code: 'EADDRINUSE',
+2026-03-03 17:32:04:   errno: -4091,
+2026-03-03 17:32:04:   syscall: 'listen',
+2026-03-03 17:32:04:   address: '::',
+2026-03-03 17:32:04:   port: 3000
+2026-03-03 17:32:04: }
+2026-03-03 17:32:04: ⨯ Failed to start server
+2026-03-03 17:32:04: Error: listen EADDRINUSE: address already in use :::3000
+2026-03-03 17:32:04:     at <unknown> (Error: listen EADDRINUSE: address already in use :::3000)
+2026-03-03 17:32:04:     at new Promise (<anonymous>) {
+2026-03-03 17:32:04:   code: 'EADDRINUSE',
+2026-03-03 17:32:04:   errno: -4091,
+2026-03-03 17:32:04:   syscall: 'listen',
+2026-03-03 17:32:04:   address: '::',
+2026-03-03 17:32:04:   port: 3000
+2026-03-03 17:32:04: }
+2026-03-03 17:32:05: ⨯ Failed to start server
+2026-03-03 17:32:05: Error: listen EADDRINUSE: address already in use :::3000
+2026-03-03 17:32:05:     at <unknown> (Error: listen EADDRINUSE: address already in use :::3000)
+2026-03-03 17:32:05:     at new Promise (<anonymous>) {
+2026-03-03 17:32:05:   code: 'EADDRINUSE',
+2026-03-03 17:32:05:   errno: -4091,
+2026-03-03 17:32:05:   syscall: 'listen',
+2026-03-03 17:32:05:   address: '::',
+2026-03-03 17:32:05:   port: 3000
+2026-03-03 17:32:05: }
+2026-03-03 17:32:05: ⨯ Failed to start server
+2026-03-03 17:32:05: Error: listen EADDRINUSE: address already in use :::3000
+2026-03-03 17:32:05:     at <unknown> (Error: listen EADDRINUSE: address already in use :::3000)
+2026-03-03 17:32:05:     at new Promise (<anonymous>) {
+2026-03-03 17:32:05:   code: 'EADDRINUSE',
+2026-03-03 17:32:05:   errno: -4091,
+2026-03-03 17:32:05:   syscall: 'listen',
+2026-03-03 17:32:05:   address: '::',
+2026-03-03 17:32:05:   port: 3000
+2026-03-03 17:32:05: }
+2026-03-03 17:32:05: ⨯ Failed to start server
+2026-03-03 17:32:05: Error: listen EADDRINUSE: address already in use :::3000
+2026-03-03 17:32:05:     at <unknown> (Error: listen EADDRINUSE: address already in use :::3000)
+2026-03-03 17:32:05:     at new Promise (<anonymous>) {
+2026-03-03 17:32:05:   code: 'EADDRINUSE',
+2026-03-03 17:32:05:   errno: -4091,
+2026-03-03 17:32:05:   syscall: 'listen',
+2026-03-03 17:32:05:   address: '::',
+2026-03-03 17:32:05:   port: 3000
+2026-03-03 17:32:05: }
+2026-03-03 17:32:06: ⨯ Failed to start server
+2026-03-03 17:32:06: Error: listen EADDRINUSE: address already in use :::3000
+2026-03-03 17:32:06:     at <unknown> (Error: listen EADDRINUSE: address already in use :::3000)
+2026-03-03 17:32:06:     at new Promise (<anonymous>) {
+2026-03-03 17:32:06:   code: 'EADDRINUSE',
+2026-03-03 17:32:06:   errno: -4091,
+2026-03-03 17:32:06:   syscall: 'listen',
+2026-03-03 17:32:06:   address: '::',
+2026-03-03 17:32:06:   port: 3000
+2026-03-03 17:32:06: }
+2026-03-03 17:32:06: ⨯ Failed to start server
+2026-03-03 17:32:06: Error: listen EADDRINUSE: address already in use :::3000
+2026-03-03 17:32:06:     at <unknown> (Error: listen EADDRINUSE: address already in use :::3000)
+2026-03-03 17:32:06:     at new Promise (<anonymous>) {
+2026-03-03 17:32:06:   code: 'EADDRINUSE',
+2026-03-03 17:32:06:   errno: -4091,
+2026-03-03 17:32:06:   syscall: 'listen',
+2026-03-03 17:32:06:   address: '::',
+2026-03-03 17:32:06:   port: 3000
+2026-03-03 17:32:06: }
+2026-03-03 17:32:07: ⨯ Failed to start server
+2026-03-03 17:32:07: Error: listen EADDRINUSE: address already in use :::3000
+2026-03-03 17:32:07:     at <unknown> (Error: listen EADDRINUSE: address already in use :::3000)
+2026-03-03 17:32:07:     at new Promise (<anonymous>) {
+2026-03-03 17:32:07:   code: 'EADDRINUSE',
+2026-03-03 17:32:07:   errno: -4091,
+2026-03-03 17:32:07:   syscall: 'listen',
+2026-03-03 17:32:07:   address: '::',
+2026-03-03 17:32:07:   port: 3000
+2026-03-03 17:32:07: }
+2026-03-03 17:32:07: ⨯ Failed to start server
+2026-03-03 17:32:07: Error: listen EADDRINUSE: address already in use :::3000
+2026-03-03 17:32:07:     at <unknown> (Error: listen EADDRINUSE: address already in use :::3000)
+2026-03-03 17:32:07:     at new Promise (<anonymous>) {
+2026-03-03 17:32:07:   code: 'EADDRINUSE',
+2026-03-03 17:32:07:   errno: -4091,
+2026-03-03 17:32:07:   syscall: 'listen',
+2026-03-03 17:32:07:   address: '::',
+2026-03-03 17:32:07:   port: 3000
+2026-03-03 17:32:07: }
+2026-03-03 17:32:07: ⨯ Failed to start server
+2026-03-03 17:32:07: Error: listen EADDRINUSE: address already in use :::3000
+2026-03-03 17:32:07:     at <unknown> (Error: listen EADDRINUSE: address already in use :::3000)
+2026-03-03 17:32:07:     at new Promise (<anonymous>) {
+2026-03-03 17:32:07:   code: 'EADDRINUSE',
+2026-03-03 17:32:07:   errno: -4091,
+2026-03-03 17:32:07:   syscall: 'listen',
+2026-03-03 17:32:07:   address: '::',
+2026-03-03 17:32:07:   port: 3000
+2026-03-03 17:32:07: }
+2026-03-03 17:32:08: ⨯ Failed to start server
+2026-03-03 17:32:08: Error: listen EADDRINUSE: address already in use :::3000
+2026-03-03 17:32:08:     at <unknown> (Error: listen EADDRINUSE: address already in use :::3000)
+2026-03-03 17:32:08:     at new Promise (<anonymous>) {
+2026-03-03 17:32:08:   code: 'EADDRINUSE',
+2026-03-03 17:32:08:   errno: -4091,
+2026-03-03 17:32:08:   syscall: 'listen',
+2026-03-03 17:32:08:   address: '::',
+2026-03-03 17:32:08:   port: 3000
+2026-03-03 17:32:08: }
+2026-03-03 17:32:08: ⨯ Failed to start server
+2026-03-03 17:32:08: Error: listen EADDRINUSE: address already in use :::3000
+2026-03-03 17:32:08:     at <unknown> (Error: listen EADDRINUSE: address already in use :::3000)
+2026-03-03 17:32:08:     at new Promise (<anonymous>) {
+2026-03-03 17:32:08:   code: 'EADDRINUSE',
+2026-03-03 17:32:08:   errno: -4091,
+2026-03-03 17:32:08:   syscall: 'listen',
+2026-03-03 17:32:08:   address: '::',
+2026-03-03 17:32:08:   port: 3000
+2026-03-03 17:32:08: }
+2026-03-03 17:32:09: ⨯ Failed to start server
+2026-03-03 17:32:09: Error: listen EADDRINUSE: address already in use :::3000
+2026-03-03 17:32:09:     at <unknown> (Error: listen EADDRINUSE: address already in use :::3000)
+2026-03-03 17:32:09:     at new Promise (<anonymous>) {
+2026-03-03 17:32:09:   code: 'EADDRINUSE',
+2026-03-03 17:32:09:   errno: -4091,
+2026-03-03 17:32:09:   syscall: 'listen',
+2026-03-03 17:32:09:   address: '::',
+2026-03-03 17:32:09:   port: 3000
+2026-03-03 17:32:09: }
+2026-03-11 05:26:18: (node:10184) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-11 05:26:18: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-11 05:26:18: ⨯ Failed to start server
+2026-03-11 05:26:18: Error: listen EADDRINUSE: address already in use :::3000
+2026-03-11 05:26:18:     at <unknown> (Error: listen EADDRINUSE: address already in use :::3000)
+2026-03-11 05:26:18:     at new Promise (<anonymous>) {
+2026-03-11 05:26:18:   code: 'EADDRINUSE',
+2026-03-11 05:26:18:   errno: -4091,
+2026-03-11 05:26:18:   syscall: 'listen',
+2026-03-11 05:26:18:   address: '::',
+2026-03-11 05:26:18:   port: 3000
+2026-03-11 05:26:18: }
+2026-03-11 05:26:18: (node:15940) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-11 05:26:18: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-11 05:26:18: ⨯ Failed to start server
+2026-03-11 05:26:18: Error: listen EADDRINUSE: address already in use :::3000
+2026-03-11 05:26:18:     at <unknown> (Error: listen EADDRINUSE: address already in use :::3000)
+2026-03-11 05:26:18:     at new Promise (<anonymous>) {
+2026-03-11 05:26:18:   code: 'EADDRINUSE',
+2026-03-11 05:26:18:   errno: -4091,
+2026-03-11 05:26:18:   syscall: 'listen',
+2026-03-11 05:26:18:   address: '::',
+2026-03-11 05:26:18:   port: 3000
+2026-03-11 05:26:18: }
+2026-03-11 05:26:19: (node:12064) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-11 05:26:19: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-11 05:26:19: ⨯ Failed to start server
+2026-03-11 05:26:19: Error: listen EADDRINUSE: address already in use :::3000
+2026-03-11 05:26:19:     at <unknown> (Error: listen EADDRINUSE: address already in use :::3000)
+2026-03-11 05:26:19:     at new Promise (<anonymous>) {
+2026-03-11 05:26:19:   code: 'EADDRINUSE',
+2026-03-11 05:26:19:   errno: -4091,
+2026-03-11 05:26:19:   syscall: 'listen',
+2026-03-11 05:26:19:   address: '::',
+2026-03-11 05:26:19:   port: 3000
+2026-03-11 05:26:19: }
+2026-03-11 05:26:19: (node:4504) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-11 05:26:19: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-11 05:26:19: ⨯ Failed to start server
+2026-03-11 05:26:19: Error: listen EADDRINUSE: address already in use :::3000
+2026-03-11 05:26:19:     at <unknown> (Error: listen EADDRINUSE: address already in use :::3000)
+2026-03-11 05:26:19:     at new Promise (<anonymous>) {
+2026-03-11 05:26:19:   code: 'EADDRINUSE',
+2026-03-11 05:26:19:   errno: -4091,
+2026-03-11 05:26:19:   syscall: 'listen',
+2026-03-11 05:26:19:   address: '::',
+2026-03-11 05:26:19:   port: 3000
+2026-03-11 05:26:19: }
+2026-03-11 05:26:19: (node:11832) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-11 05:26:19: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-11 05:26:20: ⨯ Failed to start server
+2026-03-11 05:26:20: Error: listen EADDRINUSE: address already in use :::3000
+2026-03-11 05:26:20:     at <unknown> (Error: listen EADDRINUSE: address already in use :::3000)
+2026-03-11 05:26:20:     at new Promise (<anonymous>) {
+2026-03-11 05:26:20:   code: 'EADDRINUSE',
+2026-03-11 05:26:20:   errno: -4091,
+2026-03-11 05:26:20:   syscall: 'listen',
+2026-03-11 05:26:20:   address: '::',
+2026-03-11 05:26:20:   port: 3000
+2026-03-11 05:26:20: }
+2026-03-11 05:26:20: (node:15024) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-11 05:26:20: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-11 05:26:20: ⨯ Failed to start server
+2026-03-11 05:26:20: Error: listen EADDRINUSE: address already in use :::3000
+2026-03-11 05:26:20:     at <unknown> (Error: listen EADDRINUSE: address already in use :::3000)
+2026-03-11 05:26:20:     at new Promise (<anonymous>) {
+2026-03-11 05:26:20:   code: 'EADDRINUSE',
+2026-03-11 05:26:20:   errno: -4091,
+2026-03-11 05:26:20:   syscall: 'listen',
+2026-03-11 05:26:20:   address: '::',
+2026-03-11 05:26:20:   port: 3000
+2026-03-11 05:26:20: }
+2026-03-11 05:26:20: (node:12428) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-11 05:26:20: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-11 05:26:20: ⨯ Failed to start server
+2026-03-11 05:26:20: Error: listen EADDRINUSE: address already in use :::3000
+2026-03-11 05:26:20:     at <unknown> (Error: listen EADDRINUSE: address already in use :::3000)
+2026-03-11 05:26:20:     at new Promise (<anonymous>) {
+2026-03-11 05:26:20:   code: 'EADDRINUSE',
+2026-03-11 05:26:20:   errno: -4091,
+2026-03-11 05:26:20:   syscall: 'listen',
+2026-03-11 05:26:20:   address: '::',
+2026-03-11 05:26:20:   port: 3000
+2026-03-11 05:26:20: }
+2026-03-11 05:26:20: (node:16240) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-11 05:26:20: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-11 05:26:21: ⨯ Failed to start server
+2026-03-11 05:26:21: Error: listen EADDRINUSE: address already in use :::3000
+2026-03-11 05:26:21:     at <unknown> (Error: listen EADDRINUSE: address already in use :::3000)
+2026-03-11 05:26:21:     at new Promise (<anonymous>) {
+2026-03-11 05:26:21:   code: 'EADDRINUSE',
+2026-03-11 05:26:21:   errno: -4091,
+2026-03-11 05:26:21:   syscall: 'listen',
+2026-03-11 05:26:21:   address: '::',
+2026-03-11 05:26:21:   port: 3000
+2026-03-11 05:26:21: }
+2026-03-11 05:26:21: (node:10164) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-11 05:26:21: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-11 05:26:21: ⨯ Failed to start server
+2026-03-11 05:26:21: Error: listen EADDRINUSE: address already in use :::3000
+2026-03-11 05:26:21:     at <unknown> (Error: listen EADDRINUSE: address already in use :::3000)
+2026-03-11 05:26:21:     at new Promise (<anonymous>) {
+2026-03-11 05:26:21:   code: 'EADDRINUSE',
+2026-03-11 05:26:21:   errno: -4091,
+2026-03-11 05:26:21:   syscall: 'listen',
+2026-03-11 05:26:21:   address: '::',
+2026-03-11 05:26:21:   port: 3000
+2026-03-11 05:26:21: }
+2026-03-11 05:26:21: (node:10796) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-11 05:26:21: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-11 05:26:22: ⨯ Failed to start server
+2026-03-11 05:26:22: Error: listen EADDRINUSE: address already in use :::3000
+2026-03-11 05:26:22:     at <unknown> (Error: listen EADDRINUSE: address already in use :::3000)
+2026-03-11 05:26:22:     at new Promise (<anonymous>) {
+2026-03-11 05:26:22:   code: 'EADDRINUSE',
+2026-03-11 05:26:22:   errno: -4091,
+2026-03-11 05:26:22:   syscall: 'listen',
+2026-03-11 05:26:22:   address: '::',
+2026-03-11 05:26:22:   port: 3000
+2026-03-11 05:26:22: }
+2026-03-11 05:26:22: (node:14996) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-11 05:26:22: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-11 05:26:22: ⨯ Failed to start server
+2026-03-11 05:26:22: Error: listen EADDRINUSE: address already in use :::3000
+2026-03-11 05:26:22:     at <unknown> (Error: listen EADDRINUSE: address already in use :::3000)
+2026-03-11 05:26:22:     at new Promise (<anonymous>) {
+2026-03-11 05:26:22:   code: 'EADDRINUSE',
+2026-03-11 05:26:22:   errno: -4091,
+2026-03-11 05:26:22:   syscall: 'listen',
+2026-03-11 05:26:22:   address: '::',
+2026-03-11 05:26:22:   port: 3000
+2026-03-11 05:26:22: }
+2026-03-11 05:26:22: (node:14244) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-11 05:26:22: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-11 05:26:22: ⨯ Failed to start server
+2026-03-11 05:26:22: Error: listen EADDRINUSE: address already in use :::3000
+2026-03-11 05:26:22:     at <unknown> (Error: listen EADDRINUSE: address already in use :::3000)
+2026-03-11 05:26:22:     at new Promise (<anonymous>) {
+2026-03-11 05:26:22:   code: 'EADDRINUSE',
+2026-03-11 05:26:22:   errno: -4091,
+2026-03-11 05:26:22:   syscall: 'listen',
+2026-03-11 05:26:22:   address: '::',
+2026-03-11 05:26:22:   port: 3000
+2026-03-11 05:26:22: }
+2026-03-11 05:26:22: (node:16336) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-11 05:26:22: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-11 05:26:23: ⨯ Failed to start server
+2026-03-11 05:26:23: Error: listen EADDRINUSE: address already in use :::3000
+2026-03-11 05:26:23:     at <unknown> (Error: listen EADDRINUSE: address already in use :::3000)
+2026-03-11 05:26:23:     at new Promise (<anonymous>) {
+2026-03-11 05:26:23:   code: 'EADDRINUSE',
+2026-03-11 05:26:23:   errno: -4091,
+2026-03-11 05:26:23:   syscall: 'listen',
+2026-03-11 05:26:23:   address: '::',
+2026-03-11 05:26:23:   port: 3000
+2026-03-11 05:26:23: }
+2026-03-11 05:26:23: (node:12360) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-11 05:26:23: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-11 05:26:23: ⨯ Failed to start server
+2026-03-11 05:26:23: Error: listen EADDRINUSE: address already in use :::3000
+2026-03-11 05:26:23:     at <unknown> (Error: listen EADDRINUSE: address already in use :::3000)
+2026-03-11 05:26:23:     at new Promise (<anonymous>) {
+2026-03-11 05:26:23:   code: 'EADDRINUSE',
+2026-03-11 05:26:23:   errno: -4091,
+2026-03-11 05:26:23:   syscall: 'listen',
+2026-03-11 05:26:23:   address: '::',
+2026-03-11 05:26:23:   port: 3000
+2026-03-11 05:26:23: }
+2026-03-11 05:26:23: (node:16188) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-11 05:26:23: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-11 05:26:23: ⨯ Failed to start server
+2026-03-11 05:26:23: Error: listen EADDRINUSE: address already in use :::3000
+2026-03-11 05:26:23:     at <unknown> (Error: listen EADDRINUSE: address already in use :::3000)
+2026-03-11 05:26:23:     at new Promise (<anonymous>) {
+2026-03-11 05:26:23:   code: 'EADDRINUSE',
+2026-03-11 05:26:23:   errno: -4091,
+2026-03-11 05:26:23:   syscall: 'listen',
+2026-03-11 05:26:23:   address: '::',
+2026-03-11 05:26:23:   port: 3000
+2026-03-11 05:26:23: }
+2026-03-11 05:26:24: (node:12848) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-11 05:26:24: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-11 05:26:24: ⨯ Failed to start server
+2026-03-11 05:26:24: Error: listen EADDRINUSE: address already in use :::3000
+2026-03-11 05:26:24:     at <unknown> (Error: listen EADDRINUSE: address already in use :::3000)
+2026-03-11 05:26:24:     at new Promise (<anonymous>) {
+2026-03-11 05:26:24:   code: 'EADDRINUSE',
+2026-03-11 05:26:24:   errno: -4091,
+2026-03-11 05:26:24:   syscall: 'listen',
+2026-03-11 05:26:24:   address: '::',
+2026-03-11 05:26:24:   port: 3000
+2026-03-11 05:26:24: }
+2026-03-11 05:26:24: (node:2732) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-11 05:26:24: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-11 05:26:24: ⨯ Failed to start server
+2026-03-11 05:26:24: Error: listen EADDRINUSE: address already in use :::3000
+2026-03-11 05:26:24:     at <unknown> (Error: listen EADDRINUSE: address already in use :::3000)
+2026-03-11 05:26:24:     at new Promise (<anonymous>) {
+2026-03-11 05:26:24:   code: 'EADDRINUSE',
+2026-03-11 05:26:24:   errno: -4091,
+2026-03-11 05:26:24:   syscall: 'listen',
+2026-03-11 05:26:24:   address: '::',
+2026-03-11 05:26:24:   port: 3000
+2026-03-11 05:26:24: }
+2026-03-11 09:47:41: (node:17316) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-11 09:47:41: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-11 09:47:42: ⨯ Failed to start server
+2026-03-11 09:47:42: Error: listen EADDRINUSE: address already in use :::3000
+2026-03-11 09:47:42:     at <unknown> (Error: listen EADDRINUSE: address already in use :::3000)
+2026-03-11 09:47:42:     at new Promise (<anonymous>) {
+2026-03-11 09:47:42:   code: 'EADDRINUSE',
+2026-03-11 09:47:42:   errno: -4091,
+2026-03-11 09:47:42:   syscall: 'listen',
+2026-03-11 09:47:42:   address: '::',
+2026-03-11 09:47:42:   port: 3000
+2026-03-11 09:47:42: }
+2026-03-11 09:47:42: (node:3628) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-11 09:47:42: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-11 09:47:42: ⨯ Failed to start server
+2026-03-11 09:47:42: Error: listen EADDRINUSE: address already in use :::3000
+2026-03-11 09:47:42:     at <unknown> (Error: listen EADDRINUSE: address already in use :::3000)
+2026-03-11 09:47:42:     at new Promise (<anonymous>) {
+2026-03-11 09:47:42:   code: 'EADDRINUSE',
+2026-03-11 09:47:42:   errno: -4091,
+2026-03-11 09:47:42:   syscall: 'listen',
+2026-03-11 09:47:42:   address: '::',
+2026-03-11 09:47:42:   port: 3000
+2026-03-11 09:47:42: }
+2026-03-11 09:47:42: (node:3332) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-11 09:47:42: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-11 09:47:42: ⨯ Failed to start server
+2026-03-11 09:47:42: Error: listen EADDRINUSE: address already in use :::3000
+2026-03-11 09:47:42:     at <unknown> (Error: listen EADDRINUSE: address already in use :::3000)
+2026-03-11 09:47:42:     at new Promise (<anonymous>) {
+2026-03-11 09:47:42:   code: 'EADDRINUSE',
+2026-03-11 09:47:42:   errno: -4091,
+2026-03-11 09:47:42:   syscall: 'listen',
+2026-03-11 09:47:42:   address: '::',
+2026-03-11 09:47:42:   port: 3000
+2026-03-11 09:47:42: }
+2026-03-11 09:47:42: (node:16000) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-11 09:47:42: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-11 09:47:43: ⨯ Failed to start server
+2026-03-11 09:47:43: Error: listen EADDRINUSE: address already in use :::3000
+2026-03-11 09:47:43:     at <unknown> (Error: listen EADDRINUSE: address already in use :::3000)
+2026-03-11 09:47:43:     at new Promise (<anonymous>) {
+2026-03-11 09:47:43:   code: 'EADDRINUSE',
+2026-03-11 09:47:43:   errno: -4091,
+2026-03-11 09:47:43:   syscall: 'listen',
+2026-03-11 09:47:43:   address: '::',
+2026-03-11 09:47:43:   port: 3000
+2026-03-11 09:47:43: }
+2026-03-11 09:47:43: (node:18088) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-11 09:47:43: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-11 09:47:43: ⨯ Failed to start server
+2026-03-11 09:47:43: Error: listen EADDRINUSE: address already in use :::3000
+2026-03-11 09:47:43:     at <unknown> (Error: listen EADDRINUSE: address already in use :::3000)
+2026-03-11 09:47:43:     at new Promise (<anonymous>) {
+2026-03-11 09:47:43:   code: 'EADDRINUSE',
+2026-03-11 09:47:43:   errno: -4091,
+2026-03-11 09:47:43:   syscall: 'listen',
+2026-03-11 09:47:43:   address: '::',
+2026-03-11 09:47:43:   port: 3000
+2026-03-11 09:47:43: }
+2026-03-11 09:47:43: (node:14732) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-11 09:47:43: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-11 09:47:43: ⨯ Failed to start server
+2026-03-11 09:47:43: Error: listen EADDRINUSE: address already in use :::3000
+2026-03-11 09:47:43:     at <unknown> (Error: listen EADDRINUSE: address already in use :::3000)
+2026-03-11 09:47:43:     at new Promise (<anonymous>) {
+2026-03-11 09:47:43:   code: 'EADDRINUSE',
+2026-03-11 09:47:43:   errno: -4091,
+2026-03-11 09:47:43:   syscall: 'listen',
+2026-03-11 09:47:43:   address: '::',
+2026-03-11 09:47:43:   port: 3000
+2026-03-11 09:47:43: }
+2026-03-11 09:47:43: (node:12464) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-11 09:47:43: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-11 09:47:44: ⨯ Failed to start server
+2026-03-11 09:47:44: Error: listen EADDRINUSE: address already in use :::3000
+2026-03-11 09:47:44:     at <unknown> (Error: listen EADDRINUSE: address already in use :::3000)
+2026-03-11 09:47:44:     at new Promise (<anonymous>) {
+2026-03-11 09:47:44:   code: 'EADDRINUSE',
+2026-03-11 09:47:44:   errno: -4091,
+2026-03-11 09:47:44:   syscall: 'listen',
+2026-03-11 09:47:44:   address: '::',
+2026-03-11 09:47:44:   port: 3000
+2026-03-11 09:47:44: }
+2026-03-11 09:47:44: (node:3664) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-11 09:47:44: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-11 09:47:44: ⨯ Failed to start server
+2026-03-11 09:47:44: Error: listen EADDRINUSE: address already in use :::3000
+2026-03-11 09:47:44:     at <unknown> (Error: listen EADDRINUSE: address already in use :::3000)
+2026-03-11 09:47:44:     at new Promise (<anonymous>) {
+2026-03-11 09:47:44:   code: 'EADDRINUSE',
+2026-03-11 09:47:44:   errno: -4091,
+2026-03-11 09:47:44:   syscall: 'listen',
+2026-03-11 09:47:44:   address: '::',
+2026-03-11 09:47:44:   port: 3000
+2026-03-11 09:47:44: }
+2026-03-11 09:47:44: (node:2004) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-11 09:47:44: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-11 09:47:44: ⨯ Failed to start server
+2026-03-11 09:47:44: Error: listen EADDRINUSE: address already in use :::3000
+2026-03-11 09:47:44:     at <unknown> (Error: listen EADDRINUSE: address already in use :::3000)
+2026-03-11 09:47:44:     at new Promise (<anonymous>) {
+2026-03-11 09:47:44:   code: 'EADDRINUSE',
+2026-03-11 09:47:44:   errno: -4091,
+2026-03-11 09:47:44:   syscall: 'listen',
+2026-03-11 09:47:44:   address: '::',
+2026-03-11 09:47:44:   port: 3000
+2026-03-11 09:47:44: }
+2026-03-11 09:47:44: (node:17548) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-11 09:47:44: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-11 09:47:45: ⨯ Failed to start server
+2026-03-11 09:47:45: Error: listen EADDRINUSE: address already in use :::3000
+2026-03-11 09:47:45:     at <unknown> (Error: listen EADDRINUSE: address already in use :::3000)
+2026-03-11 09:47:45:     at new Promise (<anonymous>) {
+2026-03-11 09:47:45:   code: 'EADDRINUSE',
+2026-03-11 09:47:45:   errno: -4091,
+2026-03-11 09:47:45:   syscall: 'listen',
+2026-03-11 09:47:45:   address: '::',
+2026-03-11 09:47:45:   port: 3000
+2026-03-11 09:47:45: }
+2026-03-11 09:47:45: (node:12312) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-11 09:47:45: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-11 09:47:45: ⨯ Failed to start server
+2026-03-11 09:47:45: Error: listen EADDRINUSE: address already in use :::3000
+2026-03-11 09:47:45:     at <unknown> (Error: listen EADDRINUSE: address already in use :::3000)
+2026-03-11 09:47:45:     at new Promise (<anonymous>) {
+2026-03-11 09:47:45:   code: 'EADDRINUSE',
+2026-03-11 09:47:45:   errno: -4091,
+2026-03-11 09:47:45:   syscall: 'listen',
+2026-03-11 09:47:45:   address: '::',
+2026-03-11 09:47:45:   port: 3000
+2026-03-11 09:47:45: }
+2026-03-11 09:47:45: (node:17996) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-11 09:47:45: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-11 09:47:45: ⨯ Failed to start server
+2026-03-11 09:47:45: Error: listen EADDRINUSE: address already in use :::3000
+2026-03-11 09:47:45:     at <unknown> (Error: listen EADDRINUSE: address already in use :::3000)
+2026-03-11 09:47:45:     at new Promise (<anonymous>) {
+2026-03-11 09:47:45:   code: 'EADDRINUSE',
+2026-03-11 09:47:45:   errno: -4091,
+2026-03-11 09:47:45:   syscall: 'listen',
+2026-03-11 09:47:45:   address: '::',
+2026-03-11 09:47:45:   port: 3000
+2026-03-11 09:47:45: }
+2026-03-11 09:47:45: (node:14188) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-11 09:47:45: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-11 09:47:46: ⨯ Failed to start server
+2026-03-11 09:47:46: Error: listen EADDRINUSE: address already in use :::3000
+2026-03-11 09:47:46:     at <unknown> (Error: listen EADDRINUSE: address already in use :::3000)
+2026-03-11 09:47:46:     at new Promise (<anonymous>) {
+2026-03-11 09:47:46:   code: 'EADDRINUSE',
+2026-03-11 09:47:46:   errno: -4091,
+2026-03-11 09:47:46:   syscall: 'listen',
+2026-03-11 09:47:46:   address: '::',
+2026-03-11 09:47:46:   port: 3000
+2026-03-11 09:47:46: }
+2026-03-11 09:47:46: (node:18132) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-11 09:47:46: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-11 09:47:46: ⨯ Failed to start server
+2026-03-11 09:47:46: Error: listen EADDRINUSE: address already in use :::3000
+2026-03-11 09:47:46:     at <unknown> (Error: listen EADDRINUSE: address already in use :::3000)
+2026-03-11 09:47:46:     at new Promise (<anonymous>) {
+2026-03-11 09:47:46:   code: 'EADDRINUSE',
+2026-03-11 09:47:46:   errno: -4091,
+2026-03-11 09:47:46:   syscall: 'listen',
+2026-03-11 09:47:46:   address: '::',
+2026-03-11 09:47:46:   port: 3000
+2026-03-11 09:47:46: }
+2026-03-11 09:47:46: (node:17564) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-11 09:47:46: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-11 09:47:46: ⨯ Failed to start server
+2026-03-11 09:47:46: Error: listen EADDRINUSE: address already in use :::3000
+2026-03-11 09:47:46:     at <unknown> (Error: listen EADDRINUSE: address already in use :::3000)
+2026-03-11 09:47:46:     at new Promise (<anonymous>) {
+2026-03-11 09:47:46:   code: 'EADDRINUSE',
+2026-03-11 09:47:46:   errno: -4091,
+2026-03-11 09:47:46:   syscall: 'listen',
+2026-03-11 09:47:46:   address: '::',
+2026-03-11 09:47:46:   port: 3000
+2026-03-11 09:47:46: }
+2026-03-11 09:47:47: (node:9576) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-11 09:47:47: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-11 09:47:47: ⨯ Failed to start server
+2026-03-11 09:47:47: Error: listen EADDRINUSE: address already in use :::3000
+2026-03-11 09:47:47:     at <unknown> (Error: listen EADDRINUSE: address already in use :::3000)
+2026-03-11 09:47:47:     at new Promise (<anonymous>) {
+2026-03-11 09:47:47:   code: 'EADDRINUSE',
+2026-03-11 09:47:47:   errno: -4091,
+2026-03-11 09:47:47:   syscall: 'listen',
+2026-03-11 09:47:47:   address: '::',
+2026-03-11 09:47:47:   port: 3000
+2026-03-11 09:47:47: }
+2026-03-11 09:48:17: (node:14640) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-11 09:48:17: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-11 10:00:30: (node:19172) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-11 10:00:30: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-11 10:02:17: (node:11112) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-11 10:02:17: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-11 13:48:32: [eval]:1
+2026-03-11 13:48:32:        const https = require('https');       const fs = require('fs');       const config = JSON.parse(fs.readFileSync('C:\\\\Users\\\\kevin\\\\.openclaw\\\\openclaw.json','utf8'));       const token = config.channels.discord.token;       const data = JSON.stringify({ content: 💬
+2026-03-11 13:48:32:                                                                                                                                                                                                                                                                                       ^
+2026-03-11 13:48:32: Unexpected eof
+2026-03-11 13:48:32: 
+2026-03-11 13:48:32: SyntaxError: Invalid or unexpected token
+2026-03-11 13:48:32:     at makeContextifyScript (node:internal/vm:194:14)
+2026-03-11 13:48:32:     at compileScript (node:internal/process/execution:388:10)
+2026-03-11 13:48:32:     at evalTypeScript (node:internal/process/execution:260:22)
+2026-03-11 13:48:32:     at node:internal/main/eval_string:71:3
+2026-03-11 13:48:32: 
+2026-03-11 13:48:32: Node.js v24.4.1
+2026-03-11 14:20:11: [eval]:1
+2026-03-11 14:20:11:        const https = require('https');       const fs = require('fs');       const config = JSON.parse(fs.readFileSync('C:\\\\Users\\\\kevin\\\\.openclaw\\\\openclaw.json','utf8'));       const token = config.channels.discord.token;       const data = JSON.stringify({ content: 💬
+2026-03-11 14:20:11:                                                                                                                                                                                                                                                                                       ^
+2026-03-11 14:20:11: Unexpected eof
+2026-03-11 14:20:11: 
+2026-03-11 14:20:11: SyntaxError: Invalid or unexpected token
+2026-03-11 14:20:11:     at makeContextifyScript (node:internal/vm:194:14)
+2026-03-11 14:20:11:     at compileScript (node:internal/process/execution:388:10)
+2026-03-11 14:20:11:     at evalTypeScript (node:internal/process/execution:260:22)
+2026-03-11 14:20:11:     at node:internal/main/eval_string:71:3
+2026-03-11 14:20:11: 
+2026-03-11 14:20:11: Node.js v24.4.1

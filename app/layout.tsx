@@ -14,8 +14,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Mission Control | OpenClaw",
-  description: "OpenClaw Agent Mission Control Dashboard",
+  title: "Bat Cave | OpenClaw",
+  description: "OpenClaw Agent Bat Cave Dashboard",
 };
 
 export default function RootLayout({
@@ -26,10 +26,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#0A0A0F] text-gray-100 min-h-screen`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        style={{ background: "#000", color: "#e5e5e5", display: "flex", minHeight: "100vh" }}
       >
         <NavBar />
-        <main className="pt-16 min-h-screen">{children}</main>
+        <main style={{ marginLeft: "220px", flex: 1, minHeight: "100vh", display: "flex", flexDirection: "column" }}>
+          {children}
+        </main>
       </body>
     </html>
   );

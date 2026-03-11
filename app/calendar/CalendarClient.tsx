@@ -410,7 +410,11 @@ export default function CalendarClient({ initialJobs }: { initialJobs: CronJob[]
           <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-green-500 inline-block"/>Bluestone</span>
           <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-purple-500 inline-block"/>Cron</span>
         </div>
-        <button onClick={() => openAdd()} className="px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white text-sm font-medium rounded-lg transition-colors">
+        <button onClick={() => openAdd()}
+          className="px-4 py-2 text-sm font-medium rounded-lg transition-colors"
+          style={{ background: "#f5c200", color: "#000" }}
+          onMouseEnter={e => (e.currentTarget.style.background = "#ffd633")}
+          onMouseLeave={e => (e.currentTarget.style.background = "#f5c200")}>
           + Add Event
         </button>
       </div>

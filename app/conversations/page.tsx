@@ -2,6 +2,7 @@ import fs from "fs";
 import path from "path";
 import os from "os";
 import ConversationsClient from "./ConversationsClient";
+import PageHeader from "@/app/components/PageHeader";
 import type { ConversationSession } from "@/app/api/conversations/route";
 
 interface JournalEntry {
@@ -90,7 +91,8 @@ function loadSessions(): ConversationSession[] {
 export default async function ConversationsPage() {
   const sessions = loadSessions();
   return (
-    <div className="pt-16">
+    <div>
+      <PageHeader title="Conversations" subtitle="All sessions and message history" icon="💬" />
       <ConversationsClient initialSessions={sessions} />
     </div>
   );

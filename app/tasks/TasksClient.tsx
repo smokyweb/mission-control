@@ -10,11 +10,20 @@ interface Attachment {
   filename: string;
 }
 
+interface Comment {
+  id: string;
+  author: "kevin" | "axel";
+  text: string;
+  createdAt: number;
+}
+
 interface Task {
   id: string;
   title: string;
   description?: string;
   status: "open" | "in-progress" | "completed" | "review";
+  difficulty?: "gemini" | "deepseek" | "chat" | "chatpro" | "sonnet";
+  assignedModel?: "google/gemini-2.5-flash" | "deepseek/deepseek-chat" | "openai/gpt-5.4" | "openai/gpt-5.4-pro" | "anthropic/claude-sonnet-4-6";
   createdAt: number;
   updatedAt: number;
   completedAt?: number;
@@ -22,6 +31,7 @@ interface Task {
   reviewSummary?: string;
   reviewQuestions?: string;
   attachments?: Attachment[];
+  comments?: Comment[];
 }
 
 type FilterStatus = "all" | "open" | "in-progress" | "review" | "completed";
@@ -35,6 +45,19 @@ const STATUS_CONFIG = {
 
 function formatDate(ts: number): string {
   return new Date(ts).toLocaleDateString(undefined, { month: "short", day: "numeric", year: "numeric" });
+}
+
+function formatRelativeTime(ts: number): string {
+  const diff = Date.now() - ts;
+  const seconds = Math.floor(diff / 1000);
+  if (seconds < 60) return "just now";
+  const minutes = Math.floor(seconds / 60);
+  if (minutes < 60) return `${minutes}m ago`;
+  const hours = Math.floor(minutes / 60);
+  if (hours < 24) return `${hours}h ago`;
+  const days = Math.floor(hours / 24);
+  if (days < 7) return `${days}d ago`;
+  return formatDate(ts);
 }
 
 function formatBytes(b: number): string {
@@ -55,6 +78,23 @@ function fileIcon(type: string, name: string) {
   if (["xls", "xlsx", "csv"].includes(ext)) return "📊";
   if (["zip", "rar", "7z"].includes(ext)) return "🗜️";
   return "📎";
+}
+
+function difficultyToModel(difficulty: "gemini" | "deepseek" | "chat" | "chatpro" | "sonnet" | null): string | undefined {
+  switch (difficulty) {
+    case "gemini":
+      return "google/gemini-2.5-flash";
+    case "deepseek":
+      return "deepseek/deepseek-chat";
+    case "chat":
+      return "openai/gpt-5.4";
+    case "chatpro":
+      return "openai/gpt-5.4-pro";
+    case "sonnet":
+      return "anthropic/claude-sonnet-4-6";
+    default:
+      return undefined;
+  }
 }
 
 // ── Attachment chip (on task card) ─────────────────────────────────────────
@@ -149,6 +189,7 @@ export default function TasksClient() {
   const [showAdd, setShowAdd] = useState(false);
   const [newTitle, setNewTitle] = useState("");
   const [newDesc, setNewDesc] = useState("");
+  const [newDifficulty, setNewDifficulty] = useState<"gemini" | "deepseek" | "chat" | "chatpro" | "sonnet">("chat");
   const [stagedFiles, setStagedFiles] = useState<File[]>([]);
   const [saving, setSaving] = useState(false);
 
@@ -158,10 +199,25 @@ export default function TasksClient() {
   const [reviewQuestions, setReviewQuestions] = useState("");
   const [reviewSaving, setReviewSaving] = useState(false);
 
+  // Return feedback modal state
+  const [returnModal, setReturnModal] = useState<{ taskId: string; title: string } | null>(null);
+  const [returnFeedback, setReturnFeedback] = useState("");
+  const [returnSaving, setReturnSaving] = useState(false);
+
+  // Approve with note modal state
+  const [approveModal, setApproveModal] = useState<{ taskId: string; title: string } | null>(null);
+  const [approveNote, setApproveNote] = useState("");
+  const [approveSaving, setApproveSaving] = useState(false);
+
+  // Inline comment state (keyed by task id)
+  const [commentTexts, setCommentTexts] = useState<Record<string, string>>({});
+  const [commentSaving, setCommentSaving] = useState<Record<string, boolean>>({});
+
   const load = useCallback(async () => {
     try {
       const res = await fetch("/api/tasks");
       const data = await res.json();
+      console.log("Loaded tasks:", data);
       setTasks(Array.isArray(data) ? data : []);
     } catch {
       setTasks([]);
@@ -172,13 +228,62 @@ export default function TasksClient() {
 
   useEffect(() => { load(); }, [load]);
 
-  const updateStatus = async (id: string, status: Task["status"]) => {
+  const updateStatus = async (id: string, status: Task["status"], comment?: { author: string; text: string }) => {
     setTasks(prev => prev.map(t => t.id === id ? { ...t, status } : t));
+    const body: Record<string, unknown> = { status };
+    if (comment) body.comment = comment;
     await fetch(`/api/tasks/${id}`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ status }),
+      body: JSON.stringify(body),
     });
+    await load();
+  };
+
+  const submitReturn = async () => {
+    if (!returnModal || !returnFeedback.trim()) return;
+    setReturnSaving(true);
+    try {
+      await updateStatus(returnModal.taskId, "in-progress", { author: "kevin", text: returnFeedback.trim() });
+      setReturnModal(null);
+      setReturnFeedback("");
+    } finally {
+      setReturnSaving(false);
+    }
+  };
+
+  const submitApprove = async () => {
+    if (!approveModal) return;
+    setApproveSaving(true);
+    try {
+      const comment = approveNote.trim() ? { author: "kevin", text: approveNote.trim() } : undefined;
+      await updateStatus(approveModal.taskId, "completed", comment);
+      setApproveModal(null);
+      setApproveNote("");
+    } finally {
+      setApproveSaving(false);
+    }
+  };
+
+  const addComment = async (taskId: string) => {
+    const text = commentTexts[taskId]?.trim();
+    if (!text) return;
+    setCommentSaving(prev => ({ ...prev, [taskId]: true }));
+    try {
+      const res = await fetch(`/api/tasks/${taskId}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ action: "comment", author: "kevin", text }),
+      });
+      if (!res.ok) {
+        console.error("Failed to add comment:", await res.text());
+        return;
+      }
+      setCommentTexts(prev => ({ ...prev, [taskId]: "" }));
+      await load();
+    } finally {
+      setCommentSaving(prev => ({ ...prev, [taskId]: false }));
+    }
   };
 
   const openReviewModal = (task: Task) => {
@@ -222,24 +327,33 @@ export default function TasksClient() {
     if (!newTitle.trim()) return;
     setSaving(true);
     try {
+      const assignedModel = difficultyToModel(newDifficulty);
       let res: Response;
       if (stagedFiles.length > 0) {
         const form = new FormData();
         form.append("title", newTitle.trim());
         if (newDesc.trim()) form.append("description", newDesc.trim());
+        if (newDifficulty) form.append("difficulty", newDifficulty);
+        if (assignedModel) form.append("assignedModel", assignedModel);
         stagedFiles.forEach(f => form.append("files", f));
         res = await fetch("/api/tasks", { method: "POST", body: form });
       } else {
         res = await fetch("/api/tasks", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ title: newTitle.trim(), description: newDesc.trim() || undefined }),
+          body: JSON.stringify({
+            title: newTitle.trim(),
+            description: newDesc.trim() || undefined,
+            difficulty: newDifficulty,
+            assignedModel: assignedModel || undefined,
+          }),
         });
       }
       const task = await res.json();
       setTasks(prev => [task, ...prev]);
       setNewTitle("");
       setNewDesc("");
+      setNewDifficulty("chat");
       setStagedFiles([]);
       setShowAdd(false);
     } finally {
@@ -271,7 +385,10 @@ export default function TasksClient() {
         ))}
         <div className="flex-1" />
         <button onClick={() => setShowAdd(true)}
-          className="px-4 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white text-sm font-medium transition-colors">
+          className="px-4 py-1.5 rounded-lg text-sm font-medium transition-colors"
+          style={{ background: "#f5c200", color: "#000" }}
+          onMouseEnter={e => (e.currentTarget.style.background = "#ffd633")}
+          onMouseLeave={e => (e.currentTarget.style.background = "#f5c200")}>
           + Add Task
         </button>
       </div>
@@ -296,6 +413,34 @@ export default function TasksClient() {
             rows={2}
             className="w-full bg-[#0A0A0F] border border-[#2A2A3E] rounded-lg px-3 py-2 text-white placeholder-gray-600 focus:outline-none focus:border-blue-500/50 mb-3 text-sm resize-none"
           />
+
+          {/* Difficulty Selection */}
+          <div className="mb-3">
+            <label className="block text-xs text-gray-400 mb-2 font-medium">Agent (auto-assigns model)</label>
+            <div className="flex gap-3">
+              {[
+                { value: "gemini"   as const, label: "✦ Gemini",   hint: "gemini-2.5-flash",  color: "bg-blue-900/30 border-blue-700/50 text-blue-300" },
+                { value: "deepseek" as const, label: "⚡ DeepSeek", hint: "deepseek-chat",      color: "bg-purple-900/30 border-purple-700/50 text-purple-300" },
+                { value: "chat"     as const, label: "💬 Chat",     hint: "gpt-5.4 (default)",  color: "bg-green-900/30 border-green-700/50 text-green-300" },
+                { value: "chatpro"  as const, label: "🚀 Chat Pro", hint: "gpt-5.4-pro",        color: "bg-cyan-900/30 border-cyan-700/50 text-cyan-300" },
+        { value: "sonnet"   as const, label: "🧠 Sonnet",   hint: "claude-sonnet-4-6",  color: "bg-orange-900/30 border-orange-700/50 text-orange-300" },
+              ].map(option => (
+                <label key={option.value} className="flex items-center gap-2 cursor-pointer">
+                  <input
+                    type="radio"
+                    name="difficulty"
+                    checked={newDifficulty === option.value}
+                    onChange={() => setNewDifficulty(option.value)}
+                    className="w-4 h-4 cursor-pointer"
+                  />
+                  <span className={`px-2 py-1 rounded text-xs font-medium border ${option.color} ${newDifficulty === option.value ? 'ring-1 ring-white/30' : ''}`}>
+                    {option.label}
+                  </span>
+                  {newDifficulty === option.value && <span className="text-xs text-gray-500">({option.hint})</span>}
+                </label>
+              ))}
+            </div>
+          </div>
 
           {/* Attachments */}
           <div className="mb-3">
@@ -357,6 +502,70 @@ export default function TasksClient() {
         </div>
       )}
 
+      {/* Return Feedback Modal */}
+      {returnModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm px-4"
+          onClick={e => { if (e.target === e.currentTarget) setReturnModal(null); }}>
+          <div className="bg-[#1A1A2E] border border-blue-500/40 rounded-2xl p-6 w-full max-w-lg shadow-2xl animate-in fade-in zoom-in-95 duration-200">
+            <h2 className="text-base font-semibold text-white mb-1">↩ Return Task</h2>
+            <p className="text-xs text-gray-400 mb-4 truncate">Task: <span className="text-blue-300">{returnModal.title}</span></p>
+
+            <div className="mb-5">
+              <label className="block text-xs text-gray-400 mb-1.5 font-medium">What needs to be fixed?</label>
+              <textarea
+                value={returnFeedback}
+                onChange={e => setReturnFeedback(e.target.value)}
+                placeholder="What needs to be fixed?"
+                rows={4}
+                className="w-full bg-[#0A0A0F] border border-[#2A2A3E] focus:border-blue-500/50 rounded-lg px-3 py-2 text-white placeholder-gray-600 focus:outline-none text-sm resize-none"
+                autoFocus
+              />
+            </div>
+
+            <div className="flex gap-2 justify-end">
+              <button onClick={() => { setReturnModal(null); setReturnFeedback(""); }}
+                className="px-4 py-2 text-sm text-gray-400 hover:text-white transition-colors">Cancel</button>
+              <button onClick={submitReturn} disabled={returnSaving || !returnFeedback.trim()}
+                className="px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-500 disabled:opacity-50 text-white text-sm font-medium transition-colors">
+                {returnSaving ? "Returning…" : "Return with Feedback"}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Approve with Note Modal */}
+      {approveModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm px-4"
+          onClick={e => { if (e.target === e.currentTarget) setApproveModal(null); }}>
+          <div className="bg-[#1A1A2E] border border-green-500/40 rounded-2xl p-6 w-full max-w-lg shadow-2xl animate-in fade-in zoom-in-95 duration-200">
+            <h2 className="text-base font-semibold text-white mb-1">✓ Approve Task</h2>
+            <p className="text-xs text-gray-400 mb-4 truncate">Task: <span className="text-green-300">{approveModal.title}</span></p>
+
+            <div className="mb-5">
+              <label className="block text-xs text-gray-400 mb-1.5 font-medium">Add a note <span className="text-gray-600">(optional)</span></label>
+              <textarea
+                value={approveNote}
+                onChange={e => setApproveNote(e.target.value)}
+                placeholder="Any notes or feedback…"
+                rows={3}
+                className="w-full bg-[#0A0A0F] border border-[#2A2A3E] focus:border-green-500/50 rounded-lg px-3 py-2 text-white placeholder-gray-600 focus:outline-none text-sm resize-none"
+                autoFocus
+              />
+            </div>
+
+            <div className="flex gap-2 justify-end">
+              <button onClick={() => { setApproveModal(null); setApproveNote(""); }}
+                className="px-4 py-2 text-sm text-gray-400 hover:text-white transition-colors">Cancel</button>
+              <button onClick={submitApprove} disabled={approveSaving}
+                className="px-4 py-2 rounded-lg bg-green-600 hover:bg-green-500 disabled:opacity-50 text-white text-sm font-medium transition-colors">
+                {approveSaving ? "Approving…" : "Approve"}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Task List */}
       {loading ? (
         <div className="space-y-3">
@@ -393,6 +602,11 @@ export default function TasksClient() {
                       {task.reviewedAt && (
                         <span className="text-xs text-gray-600" suppressHydrationWarning>Sent for review {formatDate(task.reviewedAt)}</span>
                       )}
+                      {task.comments && task.comments.length > 0 && (
+                        <span className="text-xs px-2 py-0.5 rounded-full bg-gray-800/50 text-gray-300 border border-gray-700/50">
+                          💬 {task.comments.length}
+                        </span>
+                      )}
                     </div>
 
                     {/* Review summary & questions */}
@@ -422,6 +636,56 @@ export default function TasksClient() {
                         ))}
                       </div>
                     )}
+
+                    {/* Comments Thread */}
+                    {task.comments && task.comments.length > 0 && (
+                      <div className="mt-3 border-t border-[#2A2A3E] pt-3">
+                        <p className="text-xs font-medium text-gray-500 mb-2">Comments</p>
+                        <div className="space-y-2">
+                          {task.comments.map(c => (
+                            <div key={c.id} className="flex gap-2">
+                              <div className={`w-5 h-5 rounded-full shrink-0 flex items-center justify-center text-[10px] font-bold ${
+                                c.author === "kevin" ? "bg-blue-600/30 text-blue-300" : "bg-purple-600/30 text-purple-300"
+                              }`}>
+                                {c.author === "kevin" ? "K" : "A"}
+                              </div>
+                              <div className="min-w-0 flex-1">
+                                <div className="flex items-center gap-2">
+                                  <span className={`text-xs font-medium ${
+                                    c.author === "kevin" ? "text-blue-300" : "text-purple-300"
+                                  }`}>
+                                    {c.author === "kevin" ? "Kevin" : "Axel"}
+                                  </span>
+                                  <span className="text-xs text-gray-600" suppressHydrationWarning>
+                                    {formatRelativeTime(c.createdAt)}
+                                  </span>
+                                </div>
+                                <p className="text-xs text-gray-300 mt-0.5 whitespace-pre-wrap">{c.text}</p>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+
+                    {/* Add Comment */}
+                    <div className={`mt-3 flex gap-2 ${!task.comments?.length ? "border-t border-[#2A2A3E] pt-3" : ""}`}>
+                      <input
+                        type="text"
+                        placeholder="Add a comment…"
+                        value={commentTexts[task.id] ?? ""}
+                        onChange={e => setCommentTexts(prev => ({ ...prev, [task.id]: e.target.value }))}
+                        onKeyDown={e => e.key === "Enter" && addComment(task.id)}
+                        className="flex-1 bg-[#0A0A0F] border border-[#2A2A3E] rounded-lg px-2.5 py-1.5 text-xs text-white placeholder-gray-600 focus:outline-none focus:border-blue-500/50"
+                      />
+                      <button
+                        onClick={() => addComment(task.id)}
+                        disabled={!commentTexts[task.id]?.trim() || commentSaving[task.id]}
+                        className="px-3 py-1.5 text-xs rounded-lg bg-[#2A2A3E] text-gray-300 hover:text-white hover:bg-[#3A3A4E] disabled:opacity-40 transition-colors shrink-0"
+                      >
+                        {commentSaving[task.id] ? "…" : "Add Comment"}
+                      </button>
+                    </div>
                   </div>
 
                   {/* Actions */}
@@ -443,9 +707,9 @@ export default function TasksClient() {
                     {/* Review: approve or return */}
                     {task.status === "review" && (
                       <>
-                        <button onClick={() => updateStatus(task.id, "completed")} title="Approve & Complete"
+                        <button onClick={() => setApproveModal({ taskId: task.id, title: task.title })} title="Approve & Complete"
                           className="px-2 py-1 text-xs rounded bg-green-900/40 text-green-300 hover:bg-green-900/70 transition-colors">✓ Approve</button>
-                        <button onClick={() => updateStatus(task.id, "in-progress")} title="Return to In Progress"
+                        <button onClick={() => setReturnModal({ taskId: task.id, title: task.title })} title="Return to In Progress"
                           className="px-2 py-1 text-xs rounded bg-blue-900/40 text-blue-300 hover:bg-blue-900/70 transition-colors">↩ Return</button>
                       </>
                     )}
