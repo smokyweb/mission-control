@@ -23,7 +23,8 @@ interface Task {
   description?: string;
   status: "open" | "in-progress" | "completed" | "review";
   difficulty?: "gemini" | "deepseek" | "chat" | "chatpro" | "sonnet";
-  assignedModel?: "google/gemini-2.5-flash" | "deepseek/deepseek-chat" | "openai/gpt-5.4" | "openai/gpt-5.4-pro" | "anthropic/claude-sonnet-4-6";
+  assignedTo?: "kevin" | "brenthomer";
+  assignedModel?: "google/gemini-2.5-flash" | "deepseek/deepseek-chat" | "openai/gpt-5.4" | "openai/gpt-5.4-pro" | "anthropic/claude-sonnet-4-6" | "openai/gpt-4o";
   createdAt: number;
   updatedAt: number;
   completedAt?: number;
@@ -190,6 +191,7 @@ export default function TasksClient() {
   const [newTitle, setNewTitle] = useState("");
   const [newDesc, setNewDesc] = useState("");
   const [newDifficulty, setNewDifficulty] = useState<"gemini" | "deepseek" | "chat" | "chatpro" | "sonnet">("chat");
+  const [newAssignedTo, setNewAssignedTo] = useState<"kevin" | "brenthomer">("kevin");
   const [stagedFiles, setStagedFiles] = useState<File[]>([]);
   const [saving, setSaving] = useState(false);
 
@@ -327,13 +329,15 @@ export default function TasksClient() {
     if (!newTitle.trim()) return;
     setSaving(true);
     try {
-      const assignedModel = difficultyToModel(newDifficulty);
+      // When assigned to Brent, always use gpt-4o; otherwise use the agent picker
+      const assignedModel = newAssignedTo === "brenthomer" ? "openai/gpt-4o" : difficultyToModel(newDifficulty);
       let res: Response;
       if (stagedFiles.length > 0) {
         const form = new FormData();
         form.append("title", newTitle.trim());
         if (newDesc.trim()) form.append("description", newDesc.trim());
         if (newDifficulty) form.append("difficulty", newDifficulty);
+        form.append("assignedTo", newAssignedTo);
         if (assignedModel) form.append("assignedModel", assignedModel);
         stagedFiles.forEach(f => form.append("files", f));
         res = await fetch("/api/tasks", { method: "POST", body: form });
@@ -345,6 +349,7 @@ export default function TasksClient() {
             title: newTitle.trim(),
             description: newDesc.trim() || undefined,
             difficulty: newDifficulty,
+            assignedTo: newAssignedTo,
             assignedModel: assignedModel || undefined,
           }),
         });
@@ -354,6 +359,7 @@ export default function TasksClient() {
       setNewTitle("");
       setNewDesc("");
       setNewDifficulty("chat");
+      setNewAssignedTo("kevin");
       setStagedFiles([]);
       setShowAdd(false);
     } finally {
@@ -437,6 +443,31 @@ export default function TasksClient() {
                     {option.label}
                   </span>
                   {newDifficulty === option.value && <span className="text-xs text-gray-500">({option.hint})</span>}
+                </label>
+              ))}
+            </div>
+          </div>
+
+          {/* Assign To */}
+          <div className="mb-3">
+            <label className="block text-xs text-gray-400 mb-2 font-medium">Assign to</label>
+            <div className="flex gap-3">
+              {[
+                { value: "kevin" as const, label: "Kevin", hint: "Default", color: "bg-blue-900/30 border-blue-700/50 text-blue-300" },
+                { value: "brenthomer" as const, label: "Brent Homer", hint: "gpt-4o", color: "bg-amber-900/30 border-amber-700/50 text-amber-300" },
+              ].map(option => (
+                <label key={option.value} className="flex items-center gap-2 cursor-pointer">
+                  <input
+                    type="radio"
+                    name="assignedTo"
+                    checked={newAssignedTo === option.value}
+                    onChange={() => setNewAssignedTo(option.value)}
+                    className="w-4 h-4 cursor-pointer"
+                  />
+                  <span className={`px-2 py-1 rounded text-xs font-medium border ${option.color} ${newAssignedTo === option.value ? 'ring-1 ring-white/30' : ''}`}>
+                    {option.label}
+                  </span>
+                  {newAssignedTo === option.value && <span className="text-xs text-gray-500">({option.hint})</span>}
                 </label>
               ))}
             </div>
@@ -595,6 +626,9 @@ export default function TasksClient() {
                     )}
                     <div className="flex items-center gap-3 mt-2 flex-wrap">
                       <span className={`text-xs px-2 py-0.5 rounded-full border ${cfg.color}`}>{cfg.label}</span>
+                      {task.assignedTo === "brenthomer" && (
+                        <span className="text-xs px-2 py-0.5 rounded-full border bg-amber-900/30 border-amber-700/50 text-amber-300">Brent</span>
+                      )}
                       <span className="text-xs text-gray-600" suppressHydrationWarning>{formatDate(task.createdAt)}</span>
                       {task.completedAt && (
                         <span className="text-xs text-gray-600" suppressHydrationWarning>Done {formatDate(task.completedAt)}</span>

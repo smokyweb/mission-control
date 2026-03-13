@@ -27,7 +27,8 @@ export interface Task {
   description?: string;
   status: "open" | "in-progress" | "completed" | "review";
   difficulty?: "easy" | "medium" | "difficult";
-  assignedModel?: "google/gemini-2.0-flash-lite" | "deepseek/deepseek-chat" | "openai/gpt-5.4" | "openai/gpt-5.4-pro" | "anthropic/claude-sonnet-4-6";
+  assignedTo?: "kevin" | "brenthomer";
+  assignedModel?: "google/gemini-2.0-flash-lite" | "deepseek/deepseek-chat" | "openai/gpt-5.4" | "openai/gpt-5.4-pro" | "anthropic/claude-sonnet-4-6" | "openai/gpt-4o";
   createdAt: number;
   updatedAt: number;
   completedAt?: number;
@@ -98,7 +99,8 @@ export async function POST(req: NextRequest) {
   let title = "";
   let description: string | undefined;
   let difficulty: "easy" | "medium" | "difficult" | undefined;
-  let assignedModel: "google/gemini-2.0-flash-lite" | "deepseek/deepseek-chat" | "openai/gpt-5.4" | "openai/gpt-5.4-pro" | "anthropic/claude-sonnet-4-6" | undefined;
+  let assignedTo: "kevin" | "brenthomer" | undefined;
+  let assignedModel: "google/gemini-2.0-flash-lite" | "deepseek/deepseek-chat" | "openai/gpt-5.4" | "openai/gpt-5.4-pro" | "anthropic/claude-sonnet-4-6" | "openai/gpt-4o" | undefined;
   let attachments: Attachment[] = [];
 
   if (contentType.includes("multipart/form-data")) {
@@ -106,6 +108,7 @@ export async function POST(req: NextRequest) {
     title = (form.get("title") as string) ?? "";
     description = (form.get("description") as string) || undefined;
     difficulty = (form.get("difficulty") as any) || undefined;
+    assignedTo = (form.get("assignedTo") as any) || undefined;
     assignedModel = (form.get("assignedModel") as any) || undefined;
     const files = form.getAll("files") as File[];
     if (files.length > 0) attachments = await saveFiles(taskId, files);
@@ -114,6 +117,7 @@ export async function POST(req: NextRequest) {
     title = body.title;
     description = body.description;
     difficulty = body.difficulty;
+    assignedTo = body.assignedTo;
     assignedModel = body.assignedModel;
   }
 
@@ -121,6 +125,7 @@ export async function POST(req: NextRequest) {
   const task: Task = {
     id: taskId, title, description, status: "open",
     ...(difficulty ? { difficulty } : {}),
+    ...(assignedTo ? { assignedTo } : {}),
     ...(assignedModel ? { assignedModel } : {}),
     createdAt: now, updatedAt: now,
     ...(attachments.length > 0 ? { attachments } : {}),

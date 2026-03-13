@@ -8,7 +8,8 @@ import { execSync } from "child_process";
 const MODEL_CHANNEL_MAP: Record<string, string> = {
   "anthropic/claude-sonnet-4-6": "1476729693481996340", // #development → axeldev
   "openai/gpt-5.2":              "1476718379124654130", // #general → axelgeneral
-  "openai/gpt-4o":               "1476718379124654130", // #general → axelgeneral
+  "openai/gpt-5.4":              "1476718379124654130", // #general → axelgeneral
+  "openai/gpt-4o":               "1476718379124654130", // #chat4o → axelchat4o
   "google/gemini-2.5-flash":     "1476729745851940874", // #marketing → axelmarketing
   "google/gemini-2.0-flash-lite":"1476718379124654130", // #general → axelgeneral
   "deepseek/deepseek-chat":      "1476729693481996340", // #development → axeldev
@@ -19,24 +20,60 @@ function getNotifyChannel(assignedModel?: string): string {
   return MODEL_CHANNEL_MAP[assignedModel] ?? "1476729693481996340";
 }
 
+function sendDiscord(channelId: string, msg: string) {
+  try {
+    const script = path.join(process.cwd(), '..', '..', '.openclaw', 'workspace', 'notify-discord.js');
+    execSync(`node "${script}" "${channelId}" ${JSON.stringify(msg)}`, { timeout: 5000 });
+  } catch {
+    // fallback: inline
+    try {
+      const cfgPath = 'C:\\Users\\kevin\\.openclaw\\openclaw.json';
+      const inlineScript = `
+        const https=require('https'),fs=require('fs');
+        const cfg=JSON.parse(fs.readFileSync(${JSON.stringify(cfgPath)},'utf8'));
+        const token=cfg.channels.discord.token;
+        const data=JSON.stringify({content:${JSON.stringify(msg)}});
+        const r=https.request({hostname:'discord.com',path:'/api/v10/channels/${channelId}/messages',method:'POST',headers:{'Authorization':'Bot '+token,'Content-Type':'application/json','Content-Length':data.length}},()=>{});
+        r.on('error',()=>{});r.write(data);r.end();
+      `;
+      execSync(`node -e "${inlineScript.replace(/\n/g,' ')}"`, { timeout: 5000 });
+    } catch { /* non-critical */ }
+  }
+}
+
+// Kevin's DM channel with Axel bot
+const KEVIN_DM_CHANNEL = '1475663353589399769';
+
 function notifyComment(taskTitle: string, taskId: string, author: string, text: string, assignedModel?: string) {
   try {
     const channelId = getNotifyChannel(assignedModel);
     const preview = text.length > 120 ? text.substring(0, 120) + "..." : text;
-    const msg = `💬 **Comment on "${taskTitle}"** by ${author}\\n${preview}\\nTask: \`${taskId}\``;
-    // Use notify script with dynamic channel
-    const script = `
-      const https = require('https');
-      const fs = require('fs');
-      const config = JSON.parse(fs.readFileSync('C:\\\\\\\\Users\\\\\\\\kevin\\\\\\\\.openclaw\\\\\\\\openclaw.json','utf8'));
-      const token = config.channels.discord.token;
-      const data = JSON.stringify({ content: ${JSON.stringify(msg)} });
-      const req = https.request({ hostname:'discord.com', path:'/api/v10/channels/${channelId}/messages', method:'POST', headers:{'Authorization':'Bot '+token,'Content-Type':'application/json','Content-Length':data.length} }, ()=>{});
-      req.on('error',()=>{});
-      req.write(data);
-      req.end();
-    `;
-    execSync(`node -e "${script.replace(/\n/g, ' ')}"`, { timeout: 5000 });
+    const msg = `💬 **Comment on "${taskTitle}"** by ${author}\n${preview}\nTask: \`${taskId}\``;
+    sendDiscord(channelId, msg);
+  } catch { /* non-critical */ }
+}
+
+function notifyStatusChange(taskTitle: string, taskId: string, newStatus: string, summary?: string, assignedModel?: string) {
+  try {
+    let msg = '';
+    if (newStatus === 'review') {
+      msg = `✅ **Task ready for review:** "${taskTitle}"\n`;
+      if (summary) msg += `> ${summary.slice(0, 200)}\n`;
+      msg += `→ Approve or return it in Bat Cave: http://localhost:3000/tasks`;
+    } else if (newStatus === 'in-progress') {
+      msg = `🔧 **Started work on:** "${taskTitle}"\nTask: \`${taskId}\``;
+    } else if (newStatus === 'completed') {
+      msg = `🎉 **Task completed:** "${taskTitle}"`;
+    }
+    if (msg) {
+      // Always notify Kevin's DM channel
+      sendDiscord(KEVIN_DM_CHANNEL, msg);
+      // Also notify the agent's channel
+      const agentChannelId = getNotifyChannel(assignedModel);
+      if (agentChannelId !== KEVIN_DM_CHANNEL) {
+        sendDiscord(agentChannelId, msg);
+      }
+    }
   } catch { /* non-critical */ }
 }
 
@@ -94,6 +131,7 @@ export async function PATCH(req: NextRequest, { params }: Ctx) {
       }
 
       const { comment: _comment, ...rest } = body;
+      const prevStatus = tasks[idx].status;
       tasks[idx] = {
         ...tasks[idx],
         ...rest,
@@ -103,6 +141,17 @@ export async function PATCH(req: NextRequest, { params }: Ctx) {
         reviewedAt: body.status === "review" ? now : tasks[idx].reviewedAt,
         comments: newComments,
       };
+
+      // Proactively notify Kevin when task status changes
+      if (body.status && body.status !== prevStatus) {
+        notifyStatusChange(
+          tasks[idx].title,
+          id,
+          body.status,
+          body.reviewSummary ?? body.summary,
+          tasks[idx].assignedModel
+        );
+      }
     }
   }
 
