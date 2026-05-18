@@ -1618,3 +1618,755 @@
 2026-03-11 14:20:11:     at node:internal/main/eval_string:71:3
 2026-03-11 14:20:11: 
 2026-03-11 14:20:11: Node.js v24.4.1
+2026-03-11 15:59:12: [eval]:1
+2026-03-11 15:59:12:        const https = require('https');       const fs = require('fs');       const config = JSON.parse(fs.readFileSync('C:\\\\Users\\\\kevin\\\\.openclaw\\\\openclaw.json','utf8'));       const token = config.channels.discord.token;       const data = JSON.stringify({ content: 💬
+2026-03-11 15:59:12:                                                                                                                                                                                                                                                                                       ^
+2026-03-11 15:59:12: Unexpected eof
+2026-03-11 15:59:12: 
+2026-03-11 15:59:12: SyntaxError: Invalid or unexpected token
+2026-03-11 15:59:12:     at makeContextifyScript (node:internal/vm:194:14)
+2026-03-11 15:59:12:     at compileScript (node:internal/process/execution:388:10)
+2026-03-11 15:59:12:     at evalTypeScript (node:internal/process/execution:260:22)
+2026-03-11 15:59:12:     at node:internal/main/eval_string:71:3
+2026-03-11 15:59:12: 
+2026-03-11 15:59:12: Node.js v24.4.1
+2026-03-12 07:20:50: (node:4244) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-12 07:20:50: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-12 09:36:56: (node:15040) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-12 09:36:56: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-12 10:12:37: [eval]:1
+2026-03-12 10:12:37:        const https = require('https');       const fs = require('fs');       const config = JSON.parse(fs.readFileSync('C:\\\\Users\\\\kevin\\\\.openclaw\\\\openclaw.json','utf8'));       const token = config.channels.discord.token;       const data = JSON.stringify({ content: 💬
+2026-03-12 10:12:37:                                                                                                                                                                                                                                                                                       ^
+2026-03-12 10:12:37: Unexpected eof
+2026-03-12 10:12:37: 
+2026-03-12 10:12:37: SyntaxError: Invalid or unexpected token
+2026-03-12 10:12:37:     at makeContextifyScript (node:internal/vm:194:14)
+2026-03-12 10:12:37:     at compileScript (node:internal/process/execution:388:10)
+2026-03-12 10:12:37:     at evalTypeScript (node:internal/process/execution:260:22)
+2026-03-12 10:12:37:     at node:internal/main/eval_string:71:3
+2026-03-12 10:12:37: 
+2026-03-12 10:12:37: Node.js v24.4.1
+2026-03-12 10:14:47: (node:22508) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-12 10:14:47: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-12 10:20:41: (node:20680) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-12 10:20:41: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-12 10:27:06: (node:17808) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-12 10:27:06: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-12 10:44:58: (node:11460) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-12 10:44:58: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-12 11:01:05: (node:6444) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-12 11:01:05: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-12 11:07:00: (node:17432) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-12 11:07:00: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-13 13:27:19: <anonymous_script>:1
+2026-03-13 13:27:19: ﻿{
+2026-03-13 13:27:19: ^
+2026-03-13 13:27:19: 
+2026-03-13 13:27:19: SyntaxError: Unexpected token '﻿', "﻿{
+2026-03-13 13:27:19:   "meta"... is not valid JSON
+2026-03-13 13:27:19:     at JSON.parse (<anonymous>)
+2026-03-13 13:27:19:     at Object.<anonymous> (C:\Users\kevin\.openclaw\workspace\notify-discord.js:11:18)
+2026-03-13 13:27:19:     at Module._compile (node:internal/modules/cjs/loader:1692:14)
+2026-03-13 13:27:19:     at Object..js (node:internal/modules/cjs/loader:1824:10)
+2026-03-13 13:27:19:     at Module.load (node:internal/modules/cjs/loader:1427:32)
+2026-03-13 13:27:19:     at Module._load (node:internal/modules/cjs/loader:1250:12)
+2026-03-13 13:27:19:     at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+2026-03-13 13:27:19:     at wrapModuleLoad (node:internal/modules/cjs/loader:235:24)
+2026-03-13 13:27:19:     at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:152:5)
+2026-03-13 13:27:19:     at node:internal/main/run_main_module:33:47
+2026-03-13 13:27:19: 
+2026-03-13 13:27:19: Node.js v24.4.1
+2026-03-13 13:27:20: [eval]:1
+2026-03-13 13:27:20:          const https=require('https'),fs=require('fs');         const cfg=JSON.parse(fs.readFileSync(C:\\Users\\kevin\\.openclaw\\openclaw.json,'utf8'));         const token=cfg.channels.discord.token;         const data=JSON.stringify({content:🔧
+2026-03-13 13:27:20:                                                                                                      ^
+2026-03-13 13:27:20: Expected ',', got ':'
+2026-03-13 13:27:20: 
+2026-03-13 13:27:20: SyntaxError: missing ) after argument list
+2026-03-13 13:27:20:     at makeContextifyScript (node:internal/vm:194:14)
+2026-03-13 13:27:20:     at compileScript (node:internal/process/execution:388:10)
+2026-03-13 13:27:20:     at evalTypeScript (node:internal/process/execution:260:22)
+2026-03-13 13:27:20:     at node:internal/main/eval_string:71:3
+2026-03-13 13:27:20: 
+2026-03-13 13:27:20: Node.js v24.4.1
+2026-03-13 13:27:20: <anonymous_script>:1
+2026-03-13 13:27:20: ﻿{
+2026-03-13 13:27:20: ^
+2026-03-13 13:27:20: 
+2026-03-13 13:27:20: SyntaxError: Unexpected token '﻿', "﻿{
+2026-03-13 13:27:20:   "meta"... is not valid JSON
+2026-03-13 13:27:20:     at JSON.parse (<anonymous>)
+2026-03-13 13:27:20:     at Object.<anonymous> (C:\Users\kevin\.openclaw\workspace\notify-discord.js:11:18)
+2026-03-13 13:27:20:     at Module._compile (node:internal/modules/cjs/loader:1692:14)
+2026-03-13 13:27:20:     at Object..js (node:internal/modules/cjs/loader:1824:10)
+2026-03-13 13:27:20:     at Module.load (node:internal/modules/cjs/loader:1427:32)
+2026-03-13 13:27:20:     at Module._load (node:internal/modules/cjs/loader:1250:12)
+2026-03-13 13:27:20:     at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+2026-03-13 13:27:20:     at wrapModuleLoad (node:internal/modules/cjs/loader:235:24)
+2026-03-13 13:27:20:     at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:152:5)
+2026-03-13 13:27:20:     at node:internal/main/run_main_module:33:47
+2026-03-13 13:27:20: 
+2026-03-13 13:27:20: Node.js v24.4.1
+2026-03-13 13:27:20: [eval]:1
+2026-03-13 13:27:20:          const https=require('https'),fs=require('fs');         const cfg=JSON.parse(fs.readFileSync(C:\\Users\\kevin\\.openclaw\\openclaw.json,'utf8'));         const token=cfg.channels.discord.token;         const data=JSON.stringify({content:🔧
+2026-03-13 13:27:20:                                                                                                      ^
+2026-03-13 13:27:20: Expected ',', got ':'
+2026-03-13 13:27:20: 
+2026-03-13 13:27:20: SyntaxError: missing ) after argument list
+2026-03-13 13:27:20:     at makeContextifyScript (node:internal/vm:194:14)
+2026-03-13 13:27:20:     at compileScript (node:internal/process/execution:388:10)
+2026-03-13 13:27:20:     at evalTypeScript (node:internal/process/execution:260:22)
+2026-03-13 13:27:20:     at node:internal/main/eval_string:71:3
+2026-03-13 13:27:20: 
+2026-03-13 13:27:20: Node.js v24.4.1
+2026-03-13 14:41:36: (node:23820) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-13 14:41:36: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-13 14:49:39: (node:17728) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-13 14:49:39: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-13 14:57:48: (node:19184) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-13 14:57:48: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-13 15:02:08: (node:22604) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-13 15:02:08: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-13 15:18:22: (node:9888) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-13 15:18:22: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-13 16:03:36: (node:21736) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-13 16:03:36: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-13 16:20:08: (node:20104) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-13 16:20:08: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-13 16:20:16: (node:19136) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-13 16:20:16: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-13 16:22:23: (node:21180) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-13 16:22:23: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-13 16:29:22: (node:10348) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-13 16:29:22: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-13 17:02:26: (node:22036) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-13 17:02:26: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-13 18:20:54: (node:15040) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-13 18:20:54: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-13 21:49:00: (node:24168) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-13 21:49:00: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-13 21:54:25: (node:22572) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-13 21:54:25: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-14 08:13:49: ⨯ TypeError: Cannot read properties of undefined (reading 'trim')
+2026-03-14 08:13:49:     at A (C:\Users\kevin\projects\mission-control\.next\server\chunks\[root-of-the-server]__1b6258c5._.js:3:5)
+2026-03-14 08:13:49:     at async d (C:\Users\kevin\projects\mission-control\.next\server\chunks\[root-of-the-server]__1b6258c5._.js:4:3288)
+2026-03-14 08:13:49:     at async l (C:\Users\kevin\projects\mission-control\.next\server\chunks\[root-of-the-server]__1b6258c5._.js:4:4329)
+2026-03-14 08:13:49:     at async Module.O (C:\Users\kevin\projects\mission-control\.next\server\chunks\[root-of-the-server]__1b6258c5._.js:4:5407)
+2026-03-14 08:14:25: ⨯ TypeError: Cannot read properties of undefined (reading 'trim')
+2026-03-14 08:14:25:     at A (C:\Users\kevin\projects\mission-control\.next\server\chunks\[root-of-the-server]__1b6258c5._.js:3:5)
+2026-03-14 08:14:25:     at async d (C:\Users\kevin\projects\mission-control\.next\server\chunks\[root-of-the-server]__1b6258c5._.js:4:3288)
+2026-03-14 08:14:25:     at async l (C:\Users\kevin\projects\mission-control\.next\server\chunks\[root-of-the-server]__1b6258c5._.js:4:4329)
+2026-03-14 08:14:25:     at async Module.O (C:\Users\kevin\projects\mission-control\.next\server\chunks\[root-of-the-server]__1b6258c5._.js:4:5407)
+2026-03-14 08:21:04: ⨯ TypeError: Cannot read properties of undefined (reading 'trim')
+2026-03-14 08:21:04:     at A (C:\Users\kevin\projects\mission-control\.next\server\chunks\[root-of-the-server]__1b6258c5._.js:3:5)
+2026-03-14 08:21:04:     at async d (C:\Users\kevin\projects\mission-control\.next\server\chunks\[root-of-the-server]__1b6258c5._.js:4:3288)
+2026-03-14 08:21:04:     at async l (C:\Users\kevin\projects\mission-control\.next\server\chunks\[root-of-the-server]__1b6258c5._.js:4:4329)
+2026-03-14 08:21:04:     at async Module.O (C:\Users\kevin\projects\mission-control\.next\server\chunks\[root-of-the-server]__1b6258c5._.js:4:5407)
+2026-03-14 09:13:00: Access is denied.
+2026-03-14 09:13:00: [eval]:1
+2026-03-14 09:13:00:          const https=require('https'),fs=require('fs');         const cfg=JSON.parse(fs.readFileSync(C:\\Users\\kevin\\.openclaw\\openclaw.json,'utf8'));         const token=cfg.channels.discord.token;         const data=JSON.stringify({content:💬
+2026-03-14 09:13:00:                                                                                                      ^
+2026-03-14 09:13:00: Expected ',', got ':'
+2026-03-14 09:13:00: 
+2026-03-14 09:13:00: SyntaxError: missing ) after argument list
+2026-03-14 09:13:00:     at makeContextifyScript (node:internal/vm:194:14)
+2026-03-14 09:13:00:     at compileScript (node:internal/process/execution:388:10)
+2026-03-14 09:13:00:     at evalTypeScript (node:internal/process/execution:260:22)
+2026-03-14 09:13:00:     at node:internal/main/eval_string:71:3
+2026-03-14 09:13:00: 
+2026-03-14 09:13:00: Node.js v24.4.1
+2026-03-14 09:20:53: (node:14216) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-14 09:20:53: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-14 11:59:29: (node:17444) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-14 11:59:29: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-16 09:03:56: (node:12908) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-16 09:03:56: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-16 09:15:26: (node:13652) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-16 09:15:26: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-16 09:18:18: (node:11476) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-16 09:18:18: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-16 09:46:54: (node:23056) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-16 09:46:54: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-16 09:54:02: (node:25256) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-16 09:54:02: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-16 09:59:32: (node:17424) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-16 09:59:32: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-16 10:44:11: (node:23140) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-16 10:44:11: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-16 10:46:26: (node:16452) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-16 10:46:26: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-16 10:47:04: (node:13288) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-16 10:47:04: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-16 11:08:56: (node:19564) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-16 11:08:56: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-16 13:07:29: (node:3684) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-16 13:07:29: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-16 13:28:05: (node:24960) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-16 13:28:05: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-16 13:58:54: (node:25504) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-16 13:58:54: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-16 14:29:02: (node:19008) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-16 14:29:02: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-16 14:31:19: (node:23540) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-16 14:31:19: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-16 14:33:56: (node:17668) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-16 14:33:56: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-16 14:40:43: (node:22572) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-16 14:40:43: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-16 14:43:44: (node:21896) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-16 14:43:44: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-16 14:47:31: (node:20920) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-16 14:47:31: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-16 14:52:32: (node:25808) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-16 14:52:32: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-16 14:54:14: (node:21308) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-16 14:54:14: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-16 18:02:38: (node:20252) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-16 18:02:38: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-16 18:04:42: (node:8232) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-16 18:04:42: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-16 18:04:43: Error: Could not find a production build in the '.next' directory. Try building your app with 'next build' before starting the production server. https://nextjs.org/docs/messages/production-start-no-build-id
+2026-03-16 18:04:43:     at ignore-listed frames
+2026-03-16 18:04:43: (node:5176) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-16 18:04:43: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-16 18:04:43: Error: Could not find a production build in the '.next' directory. Try building your app with 'next build' before starting the production server. https://nextjs.org/docs/messages/production-start-no-build-id
+2026-03-16 18:04:43:     at ignore-listed frames
+2026-03-16 18:04:44: (node:2696) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-16 18:04:44: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-16 18:04:44: Error: Could not find a production build in the '.next' directory. Try building your app with 'next build' before starting the production server. https://nextjs.org/docs/messages/production-start-no-build-id
+2026-03-16 18:04:44:     at ignore-listed frames
+2026-03-16 18:04:44: (node:25136) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-16 18:04:44: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-16 18:04:45: Error: Could not find a production build in the '.next' directory. Try building your app with 'next build' before starting the production server. https://nextjs.org/docs/messages/production-start-no-build-id
+2026-03-16 18:04:45:     at ignore-listed frames
+2026-03-16 18:04:45: (node:5028) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-16 18:04:45: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-16 18:04:45: Error: Could not find a production build in the '.next' directory. Try building your app with 'next build' before starting the production server. https://nextjs.org/docs/messages/production-start-no-build-id
+2026-03-16 18:04:45:     at ignore-listed frames
+2026-03-16 18:04:45: (node:20384) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-16 18:04:45: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-16 18:04:46: Error: Could not find a production build in the '.next' directory. Try building your app with 'next build' before starting the production server. https://nextjs.org/docs/messages/production-start-no-build-id
+2026-03-16 18:04:46:     at ignore-listed frames
+2026-03-16 18:04:46: (node:12048) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-16 18:04:46: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-16 18:04:46: Error: Could not find a production build in the '.next' directory. Try building your app with 'next build' before starting the production server. https://nextjs.org/docs/messages/production-start-no-build-id
+2026-03-16 18:04:46:     at ignore-listed frames
+2026-03-16 18:04:46: (node:17100) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-16 18:04:46: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-16 18:04:47: Error: Could not find a production build in the '.next' directory. Try building your app with 'next build' before starting the production server. https://nextjs.org/docs/messages/production-start-no-build-id
+2026-03-16 18:04:47:     at ignore-listed frames
+2026-03-16 18:04:47: (node:19380) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-16 18:04:47: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-16 18:04:47: Error: Could not find a production build in the '.next' directory. Try building your app with 'next build' before starting the production server. https://nextjs.org/docs/messages/production-start-no-build-id
+2026-03-16 18:04:47:     at ignore-listed frames
+2026-03-16 18:04:47: (node:14464) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-16 18:04:47: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-16 18:04:48: Error: Could not find a production build in the '.next' directory. Try building your app with 'next build' before starting the production server. https://nextjs.org/docs/messages/production-start-no-build-id
+2026-03-16 18:04:48:     at ignore-listed frames
+2026-03-16 18:04:48: (node:22796) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-16 18:04:48: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-16 18:04:48: Error: Could not find a production build in the '.next' directory. Try building your app with 'next build' before starting the production server. https://nextjs.org/docs/messages/production-start-no-build-id
+2026-03-16 18:04:48:     at ignore-listed frames
+2026-03-16 18:04:49: (node:19332) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-16 18:04:49: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-16 18:04:49: Error: Could not find a production build in the '.next' directory. Try building your app with 'next build' before starting the production server. https://nextjs.org/docs/messages/production-start-no-build-id
+2026-03-16 18:04:49:     at ignore-listed frames
+2026-03-16 18:04:49: (node:23364) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-16 18:04:49: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-16 18:04:50: Error: Could not find a production build in the '.next' directory. Try building your app with 'next build' before starting the production server. https://nextjs.org/docs/messages/production-start-no-build-id
+2026-03-16 18:04:50:     at ignore-listed frames
+2026-03-16 18:04:50: (node:3856) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-16 18:04:50: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-16 18:04:50: Error: Could not find a production build in the '.next' directory. Try building your app with 'next build' before starting the production server. https://nextjs.org/docs/messages/production-start-no-build-id
+2026-03-16 18:04:50:     at ignore-listed frames
+2026-03-16 18:04:50: (node:18020) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-16 18:04:50: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-16 18:04:51: Error: Could not find a production build in the '.next' directory. Try building your app with 'next build' before starting the production server. https://nextjs.org/docs/messages/production-start-no-build-id
+2026-03-16 18:04:51:     at ignore-listed frames
+2026-03-16 18:04:51: (node:25084) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-16 18:04:51: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-16 18:04:51: Error: Could not find a production build in the '.next' directory. Try building your app with 'next build' before starting the production server. https://nextjs.org/docs/messages/production-start-no-build-id
+2026-03-16 18:04:51:     at ignore-listed frames
+2026-03-16 18:05:17: (node:25172) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-16 18:05:17: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-16 18:05:18: Error: Could not find a production build in the '.next' directory. Try building your app with 'next build' before starting the production server. https://nextjs.org/docs/messages/production-start-no-build-id
+2026-03-16 18:05:18:     at ignore-listed frames
+2026-03-16 18:05:18: (node:21116) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-16 18:05:18: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-16 18:05:18: Error: Could not find a production build in the '.next' directory. Try building your app with 'next build' before starting the production server. https://nextjs.org/docs/messages/production-start-no-build-id
+2026-03-16 18:05:18:     at ignore-listed frames
+2026-03-16 18:05:18: (node:12468) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-16 18:05:18: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-16 18:05:19: Error: Could not find a production build in the '.next' directory. Try building your app with 'next build' before starting the production server. https://nextjs.org/docs/messages/production-start-no-build-id
+2026-03-16 18:05:19:     at ignore-listed frames
+2026-03-16 18:05:19: (node:2336) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-16 18:05:19: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-16 18:05:19: Error: Could not find a production build in the '.next' directory. Try building your app with 'next build' before starting the production server. https://nextjs.org/docs/messages/production-start-no-build-id
+2026-03-16 18:05:19:     at ignore-listed frames
+2026-03-16 18:05:19: (node:19260) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-16 18:05:19: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-16 18:05:20: Error: Could not find a production build in the '.next' directory. Try building your app with 'next build' before starting the production server. https://nextjs.org/docs/messages/production-start-no-build-id
+2026-03-16 18:05:20:     at ignore-listed frames
+2026-03-16 18:05:20: (node:17832) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-16 18:05:20: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-16 18:05:20: Error: Could not find a production build in the '.next' directory. Try building your app with 'next build' before starting the production server. https://nextjs.org/docs/messages/production-start-no-build-id
+2026-03-16 18:05:20:     at ignore-listed frames
+2026-03-16 18:05:21: (node:18696) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-16 18:05:21: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-16 18:05:21: Error: Could not find a production build in the '.next' directory. Try building your app with 'next build' before starting the production server. https://nextjs.org/docs/messages/production-start-no-build-id
+2026-03-16 18:05:21:     at ignore-listed frames
+2026-03-16 18:05:21: (node:17668) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-16 18:05:21: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-16 18:05:22: Error: Could not find a production build in the '.next' directory. Try building your app with 'next build' before starting the production server. https://nextjs.org/docs/messages/production-start-no-build-id
+2026-03-16 18:05:22:     at ignore-listed frames
+2026-03-16 18:05:22: (node:21288) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-16 18:05:22: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-16 18:05:22: Error: Could not find a production build in the '.next' directory. Try building your app with 'next build' before starting the production server. https://nextjs.org/docs/messages/production-start-no-build-id
+2026-03-16 18:05:22:     at ignore-listed frames
+2026-03-16 18:05:22: (node:25836) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-16 18:05:22: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-16 18:05:23: Error: Could not find a production build in the '.next' directory. Try building your app with 'next build' before starting the production server. https://nextjs.org/docs/messages/production-start-no-build-id
+2026-03-16 18:05:23:     at ignore-listed frames
+2026-03-16 18:05:23: (node:21864) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-16 18:05:23: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-16 18:05:23: Error: Could not find a production build in the '.next' directory. Try building your app with 'next build' before starting the production server. https://nextjs.org/docs/messages/production-start-no-build-id
+2026-03-16 18:05:23:     at ignore-listed frames
+2026-03-16 18:05:23: (node:2928) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-16 18:05:23: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-16 18:05:24: Error: Could not find a production build in the '.next' directory. Try building your app with 'next build' before starting the production server. https://nextjs.org/docs/messages/production-start-no-build-id
+2026-03-16 18:05:24:     at ignore-listed frames
+2026-03-16 18:05:24: (node:26184) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-16 18:05:24: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-16 18:05:24: Error: Could not find a production build in the '.next' directory. Try building your app with 'next build' before starting the production server. https://nextjs.org/docs/messages/production-start-no-build-id
+2026-03-16 18:05:24:     at ignore-listed frames
+2026-03-16 18:05:25: (node:14080) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-16 18:05:25: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-16 18:05:25: Error: Could not find a production build in the '.next' directory. Try building your app with 'next build' before starting the production server. https://nextjs.org/docs/messages/production-start-no-build-id
+2026-03-16 18:05:25:     at ignore-listed frames
+2026-03-16 18:05:25: (node:22888) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-16 18:05:25: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-16 18:05:26: Error: Could not find a production build in the '.next' directory. Try building your app with 'next build' before starting the production server. https://nextjs.org/docs/messages/production-start-no-build-id
+2026-03-16 18:05:26:     at ignore-listed frames
+2026-03-16 18:05:26: (node:4228) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-16 18:05:26: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-16 18:05:26: Error: Could not find a production build in the '.next' directory. Try building your app with 'next build' before starting the production server. https://nextjs.org/docs/messages/production-start-no-build-id
+2026-03-16 18:05:26:     at ignore-listed frames
+2026-03-16 18:06:02: (node:19524) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-16 18:06:02: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-16 18:19:18: (node:10652) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-16 18:19:18: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-17 01:19:17: (node:16880) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-17 01:19:17: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-17 01:19:17: ⨯ Failed to start server
+2026-03-17 01:19:17: Error: listen EADDRINUSE: address already in use :::3000
+2026-03-17 01:19:17:     at <unknown> (Error: listen EADDRINUSE: address already in use :::3000)
+2026-03-17 01:19:17:     at new Promise (<anonymous>) {
+2026-03-17 01:19:17:   code: 'EADDRINUSE',
+2026-03-17 01:19:17:   errno: -4091,
+2026-03-17 01:19:17:   syscall: 'listen',
+2026-03-17 01:19:17:   address: '::',
+2026-03-17 01:19:17:   port: 3000
+2026-03-17 01:19:17: }
+2026-03-17 01:19:17: (node:8984) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-17 01:19:17: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-17 01:19:17: ⨯ Failed to start server
+2026-03-17 01:19:17: Error: listen EADDRINUSE: address already in use :::3000
+2026-03-17 01:19:17:     at <unknown> (Error: listen EADDRINUSE: address already in use :::3000)
+2026-03-17 01:19:17:     at new Promise (<anonymous>) {
+2026-03-17 01:19:17:   code: 'EADDRINUSE',
+2026-03-17 01:19:17:   errno: -4091,
+2026-03-17 01:19:17:   syscall: 'listen',
+2026-03-17 01:19:17:   address: '::',
+2026-03-17 01:19:17:   port: 3000
+2026-03-17 01:19:17: }
+2026-03-17 01:19:17: (node:17012) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-17 01:19:17: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-17 01:19:18: ⨯ Failed to start server
+2026-03-17 01:19:18: Error: listen EADDRINUSE: address already in use :::3000
+2026-03-17 01:19:18:     at <unknown> (Error: listen EADDRINUSE: address already in use :::3000)
+2026-03-17 01:19:18:     at new Promise (<anonymous>) {
+2026-03-17 01:19:18:   code: 'EADDRINUSE',
+2026-03-17 01:19:18:   errno: -4091,
+2026-03-17 01:19:18:   syscall: 'listen',
+2026-03-17 01:19:18:   address: '::',
+2026-03-17 01:19:18:   port: 3000
+2026-03-17 01:19:18: }
+2026-03-17 01:19:18: (node:17644) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-17 01:19:18: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-17 01:19:18: ⨯ Failed to start server
+2026-03-17 01:19:18: Error: listen EADDRINUSE: address already in use :::3000
+2026-03-17 01:19:18:     at <unknown> (Error: listen EADDRINUSE: address already in use :::3000)
+2026-03-17 01:19:18:     at new Promise (<anonymous>) {
+2026-03-17 01:19:18:   code: 'EADDRINUSE',
+2026-03-17 01:19:18:   errno: -4091,
+2026-03-17 01:19:18:   syscall: 'listen',
+2026-03-17 01:19:18:   address: '::',
+2026-03-17 01:19:18:   port: 3000
+2026-03-17 01:19:18: }
+2026-03-17 01:19:18: (node:17924) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-17 01:19:18: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-17 01:19:18: ⨯ Failed to start server
+2026-03-17 01:19:18: Error: listen EADDRINUSE: address already in use :::3000
+2026-03-17 01:19:18:     at <unknown> (Error: listen EADDRINUSE: address already in use :::3000)
+2026-03-17 01:19:18:     at new Promise (<anonymous>) {
+2026-03-17 01:19:18:   code: 'EADDRINUSE',
+2026-03-17 01:19:18:   errno: -4091,
+2026-03-17 01:19:18:   syscall: 'listen',
+2026-03-17 01:19:18:   address: '::',
+2026-03-17 01:19:18:   port: 3000
+2026-03-17 01:19:18: }
+2026-03-17 01:19:18: (node:18160) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-17 01:19:18: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-17 01:19:19: ⨯ Failed to start server
+2026-03-17 01:19:19: Error: listen EADDRINUSE: address already in use :::3000
+2026-03-17 01:19:19:     at <unknown> (Error: listen EADDRINUSE: address already in use :::3000)
+2026-03-17 01:19:19:     at new Promise (<anonymous>) {
+2026-03-17 01:19:19:   code: 'EADDRINUSE',
+2026-03-17 01:19:19:   errno: -4091,
+2026-03-17 01:19:19:   syscall: 'listen',
+2026-03-17 01:19:19:   address: '::',
+2026-03-17 01:19:19:   port: 3000
+2026-03-17 01:19:19: }
+2026-03-17 01:19:19: (node:18400) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-17 01:19:19: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-17 01:19:19: ⨯ Failed to start server
+2026-03-17 01:19:19: Error: listen EADDRINUSE: address already in use :::3000
+2026-03-17 01:19:19:     at <unknown> (Error: listen EADDRINUSE: address already in use :::3000)
+2026-03-17 01:19:19:     at new Promise (<anonymous>) {
+2026-03-17 01:19:19:   code: 'EADDRINUSE',
+2026-03-17 01:19:19:   errno: -4091,
+2026-03-17 01:19:19:   syscall: 'listen',
+2026-03-17 01:19:19:   address: '::',
+2026-03-17 01:19:19:   port: 3000
+2026-03-17 01:19:19: }
+2026-03-17 01:19:19: (node:17052) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-17 01:19:19: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-17 01:19:19: ⨯ Failed to start server
+2026-03-17 01:19:19: Error: listen EADDRINUSE: address already in use :::3000
+2026-03-17 01:19:19:     at <unknown> (Error: listen EADDRINUSE: address already in use :::3000)
+2026-03-17 01:19:19:     at new Promise (<anonymous>) {
+2026-03-17 01:19:19:   code: 'EADDRINUSE',
+2026-03-17 01:19:19:   errno: -4091,
+2026-03-17 01:19:19:   syscall: 'listen',
+2026-03-17 01:19:19:   address: '::',
+2026-03-17 01:19:19:   port: 3000
+2026-03-17 01:19:19: }
+2026-03-17 01:19:20: (node:17672) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-17 01:19:20: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-17 01:19:20: ⨯ Failed to start server
+2026-03-17 01:19:20: Error: listen EADDRINUSE: address already in use :::3000
+2026-03-17 01:19:20:     at <unknown> (Error: listen EADDRINUSE: address already in use :::3000)
+2026-03-17 01:19:20:     at new Promise (<anonymous>) {
+2026-03-17 01:19:20:   code: 'EADDRINUSE',
+2026-03-17 01:19:20:   errno: -4091,
+2026-03-17 01:19:20:   syscall: 'listen',
+2026-03-17 01:19:20:   address: '::',
+2026-03-17 01:19:20:   port: 3000
+2026-03-17 01:19:20: }
+2026-03-17 01:19:20: (node:18348) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-17 01:19:20: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-17 01:19:20: ⨯ Failed to start server
+2026-03-17 01:19:20: Error: listen EADDRINUSE: address already in use :::3000
+2026-03-17 01:19:20:     at <unknown> (Error: listen EADDRINUSE: address already in use :::3000)
+2026-03-17 01:19:20:     at new Promise (<anonymous>) {
+2026-03-17 01:19:20:   code: 'EADDRINUSE',
+2026-03-17 01:19:20:   errno: -4091,
+2026-03-17 01:19:20:   syscall: 'listen',
+2026-03-17 01:19:20:   address: '::',
+2026-03-17 01:19:20:   port: 3000
+2026-03-17 01:19:20: }
+2026-03-17 01:19:20: (node:8904) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-17 01:19:20: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-17 01:19:21: ⨯ Failed to start server
+2026-03-17 01:19:21: Error: listen EADDRINUSE: address already in use :::3000
+2026-03-17 01:19:21:     at <unknown> (Error: listen EADDRINUSE: address already in use :::3000)
+2026-03-17 01:19:21:     at new Promise (<anonymous>) {
+2026-03-17 01:19:21:   code: 'EADDRINUSE',
+2026-03-17 01:19:21:   errno: -4091,
+2026-03-17 01:19:21:   syscall: 'listen',
+2026-03-17 01:19:21:   address: '::',
+2026-03-17 01:19:21:   port: 3000
+2026-03-17 01:19:21: }
+2026-03-17 01:19:21: (node:8888) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-17 01:19:21: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-17 01:19:21: ⨯ Failed to start server
+2026-03-17 01:19:21: Error: listen EADDRINUSE: address already in use :::3000
+2026-03-17 01:19:21:     at <unknown> (Error: listen EADDRINUSE: address already in use :::3000)
+2026-03-17 01:19:21:     at new Promise (<anonymous>) {
+2026-03-17 01:19:21:   code: 'EADDRINUSE',
+2026-03-17 01:19:21:   errno: -4091,
+2026-03-17 01:19:21:   syscall: 'listen',
+2026-03-17 01:19:21:   address: '::',
+2026-03-17 01:19:21:   port: 3000
+2026-03-17 01:19:21: }
+2026-03-17 01:19:21: (node:17932) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-17 01:19:21: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-17 01:19:22: ⨯ Failed to start server
+2026-03-17 01:19:22: Error: listen EADDRINUSE: address already in use :::3000
+2026-03-17 01:19:22:     at <unknown> (Error: listen EADDRINUSE: address already in use :::3000)
+2026-03-17 01:19:22:     at new Promise (<anonymous>) {
+2026-03-17 01:19:22:   code: 'EADDRINUSE',
+2026-03-17 01:19:22:   errno: -4091,
+2026-03-17 01:19:22:   syscall: 'listen',
+2026-03-17 01:19:22:   address: '::',
+2026-03-17 01:19:22:   port: 3000
+2026-03-17 01:19:22: }
+2026-03-17 01:19:22: (node:17348) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-17 01:19:22: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-17 01:19:22: ⨯ Failed to start server
+2026-03-17 01:19:22: Error: listen EADDRINUSE: address already in use :::3000
+2026-03-17 01:19:22:     at <unknown> (Error: listen EADDRINUSE: address already in use :::3000)
+2026-03-17 01:19:22:     at new Promise (<anonymous>) {
+2026-03-17 01:19:22:   code: 'EADDRINUSE',
+2026-03-17 01:19:22:   errno: -4091,
+2026-03-17 01:19:22:   syscall: 'listen',
+2026-03-17 01:19:22:   address: '::',
+2026-03-17 01:19:22:   port: 3000
+2026-03-17 01:19:22: }
+2026-03-17 01:19:22: (node:17588) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-17 01:19:22: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-17 01:19:22: ⨯ Failed to start server
+2026-03-17 01:19:22: Error: listen EADDRINUSE: address already in use :::3000
+2026-03-17 01:19:22:     at <unknown> (Error: listen EADDRINUSE: address already in use :::3000)
+2026-03-17 01:19:22:     at new Promise (<anonymous>) {
+2026-03-17 01:19:22:   code: 'EADDRINUSE',
+2026-03-17 01:19:22:   errno: -4091,
+2026-03-17 01:19:22:   syscall: 'listen',
+2026-03-17 01:19:22:   address: '::',
+2026-03-17 01:19:22:   port: 3000
+2026-03-17 01:19:22: }
+2026-03-17 01:19:22: (node:18108) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-17 01:19:22: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-17 01:19:23: ⨯ Failed to start server
+2026-03-17 01:19:23: Error: listen EADDRINUSE: address already in use :::3000
+2026-03-17 01:19:23:     at <unknown> (Error: listen EADDRINUSE: address already in use :::3000)
+2026-03-17 01:19:23:     at new Promise (<anonymous>) {
+2026-03-17 01:19:23:   code: 'EADDRINUSE',
+2026-03-17 01:19:23:   errno: -4091,
+2026-03-17 01:19:23:   syscall: 'listen',
+2026-03-17 01:19:23:   address: '::',
+2026-03-17 01:19:23:   port: 3000
+2026-03-17 01:19:23: }
+2026-03-17 01:19:23: (node:4600) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-17 01:19:23: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-17 01:19:23: ⨯ Failed to start server
+2026-03-17 01:19:23: Error: listen EADDRINUSE: address already in use :::3000
+2026-03-17 01:19:23:     at <unknown> (Error: listen EADDRINUSE: address already in use :::3000)
+2026-03-17 01:19:23:     at new Promise (<anonymous>) {
+2026-03-17 01:19:23:   code: 'EADDRINUSE',
+2026-03-17 01:19:23:   errno: -4091,
+2026-03-17 01:19:23:   syscall: 'listen',
+2026-03-17 01:19:23:   address: '::',
+2026-03-17 01:19:23:   port: 3000
+2026-03-17 01:19:23: }
+2026-03-17 05:17:50: (node:14576) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-17 05:17:50: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-17 05:17:50: ⨯ Failed to start server
+2026-03-17 05:17:50: Error: listen EADDRINUSE: address already in use :::3000
+2026-03-17 05:17:50:     at <unknown> (Error: listen EADDRINUSE: address already in use :::3000)
+2026-03-17 05:17:50:     at new Promise (<anonymous>) {
+2026-03-17 05:17:50:   code: 'EADDRINUSE',
+2026-03-17 05:17:50:   errno: -4091,
+2026-03-17 05:17:50:   syscall: 'listen',
+2026-03-17 05:17:50:   address: '::',
+2026-03-17 05:17:50:   port: 3000
+2026-03-17 05:17:50: }
+2026-03-17 05:17:51: (node:3384) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-17 05:17:51: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-17 05:17:51: ⨯ Failed to start server
+2026-03-17 05:17:51: Error: listen EADDRINUSE: address already in use :::3000
+2026-03-17 05:17:51:     at <unknown> (Error: listen EADDRINUSE: address already in use :::3000)
+2026-03-17 05:17:51:     at new Promise (<anonymous>) {
+2026-03-17 05:17:51:   code: 'EADDRINUSE',
+2026-03-17 05:17:51:   errno: -4091,
+2026-03-17 05:17:51:   syscall: 'listen',
+2026-03-17 05:17:51:   address: '::',
+2026-03-17 05:17:51:   port: 3000
+2026-03-17 05:17:51: }
+2026-03-17 05:17:51: (node:15108) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-17 05:17:51: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-17 05:17:51: ⨯ Failed to start server
+2026-03-17 05:17:51: Error: listen EADDRINUSE: address already in use :::3000
+2026-03-17 05:17:51:     at <unknown> (Error: listen EADDRINUSE: address already in use :::3000)
+2026-03-17 05:17:51:     at new Promise (<anonymous>) {
+2026-03-17 05:17:51:   code: 'EADDRINUSE',
+2026-03-17 05:17:51:   errno: -4091,
+2026-03-17 05:17:51:   syscall: 'listen',
+2026-03-17 05:17:51:   address: '::',
+2026-03-17 05:17:51:   port: 3000
+2026-03-17 05:17:51: }
+2026-03-17 05:17:51: (node:7672) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-17 05:17:51: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-17 05:17:52: ⨯ Failed to start server
+2026-03-17 05:17:52: Error: listen EADDRINUSE: address already in use :::3000
+2026-03-17 05:17:52:     at <unknown> (Error: listen EADDRINUSE: address already in use :::3000)
+2026-03-17 05:17:52:     at new Promise (<anonymous>) {
+2026-03-17 05:17:52:   code: 'EADDRINUSE',
+2026-03-17 05:17:52:   errno: -4091,
+2026-03-17 05:17:52:   syscall: 'listen',
+2026-03-17 05:17:52:   address: '::',
+2026-03-17 05:17:52:   port: 3000
+2026-03-17 05:17:52: }
+2026-03-17 05:17:52: (node:9560) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-17 05:17:52: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-17 05:17:52: ⨯ Failed to start server
+2026-03-17 05:17:52: Error: listen EADDRINUSE: address already in use :::3000
+2026-03-17 05:17:52:     at <unknown> (Error: listen EADDRINUSE: address already in use :::3000)
+2026-03-17 05:17:52:     at new Promise (<anonymous>) {
+2026-03-17 05:17:52:   code: 'EADDRINUSE',
+2026-03-17 05:17:52:   errno: -4091,
+2026-03-17 05:17:52:   syscall: 'listen',
+2026-03-17 05:17:52:   address: '::',
+2026-03-17 05:17:52:   port: 3000
+2026-03-17 05:17:52: }
+2026-03-17 05:17:52: (node:11232) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-17 05:17:52: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-17 05:17:52: ⨯ Failed to start server
+2026-03-17 05:17:52: Error: listen EADDRINUSE: address already in use :::3000
+2026-03-17 05:17:52:     at <unknown> (Error: listen EADDRINUSE: address already in use :::3000)
+2026-03-17 05:17:52:     at new Promise (<anonymous>) {
+2026-03-17 05:17:52:   code: 'EADDRINUSE',
+2026-03-17 05:17:52:   errno: -4091,
+2026-03-17 05:17:52:   syscall: 'listen',
+2026-03-17 05:17:52:   address: '::',
+2026-03-17 05:17:52:   port: 3000
+2026-03-17 05:17:52: }
+2026-03-17 05:17:52: (node:7280) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-17 05:17:52: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-17 05:17:53: ⨯ Failed to start server
+2026-03-17 05:17:53: Error: listen EADDRINUSE: address already in use :::3000
+2026-03-17 05:17:53:     at <unknown> (Error: listen EADDRINUSE: address already in use :::3000)
+2026-03-17 05:17:53:     at new Promise (<anonymous>) {
+2026-03-17 05:17:53:   code: 'EADDRINUSE',
+2026-03-17 05:17:53:   errno: -4091,
+2026-03-17 05:17:53:   syscall: 'listen',
+2026-03-17 05:17:53:   address: '::',
+2026-03-17 05:17:53:   port: 3000
+2026-03-17 05:17:53: }
+2026-03-17 05:17:53: (node:7624) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-17 05:17:53: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-17 05:17:53: ⨯ Failed to start server
+2026-03-17 05:17:53: Error: listen EADDRINUSE: address already in use :::3000
+2026-03-17 05:17:53:     at <unknown> (Error: listen EADDRINUSE: address already in use :::3000)
+2026-03-17 05:17:53:     at new Promise (<anonymous>) {
+2026-03-17 05:17:53:   code: 'EADDRINUSE',
+2026-03-17 05:17:53:   errno: -4091,
+2026-03-17 05:17:53:   syscall: 'listen',
+2026-03-17 05:17:53:   address: '::',
+2026-03-17 05:17:53:   port: 3000
+2026-03-17 05:17:53: }
+2026-03-17 05:17:53: (node:10744) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-17 05:17:53: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-17 05:17:53: ⨯ Failed to start server
+2026-03-17 05:17:53: Error: listen EADDRINUSE: address already in use :::3000
+2026-03-17 05:17:53:     at <unknown> (Error: listen EADDRINUSE: address already in use :::3000)
+2026-03-17 05:17:53:     at new Promise (<anonymous>) {
+2026-03-17 05:17:53:   code: 'EADDRINUSE',
+2026-03-17 05:17:53:   errno: -4091,
+2026-03-17 05:17:53:   syscall: 'listen',
+2026-03-17 05:17:53:   address: '::',
+2026-03-17 05:17:53:   port: 3000
+2026-03-17 05:17:53: }
+2026-03-17 05:17:53: (node:15240) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-17 05:17:53: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-17 05:17:54: ⨯ Failed to start server
+2026-03-17 05:17:54: Error: listen EADDRINUSE: address already in use :::3000
+2026-03-17 05:17:54:     at <unknown> (Error: listen EADDRINUSE: address already in use :::3000)
+2026-03-17 05:17:54:     at new Promise (<anonymous>) {
+2026-03-17 05:17:54:   code: 'EADDRINUSE',
+2026-03-17 05:17:54:   errno: -4091,
+2026-03-17 05:17:54:   syscall: 'listen',
+2026-03-17 05:17:54:   address: '::',
+2026-03-17 05:17:54:   port: 3000
+2026-03-17 05:17:54: }
+2026-03-17 05:17:54: (node:15032) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-17 05:17:54: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-17 05:17:54: ⨯ Failed to start server
+2026-03-17 05:17:54: Error: listen EADDRINUSE: address already in use :::3000
+2026-03-17 05:17:54:     at <unknown> (Error: listen EADDRINUSE: address already in use :::3000)
+2026-03-17 05:17:54:     at new Promise (<anonymous>) {
+2026-03-17 05:17:54:   code: 'EADDRINUSE',
+2026-03-17 05:17:54:   errno: -4091,
+2026-03-17 05:17:54:   syscall: 'listen',
+2026-03-17 05:17:54:   address: '::',
+2026-03-17 05:17:54:   port: 3000
+2026-03-17 05:17:54: }
+2026-03-17 05:17:54: (node:11748) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-17 05:17:54: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-17 05:17:54: ⨯ Failed to start server
+2026-03-17 05:17:54: Error: listen EADDRINUSE: address already in use :::3000
+2026-03-17 05:17:54:     at <unknown> (Error: listen EADDRINUSE: address already in use :::3000)
+2026-03-17 05:17:54:     at new Promise (<anonymous>) {
+2026-03-17 05:17:54:   code: 'EADDRINUSE',
+2026-03-17 05:17:54:   errno: -4091,
+2026-03-17 05:17:54:   syscall: 'listen',
+2026-03-17 05:17:54:   address: '::',
+2026-03-17 05:17:54:   port: 3000
+2026-03-17 05:17:54: }
+2026-03-17 05:17:54: (node:15084) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-17 05:17:54: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-17 05:17:55: ⨯ Failed to start server
+2026-03-17 05:17:55: Error: listen EADDRINUSE: address already in use :::3000
+2026-03-17 05:17:55:     at <unknown> (Error: listen EADDRINUSE: address already in use :::3000)
+2026-03-17 05:17:55:     at new Promise (<anonymous>) {
+2026-03-17 05:17:55:   code: 'EADDRINUSE',
+2026-03-17 05:17:55:   errno: -4091,
+2026-03-17 05:17:55:   syscall: 'listen',
+2026-03-17 05:17:55:   address: '::',
+2026-03-17 05:17:55:   port: 3000
+2026-03-17 05:17:55: }
+2026-03-17 05:17:55: (node:9448) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-17 05:17:55: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-17 05:17:55: ⨯ Failed to start server
+2026-03-17 05:17:55: Error: listen EADDRINUSE: address already in use :::3000
+2026-03-17 05:17:55:     at <unknown> (Error: listen EADDRINUSE: address already in use :::3000)
+2026-03-17 05:17:55:     at new Promise (<anonymous>) {
+2026-03-17 05:17:55:   code: 'EADDRINUSE',
+2026-03-17 05:17:55:   errno: -4091,
+2026-03-17 05:17:55:   syscall: 'listen',
+2026-03-17 05:17:55:   address: '::',
+2026-03-17 05:17:55:   port: 3000
+2026-03-17 05:17:55: }
+2026-03-17 05:17:55: (node:4528) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-17 05:17:55: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-17 05:17:55: ⨯ Failed to start server
+2026-03-17 05:17:55: Error: listen EADDRINUSE: address already in use :::3000
+2026-03-17 05:17:55:     at <unknown> (Error: listen EADDRINUSE: address already in use :::3000)
+2026-03-17 05:17:55:     at new Promise (<anonymous>) {
+2026-03-17 05:17:55:   code: 'EADDRINUSE',
+2026-03-17 05:17:55:   errno: -4091,
+2026-03-17 05:17:55:   syscall: 'listen',
+2026-03-17 05:17:55:   address: '::',
+2026-03-17 05:17:55:   port: 3000
+2026-03-17 05:17:55: }
+2026-03-17 05:17:55: (node:7724) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-17 05:17:55: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-17 05:17:56: ⨯ Failed to start server
+2026-03-17 05:17:56: Error: listen EADDRINUSE: address already in use :::3000
+2026-03-17 05:17:56:     at <unknown> (Error: listen EADDRINUSE: address already in use :::3000)
+2026-03-17 05:17:56:     at new Promise (<anonymous>) {
+2026-03-17 05:17:56:   code: 'EADDRINUSE',
+2026-03-17 05:17:56:   errno: -4091,
+2026-03-17 05:17:56:   syscall: 'listen',
+2026-03-17 05:17:56:   address: '::',
+2026-03-17 05:17:56:   port: 3000
+2026-03-17 05:17:56: }
+2026-03-17 05:17:56: (node:10884) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-17 05:17:56: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-17 05:17:56: ⨯ Failed to start server
+2026-03-17 05:17:56: Error: listen EADDRINUSE: address already in use :::3000
+2026-03-17 05:17:56:     at <unknown> (Error: listen EADDRINUSE: address already in use :::3000)
+2026-03-17 05:17:56:     at new Promise (<anonymous>) {
+2026-03-17 05:17:56:   code: 'EADDRINUSE',
+2026-03-17 05:17:56:   errno: -4091,
+2026-03-17 05:17:56:   syscall: 'listen',
+2026-03-17 05:17:56:   address: '::',
+2026-03-17 05:17:56:   port: 3000
+2026-03-17 05:17:56: }
+2026-03-17 12:24:01: (node:8544) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-17 12:24:01: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-17 14:43:51: (node:632) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-17 14:43:51: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-17 14:43:53: (node:18636) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-17 14:43:53: (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-18 10:20:15: (node:22352) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-03-18 10:20:15: (Use `node --trace-deprecation ...` to show where the warning was created)

@@ -521,7 +521,20 @@ export default function CalendarClient({ initialJobs }: { initialJobs: CronJob[]
       {/* Events List */}
       {tab === "events" && (
         <div className="space-y-2">
-          {gcalError && <p className="text-red-400 text-sm mb-3">⚠️ {gcalError}</p>}
+          {gcalError && (
+            <div className="flex items-center justify-between gap-4 bg-red-950/30 border border-red-500/30 rounded-xl px-4 py-3 mb-3">
+              <div>
+                <p className="text-red-400 text-sm font-semibold">⚠️ Calendar Disconnected</p>
+                <p className="text-gray-500 text-xs mt-0.5">{gcalError}</p>
+              </div>
+              <a
+                href="/api/gcal-auth"
+                className="shrink-0 px-4 py-2 bg-yellow-400 text-black text-xs font-bold rounded-lg hover:bg-yellow-300 transition-colors"
+              >
+                🔗 Reconnect
+              </a>
+            </div>
+          )}
           {gcalLoading ? (
             <div className="text-gray-500 text-sm animate-pulse py-8 text-center">Loading calendar…</div>
           ) : gcalEvents.length === 0 ? (

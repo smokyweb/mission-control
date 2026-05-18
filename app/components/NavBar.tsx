@@ -13,9 +13,6 @@ export default function NavBar() {
   const pathname = usePathname();
   const [healthy, setHealthy] = useState<boolean | null>(null);
 
-  // Hide NavBar entirely on portal routes
-  if (pathname.startsWith("/portal")) return null;
-
   const checkHealth = async () => {
     try {
       const res = await fetch("/api/health");
@@ -31,6 +28,9 @@ export default function NavBar() {
     const interval = setInterval(checkHealth, 30000);
     return () => clearInterval(interval);
   }, []);
+
+  // Hide NavBar entirely on portal routes
+  if (pathname.startsWith("/portal")) return null;
 
   const links = [
     { href: "/calendar",      label: "Calendar",      icon: "/icons/icon-7.png"  },
