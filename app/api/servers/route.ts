@@ -484,8 +484,9 @@ export async function POST(req: NextRequest) {
     if (!inv) return NextResponse.json({ ok: true });
     const token = data.config?.discordBotToken;
     if (token && inv.status === 'pending') { await discordApi(token, 'DELETE', `/invites/${inv.code}`); }
-    inv.status = 'revoked';
-    addHistory(data, { action: 'invite_revoked', staffName: inv.invitedName, details: `Invite to ${inv.invitedName} revoked`, performedBy: by });
+    // Delete from list entirely instead of just marking revoked
+    data.invites = data.invites.filter(i => i.id !== inviteId);
+    addHistory(data, { action: 'invite_revoked', staffName: inv.invitedName, details: `Invite to ${inv.invitedName} revoked and deleted`, performedBy: by });
     writeServers(data);
     return NextResponse.json({ ok: true });
   }
