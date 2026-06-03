@@ -263,7 +263,14 @@ export default function ServersClient({ portalUser = null }: { portalUser?: Port
   // Invite handlers
   const createInvite = async () => {
     if (!invF.name || !invF.serverId) return;
-    const r = await api("createInvite", invF);
+    const r = await api("createInvite", {
+      invitedName: invF.name,
+      invitedEmail: invF.email,
+      invitedDiscord: invF.discord,
+      serverId: invF.serverId,
+      role: invF.role,
+      channelAssignments: invF.channelAssignments,
+    });
     if (r.ok) { setCreatedInvite(r.invite); setInvCopied(false); setInviteEmailSent(!!r.emailSent); await load(); }
   };
 
