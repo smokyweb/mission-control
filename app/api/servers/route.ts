@@ -77,6 +77,7 @@ interface Invite {
   status: 'pending' | 'accepted' | 'revoked' | 'expired' | 'converted';
   discordUserId: string | null; discordUsername: string | null;
   createdAt: string; acceptedAt: string | null; expiresAt: string;
+  dmSent?: boolean;
 }
 interface HistoryEntry {
   id: string; timestamp: string;
@@ -428,6 +429,28 @@ export async function POST(req: NextRequest) {
           if (recent) { inv.discordUserId = recent.user.id; inv.discordUsername = recent.user.username; }
         }
         addHistory(data, { action: 'invite_accepted', serverId: inv.serverId, staffName: inv.invitedName, details: `${inv.invitedName} accepted invite to ${inv.serverName}${inv.discordUsername ? ` as @${inv.discordUsername}` : ''}`, performedBy: 'system' });
+        // Auto-send Discord DM if discord username provided and DM not yet sent
+        if (inv.invitedDiscord && !inv.dmSent) {
+          try {
+            const dmUserId = inv.discordUserId || (() => {
+              const found = (mR.ok && Array.isArray(mR.data))
+                ? (mR.data as {user:{id:string;username:string}}[]).find(m => m.user.username.toLowerCase() === inv.invitedDiscord!.toLowerCase())
+                : undefined;
+              return found?.user.id || null;
+            })();
+            if (dmUserId) {
+              const dmCh = await discordApi(token, 'POST', '/users/@me/channels', { recipient_id: dmUserId });
+              if (dmCh.ok) {
+                const dmMsg = `Hi ${inv.invitedName}! 👋 Welcome to **${inv.serverName}**! We're glad to have you.\n\nIf you need anything or have questions, feel free to reach out. Looking forward to working with you!`;
+                await discordApi(token, 'POST', `/channels/${dmCh.data.id}/messages`, { content: dmMsg });
+                inv.dmSent = true;
+                addHistory(data, { action: 'invite_accepted', serverId: inv.serverId, staffName: inv.invitedName, details: `Welcome DM sent to ${inv.invitedName} on Discord`, performedBy: 'system' });
+              }
+            }
+          } catch (e) {
+            console.error('Auto DM failed for', inv.invitedName, e);
+          }
+        }
         updated++;
       }
     }
