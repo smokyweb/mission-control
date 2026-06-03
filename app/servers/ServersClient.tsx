@@ -332,7 +332,11 @@ export default function ServersClient({ portalUser = null }: { portalUser?: Port
 
   if (!data) return <div style={{ display: "flex", alignItems: "center", justifyContent: "center", height: "100vh", background: PAGE_BG, color: GOLD }}>Loading...</div>;
 
-  const servers = data.servers || {};
+  // Hide servers not yet fully provisioned (no SSH credentials)
+  const HIDDEN_SERVERS = ['1483827032638099528']; // Calyx — pending setup
+  const servers = Object.fromEntries(
+    Object.entries(data.servers || {}).filter(([id]) => !HIDDEN_SERVERS.includes(id))
+  );
   const server = selectedServer ? servers[selectedServer] : null;
   const staff = data.staff || [];
   const portalUsers = data.portalUsers || [];
