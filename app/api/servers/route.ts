@@ -3,9 +3,52 @@ import fs from 'fs';
 import path from 'path';
 import crypto from 'crypto';
 import { spawn } from 'child_process';
-import { createRequire } from 'module';
-const _require = createRequire(import.meta.url);
-const tokenManager = _require(path.join(process.env.USERPROFILE || process.env.HOME || '', '.openclaw', 'workspace', 'google-token-manager.js'));
+import https from 'https';
+
+const GMAIL_CREDS_FILE = path.join(process.env.USERPROFILE || process.env.HOME || '', '.openclaw', 'workspace', 'gmail-knoxweb-creds.json');
+
+// In-memory token cache for Gmail
+let gmailTokenCache: { token: string | null; expiresAt: number } = { token: null, expiresAt: 0 };
+
+async function getGmailToken(): Promise<string> {
+  const now = Date.now();
+  if (gmailTokenCache.token && gmailTokenCache.expiresAt > now + 5 * 60 * 1000) return gmailTokenCache.token;
+  const creds = JSON.parse(fs.readFileSync(GMAIL_CREDS_FILE, 'utf8'));
+  return new Promise((resolve, reject) => {
+    const payload = JSON.stringify({ client_id: creds.client_id, client_secret: creds.client_secret, refresh_token: creds.refresh_token, grant_type: 'refresh_token' });
+    const req = https.request({ hostname: 'oauth2.googleapis.com', path: '/token', method: 'POST', headers: { 'Content-Type': 'application/json', 'Content-Length': Buffer.byteLength(payload) } }, res => {
+      let d = ''; res.on('data', c => d += c);
+      res.on('end', () => {
+        const r = JSON.parse(d);
+        if (r.error) return reject(new Error(r.error_description || r.error));
+        gmailTokenCache = { token: r.access_token, expiresAt: now + r.expires_in * 1000 };
+        resolve(r.access_token);
+      });
+    });
+    req.on('error', reject); req.write(payload); req.end();
+  });
+}
+
+async function sendGmail({ to, subject, htmlBody }: { to: string; subject: string; htmlBody: string }): Promise<void> {
+  const token = await getGmailToken();
+  const boundary = `boundary_${Date.now()}`;
+  const text = htmlBody.replace(/<[^>]+>/g, '');
+  const raw = [
+    `From: Kevin <kevin@knoxwebhq.com>`, `To: ${to}`, `Subject: ${subject}`,
+    `MIME-Version: 1.0`, `Content-Type: multipart/alternative; boundary="${boundary}"`, ``,
+    `--${boundary}`, `Content-Type: text/plain; charset=UTF-8`, ``, text, ``,
+    `--${boundary}`, `Content-Type: text/html; charset=UTF-8`, ``, htmlBody, ``, `--${boundary}--`
+  ].join('\r\n');
+  const encoded = Buffer.from(raw).toString('base64').replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+  return new Promise((resolve, reject) => {
+    const payload = JSON.stringify({ raw: encoded });
+    const req = https.request({ hostname: 'gmail.googleapis.com', path: '/gmail/v1/users/me/messages/send', method: 'POST', headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json', 'Content-Length': Buffer.byteLength(payload) } }, res => {
+      let d = ''; res.on('data', c => d += c);
+      res.on('end', () => { const r = JSON.parse(d); r.error ? reject(new Error(r.error.message)) : resolve(); });
+    });
+    req.on('error', reject); req.write(payload); req.end();
+  });
+}
 
 const SERVERS_FILE = path.join(process.env.USERPROFILE || process.env.HOME || '', '.openclaw', 'workspace', 'servers.json');
 
@@ -336,7 +379,7 @@ export async function POST(req: NextRequest) {
     let emailError: string | null = null;
     if (invitedEmail) {
       try {
-        await tokenManager.sendGmail({
+        await sendGmail({
           to: invitedEmail,
           subject: `You're invited to join the ${server.name} Discord server`,
           htmlBody: `
