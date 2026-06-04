@@ -408,15 +408,16 @@ export async function POST(req: NextRequest) {
   }
 
   if (body.action === 'checkInvites') {
-    const token = data.config?.discordBotToken;
-    if (!token) return NextResponse.json({ error: 'Bot token not configured' }, { status: 400 });
     if (!data.invites?.length) return NextResponse.json({ ok: true, updated: 0, invites: [] });
     let updated = 0;
     for (const inv of data.invites) {
       if (inv.status !== 'pending') continue;
       if (new Date(inv.expiresAt) < new Date()) { inv.status = 'expired'; updated++; continue; }
+      // Use per-server bot token (each server has its own bot)
+      const token = getBotToken(data, inv.serverId);
+      if (!token) { console.warn(`No bot token for server ${inv.serverId} (${inv.serverName}), skipping`); continue; }
       const r = await discordApi(token, 'GET', `/invites/${inv.code}?with_counts=true`);
-      if (!r.ok) continue;
+      if (!r.ok) { console.warn(`Invite check failed for ${inv.invitedName}: ${JSON.stringify(r.data)}`); continue; }
       if ((r.data.uses ?? 0) >= 1) {
         inv.status = 'accepted'; inv.acceptedAt = new Date().toISOString();
         // Find who joined — members who joined after invite creation
@@ -454,8 +455,45 @@ export async function POST(req: NextRequest) {
         updated++;
       }
     }
+    // Secondary pass: match pending invites by Discord username against current members
+    for (const inv of data.invites) {
+      if (inv.status !== 'pending') continue;
+      if (!inv.invitedDiscord) continue;
+      const token = getBotToken(data, inv.serverId);
+      if (!token) continue;
+      try {
+        const mR = await discordApi(token, 'GET', `/guilds/${inv.serverId}/members?limit=1000`);
+        if (mR.ok && Array.isArray(mR.data)) {
+          const found = (mR.data as {user:{id:string;username:string};joined_at:string}[]).find(
+            m => m.user.username.toLowerCase() === inv.invitedDiscord!.toLowerCase()
+          );
+          if (found) {
+            inv.status = 'accepted';
+            inv.acceptedAt = found.joined_at || new Date().toISOString();
+            inv.discordUserId = found.user.id;
+            inv.discordUsername = found.user.username;
+            addHistory(data, { action: 'invite_accepted', serverId: inv.serverId, staffName: inv.invitedName, details: `${inv.invitedName} found in ${inv.serverName} as @${found.user.username} (matched by username)`, performedBy: 'system' });
+            updated++;
+          }
+        }
+      } catch (e) { /* skip */ }
+    }
     if (updated > 0) writeServers(data);
     return NextResponse.json({ ok: true, updated, invites: data.invites });
+  }
+
+  // ── Get live server members ──────────────────────────────────────────────────
+  if (body.action === 'getMembers') {
+    const { serverId } = body;
+    if (!serverId) return NextResponse.json({ error: 'serverId required' }, { status: 400 });
+    const token = getBotToken(data, serverId);
+    if (!token) return NextResponse.json({ error: 'No bot token for this server' }, { status: 400 });
+    const r = await discordApi(token, 'GET', `/guilds/${serverId}/members?limit=1000`);
+    if (!r.ok) return NextResponse.json({ error: r.data?.message || 'Failed to fetch members' }, { status: 500 });
+    const members = (r.data as {user:{id:string;username:string;discriminator:string};nick:string|null;joined_at:string}[])
+      .filter(m => m.user.username !== 'Deleted User')
+      .map(m => ({ id: m.user.id, username: m.user.username, nick: m.nick, joinedAt: m.joined_at }));
+    return NextResponse.json({ ok: true, members });
   }
 
   if (body.action === 'convertInvite') {
