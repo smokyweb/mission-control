@@ -153,7 +153,7 @@ export default function ServersClient({ portalUser = null }: { portalUser?: Port
   const [invCopied, setInvCopied] = useState(false);
   const [inviteEmailSent, setInviteEmailSent] = useState(false);
   const [sendingDM, setSendingDM] = useState<string | null>(null);
-  const [serverMembers, setServerMembers] = useState<{id:string;username:string;nick:string|null;joinedAt:string}[]>([]);
+  const [serverMembers, setServerMembers] = useState<{id:string;username:string;nick:string|null;joinedAt:string;serverId:string;serverName:string}[]>([]);
   const [syncingMembers, setSyncingMembers] = useState(false);
   const [provisionModal, setProvisionModal] = useState<{ serverId: string; serverName: string } | null>(null);
   const [provisioning, setProvisioning] = useState(false);
@@ -284,17 +284,33 @@ export default function ServersClient({ portalUser = null }: { portalUser?: Port
   };
 
   const syncMembers = async () => {
-    if (!selectedServer) return;
     setSyncingMembers(true);
-    const r = await api("getMembers", { serverId: selectedServer });
-    if (r.ok) setServerMembers(r.members);
+    // Sync all servers at once
+    const allMembers: {id:string;username:string;nick:string|null;joinedAt:string;serverId:string;serverName:string}[] = [];
+    for (const [sid, srv] of Object.entries(servers)) {
+      const r = await api("getMembers", { serverId: sid });
+      if (r.ok) {
+        r.members.forEach((m: {id:string;username:string;nick:string|null;joinedAt:string}) => {
+          allMembers.push({ ...m, serverId: sid, serverName: (srv as {name:string}).name });
+        });
+      }
+    }
+    // Deduplicate by user id (same person may be in multiple servers)
+    const seen = new Set<string>();
+    const deduped = allMembers.filter(m => { if (seen.has(m.id)) return false; seen.add(m.id); return true; });
+    setServerMembers(deduped);
     setSyncingMembers(false);
   };
 
-  const addMemberAsStaff = async (member: {id:string;username:string}) => {
-    const name = prompt(`Full name for @${member.username}?`, member.username);
+  const addMemberAsStaff = async (member: {id:string;username:string;serverId:string}) => {
+    // Look up full name from existing invites first
+    const matchedInvite = data?.invites?.find(
+      i => i.invitedDiscord?.toLowerCase() === member.username.toLowerCase()
+    );
+    const defaultName = matchedInvite?.invitedName || member.username;
+    const name = matchedInvite?.invitedName || prompt(`Full name for @${member.username}?`, member.username);
     if (!name) return;
-    const r = await api("addStaff", { name, discordUsername: member.username, discordId: member.id, serverId: selectedServer, role: 'staff' });
+    const r = await api("addStaff", { name, discordUsername: member.username, discordId: member.id, serverId: member.serverId, role: matchedInvite?.role || 'staff' });
     if (r.ok) { await load(); setServerMembers(prev => prev.filter(m => m.id !== member.id)); }
   };
 
@@ -652,22 +668,36 @@ export default function ServersClient({ portalUser = null }: { portalUser?: Port
           {/* Live Server Members (synced) */}
           {serverMembers.length > 0 && (() => {
             const staffUsernames = new Set(staff.map(s => s.discordUsername?.toLowerCase()));
-            const unmatched = serverMembers.filter(m => !staffUsernames.has(m.username.toLowerCase()) && m.username !== 'Deleted User');
+            const unmatched = serverMembers.filter(m =>
+              !staffUsernames.has(m.username.toLowerCase()) &&
+              m.username !== 'Deleted User' &&
+              !['batmanbluestone','Axel','Skywork1','Skywork2','Staxyl','Stonyx'].includes(m.username)
+            );
             if (unmatched.length === 0) return <div style={{ fontSize: "12px", color: "#22c55e", marginBottom: "16px" }}>✅ All server members are already staff</div>;
             return (
               <div style={{ marginBottom: "24px" }}>
-                <div style={{ fontSize: "12px", color: "rgba(255,255,255,0.4)", fontWeight: 700, letterSpacing: "0.08em", marginBottom: "10px" }}>SERVER MEMBERS — NOT YET STAFF ({unmatched.length})</div>
+                <div style={{ fontSize: "12px", color: "rgba(255,255,255,0.4)", fontWeight: 700, letterSpacing: "0.08em", marginBottom: "10px" }}>SERVER MEMBERS — NOT YET IN STAFF LIST ({unmatched.length})</div>
                 <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
-                  {unmatched.map(m => (
-                    <div key={m.id} style={{ background: CARD_BG, border: `1px solid ${GOLD_BORDER}`, borderRadius: "10px", padding: "10px 16px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-                      <div>
-                        <span style={{ fontWeight: 600, fontSize: "13px" }}>@{m.username}</span>
-                        {m.nick && <span style={{ fontSize: "11px", color: "rgba(255,255,255,0.4)", marginLeft: "8px" }}>{m.nick}</span>}
-                        <span style={{ fontSize: "11px", color: "rgba(255,255,255,0.3)", marginLeft: "8px" }}>joined {new Date(m.joinedAt).toLocaleDateString()}</span>
+                  {unmatched.map(m => {
+                    const matchedInvite = data?.invites?.find(i => i.invitedDiscord?.toLowerCase() === m.username.toLowerCase());
+                    return (
+                      <div key={m.id} style={{ background: CARD_BG, border: `1px solid ${GOLD_BORDER}`, borderRadius: "10px", padding: "10px 16px", display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: "8px" }}>
+                        <div>
+                          <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                            <span style={{ fontWeight: 600, fontSize: "13px" }}>{matchedInvite?.invitedName || m.nick || m.username}</span>
+                            <span style={{ fontSize: "11px", color: "rgba(255,255,255,0.4)" }}>@{m.username}</span>
+                            {matchedInvite && <RoleBadge role={matchedInvite.role} />}
+                          </div>
+                          <div style={{ fontSize: "11px", color: "rgba(255,255,255,0.3)", marginTop: "2px" }}>
+                            <span style={{ color: "rgba(255,255,255,0.5)" }}>{m.serverName}</span>
+                            {matchedInvite?.invitedEmail && <span> · {matchedInvite.invitedEmail}</span>}
+                            <span> · joined {new Date(m.joinedAt).toLocaleDateString()}</span>
+                          </div>
+                        </div>
+                        <Btn onClick={() => addMemberAsStaff(m)} size="sm">+ Add as Staff</Btn>
                       </div>
-                      <Btn onClick={() => addMemberAsStaff(m)} size="sm">+ Add as Staff</Btn>
-                    </div>
-                  ))}
+                    );
+                  })}
                 </div>
               </div>
             );
