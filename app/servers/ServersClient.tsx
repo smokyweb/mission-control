@@ -949,6 +949,35 @@ export default function ServersClient({ portalUser = null }: { portalUser?: Port
               </div>
             ))}
           </div>
+          {staffModal !== "new" && (
+            <div style={{ marginBottom: "16px", padding: "10px 14px", borderRadius: "8px", background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)" }}>
+              <div style={{ fontSize: "11px", color: "rgba(255,255,255,0.4)", marginBottom: "8px" }}>INVITE TO ADDITIONAL SERVER</div>
+              <div style={{ display: "flex", gap: "8px", flexWrap: "wrap" }}>
+                {Object.entries(servers)
+                  .filter(([sid]) => !sf.channelAssignments.some(a => a.serverId === sid))
+                  .map(([sid, s]) => (
+                    <Btn key={sid} size="sm" variant="ghost" onClick={() => {
+                      setStaffModal(null);
+                      setShowInviteForm(true);
+                      setCreatedInvite(null);
+                      setInvF({
+                        name: sf.name,
+                        email: "",
+                        discord: sf.discordUsername,
+                        serverId: sid,
+                        role: sf.role,
+                        channelAssignments: []
+                      });
+                    }}>
+                      + Invite to {(s as {name:string}).name}
+                    </Btn>
+                  ))}
+                {Object.entries(servers).filter(([sid]) => !sf.channelAssignments.some(a => a.serverId === sid)).length === 0 && (
+                  <span style={{ fontSize: "12px", color: "rgba(255,255,255,0.3)" }}>Already has channel assignments on all servers</span>
+                )}
+              </div>
+            </div>
+          )}
           <div style={{ display: "flex", gap: "10px", justifyContent: "flex-end" }}>
             <Btn onClick={() => setStaffModal(null)} variant="ghost">Cancel</Btn>
             <Btn onClick={saveStaff} disabled={!sf.name || !sf.discordUsername}>{staffModal === "new" ? "Add Member" : "Save Changes"}</Btn>
