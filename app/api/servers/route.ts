@@ -117,6 +117,37 @@ function writeServers(data: ServersData) {
   fs.writeFileSync(SERVERS_FILE, JSON.stringify(data, null, 2));
 }
 
+// Sync Discord roles for a staff member based on their channel assignments
+async function syncDiscordRolesForMember(data: ServersData, member: StaffMember) {
+  const channelRoles = (data.config as unknown as { channelRoles?: Record<string, Record<string, { roleId: string; channelName: string }>> })?.channelRoles ?? {};
+  if (!member.channelAssignments?.length) return;
+
+  for (const assignment of member.channelAssignments) {
+    const { serverId, channelId } = assignment;
+    const token = getBotToken(data, serverId);
+    if (!token) continue;
+    const roleInfo = channelRoles[serverId]?.[channelId];
+    if (!roleInfo) continue;
+
+    let discordId = member.discordId;
+    // Look up discord ID by username if not stored
+    if (!discordId && member.discordUsername) {
+      const mRes = await discordApi(token, 'GET', `/guilds/${serverId}/members?limit=1000`);
+      if (mRes.ok && Array.isArray(mRes.data)) {
+        const found = (mRes.data as {user:{id:string;username:string}}[]).find(
+          m => m.user.username.toLowerCase() === member.discordUsername.toLowerCase()
+        );
+        if (found) { discordId = found.user.id; member.discordId = discordId; }
+      }
+    }
+    if (!discordId) continue;
+
+    try {
+      await discordApi(token, 'PUT', `/guilds/${serverId}/members/${discordId}/roles/${roleInfo.roleId}`, undefined);
+    } catch (e) { /* skip silently */ }
+  }
+}
+
 function addHistory(data: ServersData, entry: Omit<HistoryEntry, 'id' | 'timestamp'>) {
   data.history.push({ id: `h-${Date.now()}-${Math.random().toString(36).slice(2,6)}`, timestamp: new Date().toISOString(), ...entry });
 }
@@ -218,6 +249,9 @@ export async function POST(req: NextRequest) {
     data.staff[idx] = { ...prev, name: name ?? prev.name, discordUsername: discordUsername ?? prev.discordUsername, discordId: discordId ?? prev.discordId, role: role ?? prev.role, serverAdmins: serverAdmins ?? prev.serverAdmins, channelAssignments: channelAssignments ?? prev.channelAssignments };
     addHistory(data, { action: 'staff_update', staffId: id, staffName: data.staff[idx].name, details: `Updated: role=${data.staff[idx].role}, channels=${data.staff[idx].channelAssignments.length}`, performedBy: by });
     writeServers(data);
+    // Sync Discord roles after assignment update
+    await syncDiscordRolesForMember(data, data.staff[idx]).catch(console.error);
+    writeServers(data); // Save any discordId updates
     return NextResponse.json({ ok: true, member: data.staff[idx] });
   }
 
@@ -546,6 +580,19 @@ export async function POST(req: NextRequest) {
     const sendR = await discordApi(token, 'POST', `/channels/${dmR.data.id}/messages`, { content: msg });
     if (!sendR.ok) return NextResponse.json({ error: 'Could not send DM' }, { status: 500 });
     return NextResponse.json({ ok: true });
+  }
+
+  // ── Sync all Discord roles ──────────────────────────────────────────────
+  if (body.action === 'syncAllRoles') {
+    let synced = 0;
+    for (const member of data.staff) {
+      if (member.channelAssignments?.length) {
+        await syncDiscordRolesForMember(data, member).catch(console.error);
+        synced++;
+      }
+    }
+    writeServers(data);
+    return NextResponse.json({ ok: true, synced });
   }
 
   return NextResponse.json({ error: 'Unknown action' }, { status: 400 });
