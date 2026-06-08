@@ -326,6 +326,38 @@ export async function POST(req: NextRequest) {
     const newCh: Channel = { name: result.data.name, id: result.data.id, model: model || 'anthropic/claude-sonnet-4-6', agentId: `${serverSlug}-slot-${slotNum}` };
     server.channels.push(newCh);
     addHistory(data, { action: 'channel_add', serverId, channelId: newCh.id, channelName: newCh.name, details: `#${newCh.name} created in ${server.name} (agent: ${newCh.agentId})`, performedBy: by });
+    // Auto-setup Discord role for new channel (lock channel, create ch-* role)
+    try {
+      const channelRoles = (data.config as unknown as { channelRoles?: Record<string, Record<string, { roleId: string; channelName: string }>> })?.channelRoles ?? {};
+      const VIEW_CHANNEL = '1024';
+      const everyoneId = serverId; // @everyone role ID == guild ID
+
+      // Create ch-<name> role
+      const roleRes = await discordApi(token, 'POST', `/guilds/${serverId}/roles`, { name: `ch-${newCh.name}`, permissions: '0', mentionable: false, hoist: false });
+      if (roleRes.ok && roleRes.data.id) {
+        const roleId = roleRes.data.id;
+
+        // Deny @everyone from seeing the channel
+        await discordApi(token, 'PUT', `/channels/${newCh.id}/permissions/${everyoneId}`, { type: 0, deny: VIEW_CHANNEL, allow: '0' });
+
+        // Allow ch-* role to see it
+        await discordApi(token, 'PUT', `/channels/${newCh.id}/permissions/${roleId}`, { type: 0, allow: VIEW_CHANNEL, deny: '0' });
+
+        // Allow Owner role to see it
+        const rolesRes = await discordApi(token, 'GET', `/guilds/${serverId}/roles`);
+        if (rolesRes.ok && Array.isArray(rolesRes.data)) {
+          const ownerRole = (rolesRes.data as { id: string; name: string }[]).find(r => r.name === 'Owner');
+          if (ownerRole) await discordApi(token, 'PUT', `/channels/${newCh.id}/permissions/${ownerRole.id}`, { type: 0, allow: VIEW_CHANNEL, deny: '0' });
+        }
+
+        // Save to channelRoles map
+        if (!(data.config as unknown as { channelRoles?: unknown }).channelRoles) (data.config as unknown as { channelRoles: unknown }).channelRoles = {};
+        if (!channelRoles[serverId]) channelRoles[serverId] = {};
+        channelRoles[serverId][newCh.id] = { roleId, channelName: newCh.name };
+        (data.config as unknown as { channelRoles: unknown }).channelRoles = channelRoles;
+      }
+    } catch (e) { console.error('Auto role setup failed:', e); }
+
     writeServers(data);
 
     // Auto-provision the new agent workspace in the background
