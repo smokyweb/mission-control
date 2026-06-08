@@ -527,8 +527,10 @@ export async function POST(req: NextRequest) {
       const token = getBotToken(data, inv.serverId);
       if (!token) { console.warn(`No bot token for server ${inv.serverId} (${inv.serverName}), skipping`); continue; }
       const r = await discordApi(token, 'GET', `/invites/${inv.code}?with_counts=true`);
-      if (!r.ok) { console.warn(`Invite check failed for ${inv.invitedName}: ${JSON.stringify(r.data)}`); continue; }
-      if ((r.data.uses ?? 0) >= 1) {
+      // 404 means invite was used and deleted by Discord (single-use invites disappear after use)
+      const inviteWasUsed = r.status === 404 || (r.ok && (r.data.uses ?? 0) >= 1);
+      if (!r.ok && r.status !== 404) { console.warn(`Invite check failed for ${inv.invitedName}: ${JSON.stringify(r.data)}`); continue; }
+      if (inviteWasUsed) {
         inv.status = 'accepted'; inv.acceptedAt = new Date().toISOString();
         // Find who joined — members who joined after invite creation
         const mR = await discordApi(token, 'GET', `/guilds/${inv.serverId}/members?limit=1000`);
