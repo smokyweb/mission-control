@@ -121,16 +121,40 @@ function writeServers(data: ServersData) {
 async function syncDiscordRolesForMember(data: ServersData, member: StaffMember) {
   const channelRoles = (data.config as unknown as { channelRoles?: Record<string, Record<string, { roleId: string; channelName: string }>> })?.channelRoles ?? {};
   if (!member.channelAssignments?.length) return;
+  const VIEW = '1024', ALLOW = '379904'; // VIEW|SEND|READ_HIST|ATTACH|EMBED|EMOJI
+  const DENY = '67584'; // VIEW|SEND|READ_HIST
 
   for (const assignment of member.channelAssignments) {
-    const { serverId, channelId } = assignment;
+    const { serverId, channelId, channelName } = assignment;
     const token = getBotToken(data, serverId);
     if (!token) continue;
-    const roleInfo = channelRoles[serverId]?.[channelId];
+
+    let roleInfo = channelRoles[serverId]?.[channelId];
+
+    // If no role exists for this channel, create it and lock the channel
+    if (!roleInfo) {
+      try {
+        const newRole = await discordApi(token, 'POST', `/guilds/${serverId}/roles`, { name: `ch-${channelName}`, permissions: '0', mentionable: false, hoist: false });
+        if (newRole.ok && newRole.data.id) {
+          const roleId = newRole.data.id;
+          await discordApi(token, 'PUT', `/channels/${channelId}/permissions/${serverId}`, { type: 0, deny: DENY, allow: '0' });
+          await discordApi(token, 'PUT', `/channels/${channelId}/permissions/${roleId}`, { type: 0, allow: ALLOW, deny: '0' });
+          // Allow Owner role
+          const rolesRes = await discordApi(token, 'GET', `/guilds/${serverId}/roles`);
+          if (rolesRes.ok && Array.isArray(rolesRes.data)) {
+            const ownerRole = (rolesRes.data as {id:string;name:string}[]).find(r => r.name === 'Owner');
+            if (ownerRole) await discordApi(token, 'PUT', `/channels/${channelId}/permissions/${ownerRole.id}`, { type: 0, allow: ALLOW, deny: '0' });
+          }
+          if (!channelRoles[serverId]) channelRoles[serverId] = {};
+          channelRoles[serverId][channelId] = { roleId, channelName };
+          (data.config as unknown as { channelRoles: unknown }).channelRoles = channelRoles;
+          roleInfo = { roleId, channelName };
+        }
+      } catch (e) { continue; }
+    }
     if (!roleInfo) continue;
 
     let discordId = member.discordId;
-    // Look up discord ID by username if not stored
     if (!discordId && member.discordUsername) {
       const mRes = await discordApi(token, 'GET', `/guilds/${serverId}/members?limit=1000`);
       if (mRes.ok && Array.isArray(mRes.data)) {
