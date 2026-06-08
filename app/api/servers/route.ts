@@ -120,9 +120,29 @@ function writeServers(data: ServersData) {
 // Sync Discord roles for a staff member based on their channel assignments
 async function syncDiscordRolesForMember(data: ServersData, member: StaffMember) {
   const channelRoles = (data.config as unknown as { channelRoles?: Record<string, Record<string, { roleId: string; channelName: string }>> })?.channelRoles ?? {};
-  if (!member.channelAssignments?.length) return;
   const VIEW = '1024', ALLOW = '379904'; // VIEW|SEND|READ_HIST|ATTACH|EMBED|EMOJI
   const DENY = '67584'; // VIEW|SEND|READ_HIST
+
+  // If member is a server admin on any servers, assign ALL channel roles for those servers
+  for (const serverId of (member.serverAdmins || [])) {
+    const token = getBotToken(data, serverId);
+    if (!token) continue;
+    let discordId = member.discordId;
+    if (!discordId && member.discordUsername) {
+      const mRes = await discordApi(token, 'GET', `/guilds/${serverId}/members?limit=1000`);
+      if (mRes.ok && Array.isArray(mRes.data)) {
+        const found = (mRes.data as {user:{id:string;username:string}}[]).find(m => m.user.username.toLowerCase() === member.discordUsername.toLowerCase());
+        if (found) { discordId = found.user.id; member.discordId = discordId; }
+      }
+    }
+    if (!discordId) continue;
+    // Assign all ch-* roles for this server
+    for (const [, roleInfo] of Object.entries(channelRoles[serverId] ?? {})) {
+      try { await discordApi(token, 'PUT', `/guilds/${serverId}/members/${discordId}/roles/${roleInfo.roleId}`, undefined); } catch { /* skip */ }
+    }
+  }
+
+  if (!member.channelAssignments?.length) return;
 
   for (const assignment of member.channelAssignments) {
     const { serverId, channelId, channelName } = assignment;
