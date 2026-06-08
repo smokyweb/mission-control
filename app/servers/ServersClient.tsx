@@ -541,7 +541,7 @@ export default function ServersClient({ portalUser = null }: { portalUser?: Port
                   <span style={{ fontSize: "11px", color: "rgba(255,255,255,0.3)" }}>{selectedServer}</span>
                 </div>
                 <div style={{ display: "flex", gap: "8px" }}>
-                  {canInvite && <Btn onClick={() => setInviteModal({ serverId: selectedServer, serverName: server.name })} variant="ghost" size="sm">+ Invite Link</Btn>}
+                  {canInvite && <Btn onClick={() => { setShowInviteForm(true); setCreatedInvite(null); setInviteEmailSent(false); setInvF({ name: "", email: "", discord: "", serverId: selectedServer, role: "staff", channelAssignments: [] }); }} variant="ghost" size="sm">📧 Send Invite</Btn>}
                 </div>
               </div>
 
@@ -1066,17 +1066,7 @@ export default function ServersClient({ portalUser = null }: { portalUser?: Port
         </Modal>
       )}
 
-      {/* ── INVITE MODAL ─────────────────────────────────────────────────── */}
-      {inviteModal && (
-        <Modal onClose={() => { setInviteModal(null); setCopied(false); }} title={`Invite Link - ${inviteModal.serverName}`} width={520}>
-          <p style={{ fontSize: "12px", color: "rgba(255,255,255,0.4)", marginBottom: "16px" }}>Replace BOT_ID with your actual bot client ID before sharing.</p>
-          <div style={{ background: PAGE_BG, border: `1px solid ${GOLD_BORDER}`, borderRadius: "8px", padding: "12px", marginBottom: "20px", fontFamily: "monospace", fontSize: "11px", color: "rgba(255,255,255,0.7)", wordBreak: "break-all" }}>{inviteLink(inviteModal.serverId)}</div>
-          <div style={{ display: "flex", gap: "10px" }}>
-            <button onClick={() => copyInvite(inviteModal.serverId)} style={{ flex: 1, padding: "10px", borderRadius: "8px", fontWeight: 700, fontSize: "13px", background: copied ? "#22c55e" : GOLD, color: "#000", border: "none", cursor: "pointer" }}>{copied ? "✓ Copied!" : "Copy Link"}</button>
-            <Btn onClick={() => { setInviteModal(null); setCopied(false); }} variant="ghost">Close</Btn>
-          </div>
-        </Modal>
-      )}
+      {/* INVITE MODAL removed - replaced by Send Invite form */}
 
       {/* ── CONFIG MODAL — superadmin only ───────────────────────────────── */}
       {showConfig && canConfig && (
