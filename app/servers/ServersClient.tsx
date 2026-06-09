@@ -928,7 +928,8 @@ export default function ServersClient({ portalUser = null }: { portalUser?: Port
             <div><label style={{ fontSize: "11px", color: "rgba(255,255,255,0.5)", display: "block", marginBottom: "5px" }}>Role *</label><Select value={sf.role} onChange={v => setSf(p => ({...p, role: v}))} options={allowedRoleOptions} /></div>
           </div>
           <div style={{ marginBottom: "14px" }}>
-            <div style={{ fontSize: "11px", color: "rgba(255,255,255,0.5)", marginBottom: "8px" }}>Discord Server Admin</div>
+            <div style={{ fontSize: "11px", color: "rgba(255,255,255,0.5)", marginBottom: "4px" }}>Discord Server Admin</div>
+            <div style={{ fontSize: "10px", color: "rgba(255,100,100,0.6)", marginBottom: "8px" }}>⚠️ Grants access to ALL channels on selected server(s). Only set for trusted admins.</div>
             <div style={{ display: "flex", gap: "8px", flexWrap: "wrap" }}>
               {Object.entries(servers).map(([id, s]) => (
                 <button key={id} onClick={() => toggleServerAdmin(id)} style={{ padding: "5px 14px", borderRadius: "99px", fontSize: "12px", fontWeight: 600, cursor: "pointer", background: sf.serverAdmins.includes(id) ? `${SERVER_COLORS[s.name] ?? "#6366f1"}33` : "transparent", color: sf.serverAdmins.includes(id) ? SERVER_COLORS[s.name] ?? "#6366f1" : "rgba(255,255,255,0.4)", border: `1px solid ${sf.serverAdmins.includes(id) ? SERVER_COLORS[s.name] ?? "#6366f1" : "rgba(255,255,255,0.15)"}` }}>{s.name}</button>
