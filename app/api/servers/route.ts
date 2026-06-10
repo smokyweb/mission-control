@@ -7,6 +7,8 @@ import https from 'https';
 
 // DATA_DIR env var allows overriding the data directory for cloud deployments
 const DATA_DIR = process.env.DATA_DIR || path.join(process.env.USERPROFILE || process.env.HOME || '', '.openclaw', 'workspace');
+// Ensure data directory exists
+try { if (!fs.existsSync(DATA_DIR)) fs.mkdirSync(DATA_DIR, { recursive: true }); } catch { /* ignore */ }
 const GMAIL_CREDS_FILE = path.join(DATA_DIR, 'gmail-knoxweb-creds.json');
 
 // In-memory token cache for Gmail
