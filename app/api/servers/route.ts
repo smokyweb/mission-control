@@ -377,25 +377,25 @@ export async function POST(req: NextRequest) {
     // Auto-setup Discord role for new channel (lock channel, create ch-* role)
     try {
       const channelRoles = (data.config as unknown as { channelRoles?: Record<string, Record<string, { roleId: string; channelName: string }>> })?.channelRoles ?? {};
-      const VIEW_CHANNEL = '1024';
-      const everyoneId = serverId; // @everyone role ID == guild ID
+      const FULL_ALLOW = '379904'; // VIEW+SEND+READ_HIST+ATTACH+EMBED+EMOJI
+      const DENY_ALL = (BigInt(1024)|BigInt(2048)|BigInt(65536)).toString();
+      const everyoneId = serverId;
 
       // Create ch-<name> role
       const roleRes = await discordApi(token, 'POST', `/guilds/${serverId}/roles`, { name: `ch-${newCh.name}`, permissions: '0', mentionable: false, hoist: false });
       if (roleRes.ok && roleRes.data.id) {
         const roleId = roleRes.data.id;
 
-        // Deny @everyone from seeing the channel
-        await discordApi(token, 'PUT', `/channels/${newCh.id}/permissions/${everyoneId}`, { type: 0, deny: VIEW_CHANNEL, allow: '0' });
+        // Deny @everyone
+        await discordApi(token, 'PUT', `/channels/${newCh.id}/permissions/${everyoneId}`, { type: 0, deny: DENY_ALL, allow: '0' });
+        // Allow ch-* role full permissions
+        await discordApi(token, 'PUT', `/channels/${newCh.id}/permissions/${roleId}`, { type: 0, allow: FULL_ALLOW, deny: '0' });
 
-        // Allow ch-* role to see it
-        await discordApi(token, 'PUT', `/channels/${newCh.id}/permissions/${roleId}`, { type: 0, allow: VIEW_CHANNEL, deny: '0' });
-
-        // Allow Owner role to see it
+        // Allow Owner role
         const rolesRes = await discordApi(token, 'GET', `/guilds/${serverId}/roles`);
         if (rolesRes.ok && Array.isArray(rolesRes.data)) {
           const ownerRole = (rolesRes.data as { id: string; name: string }[]).find(r => r.name === 'Owner');
-          if (ownerRole) await discordApi(token, 'PUT', `/channels/${newCh.id}/permissions/${ownerRole.id}`, { type: 0, allow: VIEW_CHANNEL, deny: '0' });
+          if (ownerRole) await discordApi(token, 'PUT', `/channels/${newCh.id}/permissions/${ownerRole.id}`, { type: 0, allow: FULL_ALLOW, deny: '0' });
         }
 
         // Save to channelRoles map
@@ -403,6 +403,12 @@ export async function POST(req: NextRequest) {
         if (!channelRoles[serverId]) channelRoles[serverId] = {};
         channelRoles[serverId][newCh.id] = { roleId, channelName: newCh.name };
         (data.config as unknown as { channelRoles: unknown }).channelRoles = channelRoles;
+
+        // Assign new role to all server admins on this server
+        const serverAdmins = data.staff.filter(s => s.serverAdmins?.includes(serverId) && s.discordId);
+        for (const admin of serverAdmins) {
+          await discordApi(token, 'PUT', `/guilds/${serverId}/members/${admin.discordId}/roles/${roleId}`, undefined);
+        }
       }
     } catch (e) { console.error('Auto role setup failed:', e); }
 
