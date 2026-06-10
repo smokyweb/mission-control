@@ -5,7 +5,9 @@ import crypto from 'crypto';
 import { spawn } from 'child_process';
 import https from 'https';
 
-const GMAIL_CREDS_FILE = path.join(process.env.USERPROFILE || process.env.HOME || '', '.openclaw', 'workspace', 'gmail-knoxweb-creds.json');
+// DATA_DIR env var allows overriding the data directory for cloud deployments
+const DATA_DIR = process.env.DATA_DIR || path.join(process.env.USERPROFILE || process.env.HOME || '', '.openclaw', 'workspace');
+const GMAIL_CREDS_FILE = path.join(DATA_DIR, 'gmail-knoxweb-creds.json');
 
 // In-memory token cache for Gmail
 let gmailTokenCache: { token: string | null; expiresAt: number } = { token: null, expiresAt: 0 };
@@ -50,7 +52,7 @@ async function sendGmail({ to, subject, htmlBody }: { to: string; subject: strin
   });
 }
 
-const SERVERS_FILE = path.join(process.env.USERPROFILE || process.env.HOME || '', '.openclaw', 'workspace', 'servers.json');
+const SERVERS_FILE = path.join(DATA_DIR, 'servers.json');
 
 // ── Types ─────────────────────────────────────────────────────────────────────
 interface Channel { name: string; id: string; model: string; agentId: string; }
@@ -405,7 +407,7 @@ export async function POST(req: NextRequest) {
     writeServers(data);
 
     // Auto-provision the new agent workspace in the background
-    const SCRIPT = path.join(process.env.USERPROFILE || process.env.HOME || '', '.openclaw', 'workspace', 'provision-server.py');
+    const SCRIPT = path.join(DATA_DIR, 'provision-server.py');
     const machinesMap = (data.config as unknown as { machines?: Record<string, unknown> })?.machines ?? {};
     const hasMachine = !!machinesMap[serverId];
     if (hasMachine) {
@@ -675,3 +677,4 @@ export async function POST(req: NextRequest) {
 
   return NextResponse.json({ error: 'Unknown action' }, { status: 400 });
 }
+

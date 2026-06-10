@@ -44,6 +44,8 @@ export default function NavBar() {
     { href: "/brent",         label: "Brent",         icon: "/icons/icon-10.png" },
     { href: "/team",          label: "Team",          icon: "/icons/icon-10.png" },
     { href: "/office",        label: "Office",        icon: "/icons/icon-16.png" },
+    { href: "/servers",       label: "Servers",       icon: "/icons/icon-14.png" },
+    { href: "/servers/cli",   label: "Servers CLI",   icon: "/icons/icon-14.png" },
   ];
 
   return (
