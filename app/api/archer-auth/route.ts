@@ -1,8 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { cookies } from "next/headers";
 
-const ARCHER_EMAIL = "archer@bluestoneapps.com";
-const ARCHER_PASSWORD = "archer2026";
+const ARCHER_EMAIL = process.env.ARCHER_EMAIL || "archer@bluestoneapps.com";
+const ARCHER_PASSWORD = process.env.ARCHER_PASSWORD || "archer2026";
 const COOKIE_NAME = "archer_session";
 const COOKIE_VALUE = "archer-authenticated-2026";
 
@@ -34,3 +34,4 @@ export async function GET() {
   const session = cookieStore.get(COOKIE_NAME);
   return NextResponse.json({ authenticated: session?.value === COOKIE_VALUE });
 }
+

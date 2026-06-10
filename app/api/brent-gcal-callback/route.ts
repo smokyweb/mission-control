@@ -3,8 +3,8 @@ import fs from "fs";
 import path from "path";
 import os from "os";
 
-const CLIENT_ID = "385361697637-h7pkua5eln05m1hl6mrrp4oel9sirjfm.apps.googleusercontent.com";
-const CLIENT_SECRET = "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";
+const CLIENT_ID = process.env.GOOGLE_BRENT_GCAL_CLIENT_ID || "";
+const CLIENT_SECRET = process.env.GOOGLE_BRENT_GCAL_CLIENT_SECRET || "";
 const REDIRECT_URI = "https://missions.batmanbluestone.com/api/brent-gcal-callback";
 
 export async function GET(req: NextRequest) {
@@ -69,3 +69,4 @@ export async function GET(req: NextRequest) {
     return new NextResponse(`<h1>Error: ${msg}</h1>`, { headers: { "Content-Type": "text/html" } });
   }
 }
+

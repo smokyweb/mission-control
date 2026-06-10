@@ -3,8 +3,8 @@ import fs from "fs";
 import path from "path";
 import os from "os";
 
-const CLIENT_ID = "385361697637-l8prn92u59vlpeuof952s6umq3knj4g8.apps.googleusercontent.com";
-const CLIENT_SECRET = "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";
+const CLIENT_ID = process.env.GOOGLE_GCAL_CLIENT_ID || "";
+const CLIENT_SECRET = process.env.GOOGLE_GCAL_CLIENT_SECRET || "";
 const REDIRECT_URI = process.env.NODE_ENV === "production" 
   ? "https://missions.batmanbluestone.com/api/gcal-callback"
   : "http://localhost:3000/api/gcal-callback";
@@ -68,3 +68,4 @@ export async function GET(req: NextRequest) {
     return new NextResponse(`<h1>Error: ${msg}</h1>`, { headers: { "Content-Type": "text/html" } });
   }
 }
+

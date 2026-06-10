@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 
-const CLIENT_ID = "385361697637-l8prn92u59vlpeuof952s6umq3knj4g8.apps.googleusercontent.com";
+const CLIENT_ID = process.env.GOOGLE_GCAL_CLIENT_ID || "";
 const REDIRECT_URI = process.env.NODE_ENV === "production" 
   ? "https://missions.batmanbluestone.com/api/gcal-callback"
   : "http://localhost:3000/api/gcal-callback";
@@ -19,3 +19,4 @@ export async function GET() {
 
   return NextResponse.redirect(url.toString());
 }
+
