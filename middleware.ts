@@ -12,7 +12,8 @@ export function middleware(request: NextRequest) {
     pathname.startsWith('/api/') ||
     pathname.startsWith('/portal/') ||
     pathname === '/batcave-login' ||
-    pathname.startsWith('/batcave-login')
+    pathname.startsWith('/batcave-login') ||
+    pathname.startsWith('/(auth)')
   ) {
     return NextResponse.next();
   }

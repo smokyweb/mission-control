@@ -19,7 +19,7 @@ export async function POST(req: NextRequest) {
       const res = NextResponse.json({ ok: true, role: 'superadmin' });
       res.cookies.set('batcave_session', 'authenticated', {
         httpOnly: true,
-        secure: true,
+        secure: process.env.NODE_ENV === 'production',
         sameSite: 'lax',
         maxAge: 60 * 60 * 24 * 30, // 30 days
         path: '/',

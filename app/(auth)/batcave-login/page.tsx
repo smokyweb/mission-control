@@ -1,10 +1,22 @@
 'use client';
-import { useState, Suspense } from 'react';
+import { useState, Suspense, useEffect } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 
 function LoginForm() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  // Hide the sidebar/navbar that comes from root layout
+  useEffect(() => {
+    const sidebar = document.querySelector('aside') as HTMLElement | null;
+    const main = document.querySelector('main') as HTMLElement | null;
+    if (sidebar) sidebar.style.display = 'none';
+    if (main) { main.style.marginLeft = '0'; main.style.width = '100%'; }
+    return () => {
+      if (sidebar) sidebar.style.display = '';
+      if (main) { main.style.marginLeft = ''; main.style.width = ''; }
+    };
+  }, []);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const router = useRouter();
