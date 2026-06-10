@@ -155,6 +155,8 @@ export default function ServersClient({ portalUser = null }: { portalUser?: Port
   const [sendingDM, setSendingDM] = useState<string | null>(null);
   const [serverMembers, setServerMembers] = useState<{id:string;username:string;nick:string|null;joinedAt:string;serverId:string;serverName:string}[]>([]);
   const [syncingMembers, setSyncingMembers] = useState(false);
+  const [syncingRoles, setSyncingRoles] = useState(false);
+  const [lockingChannels, setLockingChannels] = useState(false);
   const [provisionModal, setProvisionModal] = useState<{ serverId: string; serverName: string } | null>(null);
   const [provisioning, setProvisioning] = useState(false);
   const [provisionResult, setProvisionResult] = useState<{ ok?: boolean; error?: string; provisioned: number; skipped: number; results: { agent: string; channel: string; model?: string; status: string }[] } | null>(null);
@@ -300,6 +302,23 @@ export default function ServersClient({ portalUser = null }: { portalUser?: Port
     const deduped = allMembers.filter(m => { if (seen.has(m.id)) return false; seen.add(m.id); return true; });
     setServerMembers(deduped);
     setSyncingMembers(false);
+  };
+
+  const syncAllRoles = async () => {
+    setSyncingRoles(true);
+    const r = await api('syncAllRoles', {});
+    setSyncingRoles(false);
+    if (r.ok) alert(`Roles synced for ${r.synced} staff members across all servers.`);
+    else alert('Sync failed: ' + (r.error || 'unknown error'));
+  };
+
+  const lockAllChannels = async () => {
+    if (!confirm('Lock & register all unlocked channels across all servers? This will create ch-* roles for any channels missing them.')) return;
+    setLockingChannels(true);
+    const r = await api('lockAllChannels', {});
+    setLockingChannels(false);
+    if (r.ok) alert(`Done! Fixed ${r.fixed} unlocked channels across all servers.`);
+    else alert('Failed: ' + (r.error || 'unknown error'));
   };
 
   const addMemberAsStaff = async (member: {id:string;username:string;serverId:string}) => {
@@ -661,6 +680,12 @@ export default function ServersClient({ portalUser = null }: { portalUser?: Port
               )}
               <Btn onClick={syncMembers} disabled={syncingMembers} variant="ghost" size="sm">
                 {syncingMembers ? "Syncing…" : "🔄 Sync Server Members"}
+              </Btn>
+              <Btn onClick={syncAllRoles} disabled={syncingRoles} variant="ghost" size="sm">
+                {syncingRoles ? "Syncing roles…" : "🔄 Sync All Roles"}
+              </Btn>
+              <Btn onClick={lockAllChannels} disabled={lockingChannels} variant="ghost" size="sm">
+                {lockingChannels ? "Locking…" : "🔒 Lock All Channels"}
               </Btn>
             </div>
           </div>

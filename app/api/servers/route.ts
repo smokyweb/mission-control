@@ -677,6 +677,49 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ ok: true, synced });
   }
 
+  // ── Lock all channels across all servers ──────────────────────────────
+  if (body.action === 'lockAllChannels') {
+    const DENY = (BigInt(1024)|BigInt(2048)|BigInt(65536)).toString();
+    const ALLOW_FULL = '379904';
+    const OPEN_CHANNELS = new Set(['general','main','activity-planner']);
+    const channelRolesMap = (data.config as unknown as { channelRoles?: Record<string, Record<string, { roleId: string; channelName: string }>> })?.channelRoles ?? {};
+    let totalFixed = 0;
+
+    for (const [guildId, server] of Object.entries(data.servers)) {
+      const token = getBotToken(data, guildId);
+      if (!token) continue;
+      const channelsRes = await discordApi(token, 'GET', `/guilds/${guildId}/channels`);
+      if (!channelsRes.ok || !Array.isArray(channelsRes.data)) continue;
+      const rolesRes = await discordApi(token, 'GET', `/guilds/${guildId}/roles`);
+      const ownerRole = rolesRes.ok && Array.isArray(rolesRes.data) ? (rolesRes.data as {id:string;name:string}[]).find(r => r.name === 'Owner') : null;
+
+      for (const ch of (channelsRes.data as {id:string;name:string;type:number;permission_overwrites:{id:string;deny:string;type:number}[]}[])) {
+        if (ch.type !== 0 || OPEN_CHANNELS.has(ch.name)) continue;
+        const everyoneDeny = ch.permission_overwrites?.find(p => p.id === guildId && parseInt(p.deny) > 0);
+        const roleInfo = channelRolesMap[guildId]?.[ch.id];
+        if (everyoneDeny && roleInfo) continue; // already set up
+
+        // Create role if missing
+        let roleId = roleInfo?.roleId;
+        if (!roleInfo) {
+          const nr = await discordApi(token, 'POST', `/guilds/${guildId}/roles`, { name: `ch-${ch.name}`, permissions: '0', mentionable: false, hoist: false });
+          if (nr.ok && nr.data.id) {
+            roleId = nr.data.id;
+            if (!channelRolesMap[guildId]) channelRolesMap[guildId] = {};
+            channelRolesMap[guildId][ch.id] = { roleId, channelName: ch.name };
+          }
+        }
+        await discordApi(token, 'PUT', `/channels/${ch.id}/permissions/${guildId}`, { type: 0, deny: DENY, allow: '0' });
+        if (roleId) await discordApi(token, 'PUT', `/channels/${ch.id}/permissions/${roleId}`, { type: 0, allow: ALLOW_FULL, deny: '0' });
+        if (ownerRole) await discordApi(token, 'PUT', `/channels/${ch.id}/permissions/${ownerRole.id}`, { type: 0, allow: ALLOW_FULL, deny: '0' });
+        totalFixed++;
+      }
+    }
+    (data.config as unknown as { channelRoles: unknown }).channelRoles = channelRolesMap;
+    writeServers(data);
+    return NextResponse.json({ ok: true, fixed: totalFixed });
+  }
+
   return NextResponse.json({ error: 'Unknown action' }, { status: 400 });
 }
 
