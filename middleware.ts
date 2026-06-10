@@ -1,30 +1,18 @@
 import { NextRequest, NextResponse } from 'next/server';
-import crypto from 'crypto';
 
 const COOKIE_NAME = 'batcave_session';
-// Portal users auth is handled by the app itself via servers.json
-// This middleware protects non-portal routes with a simple session check
-
-function hashPassword(password: string): string {
-  return crypto.createHash('sha256').update(password + 'batcave-servers-salt-2026').digest('hex');
-}
-
-// Super admin credentials (for main batcave access)
-const SUPER_ADMINS: Record<string, string> = {
-  'kevin@bluestoneapps.com': hashPassword('@@@.Kevin1.@@@'),
-};
 
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
-  // Always allow static assets, API routes, and portal routes
+  // Always allow static assets, API routes, login page, and portal routes
   if (
     pathname.startsWith('/_next') ||
     pathname.startsWith('/favicon') ||
     pathname.startsWith('/api/') ||
     pathname.startsWith('/portal/') ||
     pathname === '/batcave-login' ||
-    pathname.startsWith('/public/')
+    pathname.startsWith('/batcave-login')
   ) {
     return NextResponse.next();
   }
