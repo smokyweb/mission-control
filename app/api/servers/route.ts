@@ -221,8 +221,16 @@ async function discordApi(token: string, method: string, endpoint: string, body?
     headers: { 'Authorization': `Bot ${token}`, 'Content-Type': 'application/json' },
     ...(body ? { body: JSON.stringify(body) } : {}),
   });
-  const json = await res.json();
-  return { ok: res.ok, status: res.status, data: json };
+  // 204 No Content has empty body — don't try to parse
+  if (res.status === 204 || res.headers.get('content-length') === '0') {
+    return { ok: res.ok, status: res.status, data: null };
+  }
+  try {
+    const json = await res.json();
+    return { ok: res.ok, status: res.status, data: json };
+  } catch {
+    return { ok: res.ok, status: res.status, data: null };
+  }
 }
 
 // ── GET ───────────────────────────────────────────────────────────────────────
