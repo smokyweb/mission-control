@@ -326,7 +326,7 @@ export default function ServersClient({ portalUser = null }: { portalUser?: Port
     setSyncingAll(true);
     const r = await api('syncAll', {});
     setSyncingAll(false);
-    if (r.ok) alert(`Sync complete! Locked ${r.fixedChannels} new channels, synced ${r.synced} staff members.`);
+    if (r.ok) alert(`Sync complete!\nLocked ${r.fixedChannels} new channels\nSynced ${r.synced} staff members\nClearing thinking blocks in background...`);
     else alert('Sync failed: ' + (r.error || 'unknown error'));
   };
 

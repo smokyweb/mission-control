@@ -729,7 +729,17 @@ export async function POST(req: NextRequest) {
       }
     }
     writeServers(data);
-    return NextResponse.json({ ok: true, fixedChannels, synced });
+    // Fire-and-forget: clear stale thinking blocks on all servers
+    const THINKING_SCRIPT = path.join(process.env.USERPROFILE || process.env.HOME || '', '.openclaw', 'agents', 'axelsonnet4', 'workspace', 'fix-all-thinking-blocks.py');
+    const STONYX_SCRIPT = path.join(process.env.USERPROFILE || process.env.HOME || '', '.openclaw', 'agents', 'axelsonnet4', 'workspace', 'fix-stonyx-thinking2.py');
+    const AGENT_SYNC_SCRIPT = path.join(process.env.USERPROFILE || process.env.HOME || '', '.openclaw', 'agents', 'axelsonnet4', 'workspace', 'sync-channel-assignments-to-agents.py');
+    [THINKING_SCRIPT, STONYX_SCRIPT, AGENT_SYNC_SCRIPT].forEach(script => {
+      try {
+        const child = spawn('python', [script], { detached: true, stdio: 'ignore' });
+        child.unref();
+      } catch { /* ignore */ }
+    });
+    return NextResponse.json({ ok: true, fixedChannels, synced, backgroundTasks: 'clearing thinking blocks + syncing agent permissions' });
   }
 
   if (body.action === 'syncAllRoles') {
