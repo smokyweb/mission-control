@@ -307,6 +307,15 @@ export async function POST(req: NextRequest) {
     writeServers(data);
     // Sync Discord roles after assignment update
     await syncDiscordRolesForMember(data, data.staff[idx]).catch(console.error);
+    // Also ensure all server admins have roles for any servers this member is an admin on
+    if (data.staff[idx].serverAdmins?.length) {
+      for (const adminServerId of data.staff[idx].serverAdmins) {
+        const otherAdmins = data.staff.filter(s => s.serverAdmins?.includes(adminServerId) && s.discordId && s.id !== id);
+        for (const otherAdmin of otherAdmins) {
+          await syncDiscordRolesForMember(data, otherAdmin).catch(console.error);
+        }
+      }
+    }
     writeServers(data); // Save any discordId updates
     return NextResponse.json({ ok: true, member: data.staff[idx] });
   }
@@ -682,7 +691,8 @@ export async function POST(req: NextRequest) {
   if (body.action === 'syncAllRoles') {
     let synced = 0;
     for (const member of data.staff) {
-      if (member.channelAssignments?.length) {
+      // Sync anyone with channel assignments OR server admin status
+      if (member.channelAssignments?.length || member.serverAdmins?.length) {
         await syncDiscordRolesForMember(data, member).catch(console.error);
         synced++;
       }
