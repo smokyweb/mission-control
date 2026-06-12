@@ -157,6 +157,7 @@ export default function ServersClient({ portalUser = null }: { portalUser?: Port
   const [syncingMembers, setSyncingMembers] = useState(false);
   const [syncingRoles, setSyncingRoles] = useState(false);
   const [lockingChannels, setLockingChannels] = useState(false);
+  const [syncingAll, setSyncingAll] = useState(false);
   const [provisionModal, setProvisionModal] = useState<{ serverId: string; serverName: string } | null>(null);
   const [provisioning, setProvisioning] = useState(false);
   const [provisionResult, setProvisionResult] = useState<{ ok?: boolean; error?: string; provisioned: number; skipped: number; results: { agent: string; channel: string; model?: string; status: string }[] } | null>(null);
@@ -319,6 +320,14 @@ export default function ServersClient({ portalUser = null }: { portalUser?: Port
     setLockingChannels(false);
     if (r.ok) alert(`Done! Fixed ${r.fixed} unlocked channels across all servers.`);
     else alert('Failed: ' + (r.error || 'unknown error'));
+  };
+
+  const syncEverything = async () => {
+    setSyncingAll(true);
+    const r = await api('syncAll', {});
+    setSyncingAll(false);
+    if (r.ok) alert(`Sync complete! Locked ${r.fixedChannels} new channels, synced ${r.synced} staff members.`);
+    else alert('Sync failed: ' + (r.error || 'unknown error'));
   };
 
   const addMemberAsStaff = async (member: {id:string;username:string;serverId:string}) => {
@@ -681,11 +690,14 @@ export default function ServersClient({ portalUser = null }: { portalUser?: Port
               <Btn onClick={syncMembers} disabled={syncingMembers} variant="ghost" size="sm">
                 {syncingMembers ? "Syncing…" : "🔄 Sync Server Members"}
               </Btn>
+              <button onClick={syncEverything} disabled={syncingAll} style={{ padding: '5px 14px', borderRadius: '8px', fontSize: '12px', fontWeight: 700, cursor: syncingAll ? 'default' : 'pointer', background: 'rgba(245,197,0,0.15)', border: '1px solid rgba(245,197,0,0.4)', color: '#f5c518', opacity: syncingAll ? 0.6 : 1 }}>
+                {syncingAll ? "⏳ Syncing Everything…" : "⚡ Sync Everything"}
+              </button>
               <Btn onClick={syncAllRoles} disabled={syncingRoles} variant="ghost" size="sm">
-                {syncingRoles ? "Syncing roles…" : "🔄 Sync All Roles"}
+                {syncingRoles ? "Syncing roles…" : "🔄 Sync Roles"}
               </Btn>
               <Btn onClick={lockAllChannels} disabled={lockingChannels} variant="ghost" size="sm">
-                {lockingChannels ? "Locking…" : "🔒 Lock All Channels"}
+                {lockingChannels ? "Locking…" : "🔒 Lock Channels"}
               </Btn>
             </div>
           </div>

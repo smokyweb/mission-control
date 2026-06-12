@@ -688,6 +688,50 @@ export async function POST(req: NextRequest) {
   }
 
   // ── Sync all Discord roles ──────────────────────────────────────────────
+  // ── Sync All (roles + lock channels + agent permissions) ────────────────────
+  if (body.action === 'syncAll') {
+    // 1. Lock all channels
+    const DENY_V = (BigInt(1024)|BigInt(2048)|BigInt(65536)).toString();
+    const ALLOW_V = '379904';
+    const OPEN_V = new Set(['general','main','activity-planner']);
+    const cRolesV = (data.config as unknown as { channelRoles?: Record<string, Record<string, { roleId: string; channelName: string }>> })?.channelRoles ?? {};
+    let fixedChannels = 0;
+    for (const [guildId] of Object.entries(data.servers)) {
+      const tok = getBotToken(data, guildId);
+      if (!tok) continue;
+      const chRes = await discordApi(tok, 'GET', `/guilds/${guildId}/channels`);
+      if (!chRes.ok || !Array.isArray(chRes.data)) continue;
+      const rolesRes = await discordApi(tok, 'GET', `/guilds/${guildId}/roles`);
+      const ownerR = rolesRes.ok && Array.isArray(rolesRes.data) ? (rolesRes.data as {id:string;name:string}[]).find(r=>r.name==='Owner') : null;
+      for (const ch of (chRes.data as {id:string;name:string;type:number;permission_overwrites:{id:string;deny:string;type:number}[]}[])) {
+        if (ch.type !== 0 || OPEN_V.has(ch.name)) continue;
+        const evDeny = ch.permission_overwrites?.find(p=>p.id===guildId&&parseInt(p.deny)>0);
+        const rInfo = cRolesV[guildId]?.[ch.id];
+        if (evDeny && rInfo) continue;
+        let rId = rInfo?.roleId;
+        if (!rInfo) {
+          const nr = await discordApi(tok,'POST',`/guilds/${guildId}/roles`,{name:`ch-${ch.name}`,permissions:'0',mentionable:false,hoist:false});
+          if (nr.ok && nr.data?.id) { rId=nr.data.id; if(!cRolesV[guildId])cRolesV[guildId]={};cRolesV[guildId][ch.id]={roleId:rId,channelName:ch.name}; }
+        }
+        await discordApi(tok,'PUT',`/channels/${ch.id}/permissions/${guildId}`,{type:0,deny:DENY_V,allow:'0'});
+        if (rId) await discordApi(tok,'PUT',`/channels/${ch.id}/permissions/${rId}`,{type:0,allow:ALLOW_V,deny:'0'});
+        if (ownerR) await discordApi(tok,'PUT',`/channels/${ch.id}/permissions/${ownerR.id}`,{type:0,allow:ALLOW_V,deny:'0'});
+        fixedChannels++;
+      }
+    }
+    (data.config as unknown as { channelRoles: unknown }).channelRoles = cRolesV;
+    // 2. Sync all roles
+    let synced = 0;
+    for (const member of data.staff) {
+      if (member.channelAssignments?.length || member.serverAdmins?.length) {
+        await syncDiscordRolesForMember(data, member).catch(console.error);
+        synced++;
+      }
+    }
+    writeServers(data);
+    return NextResponse.json({ ok: true, fixedChannels, synced });
+  }
+
   if (body.action === 'syncAllRoles') {
     let synced = 0;
     for (const member of data.staff) {
