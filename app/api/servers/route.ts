@@ -756,6 +756,24 @@ export async function POST(req: NextRequest) {
   }
 
   // ── Lock all channels across all servers ──────────────────────────────
+  // ── Clear thinking blocks for a specific channel ────────────────────
+  if (body.action === 'clearChannelThinking') {
+    const { serverId: clearServerId, channelId: clearChannelId } = body;
+    if (!clearServerId || !clearChannelId) return NextResponse.json({ error: 'serverId and channelId required' }, { status: 400 });
+    // Find the agent for this channel
+    const clearServer = data.servers[clearServerId];
+    const clearChannel = clearServer?.channels?.find((c: {id: string; agentId?: string}) => c.id === clearChannelId);
+    const agentId = clearChannel?.agentId;
+    const machinesMap = (data.config as unknown as { machines?: Record<string, { host?: string; port?: number; user?: string; password?: string }> })?.machines ?? {};
+    const machine = machinesMap[clearServerId];
+    if (!machine?.host || !machine?.password) return NextResponse.json({ error: 'No SSH credentials for this server' }, { status: 400 });
+    // Run clearing script via spawn
+    const clearScript = path.join(process.env.USERPROFILE || process.env.HOME || '', '.openclaw', 'agents', 'axelsonnet4', 'workspace', 'fix-all-thinking-blocks.py');
+    const child = spawn('python', [clearScript], { detached: true, stdio: 'ignore' });
+    child.unref();
+    return NextResponse.json({ ok: true, message: `Clearing thinking blocks for ${clearChannel?.name || clearChannelId} on ${clearServer?.name || clearServerId}. This runs in background.`, agentId });
+  }
+
   if (body.action === 'lockAllChannels') {
     const DENY = (BigInt(1024)|BigInt(2048)|BigInt(65536)).toString();
     const ALLOW_FULL = '379904';

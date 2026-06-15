@@ -158,6 +158,7 @@ export default function ServersClient({ portalUser = null }: { portalUser?: Port
   const [syncingRoles, setSyncingRoles] = useState(false);
   const [lockingChannels, setLockingChannels] = useState(false);
   const [syncingAll, setSyncingAll] = useState(false);
+  const [clearingThinking, setClearingThinking] = useState<string | null>(null);
   const [provisionModal, setProvisionModal] = useState<{ serverId: string; serverName: string } | null>(null);
   const [provisioning, setProvisioning] = useState(false);
   const [provisionResult, setProvisionResult] = useState<{ ok?: boolean; error?: string; provisioned: number; skipped: number; results: { agent: string; channel: string; model?: string; status: string }[] } | null>(null);
@@ -320,6 +321,15 @@ export default function ServersClient({ portalUser = null }: { portalUser?: Port
     setLockingChannels(false);
     if (r.ok) alert(`Done! Fixed ${r.fixed} unlocked channels across all servers.`);
     else alert('Failed: ' + (r.error || 'unknown error'));
+  };
+
+  const clearChannelThinking = async (serverId: string, channelId: string, channelName: string) => {
+    if (!confirm(`Clear thinking blocks for #${channelName}? This fixes the "Invalid signature in thinking block" error.`)) return;
+    setClearingThinking(channelId);
+    const r = await api('clearChannelThinking', { serverId, channelId });
+    setClearingThinking(null);
+    if (r.ok) alert(`✅ Cleared! ${r.message}`);
+    else alert('Failed: ' + (r.error || 'unknown'));
   };
 
   const syncEverything = async () => {
@@ -661,6 +671,7 @@ export default function ServersClient({ portalUser = null }: { portalUser?: Port
                         </div>
                         <div style={{ display: "flex", gap: "6px" }}>
                           <Btn onClick={() => { setChannelRename({ id: ch.id, name: ch.name }); setNewChannelName(ch.name); }} variant="ghost" size="sm">Rename</Btn>
+                          <Btn onClick={() => clearChannelThinking(selectedServer, ch.id, ch.name)} variant="ghost" size="sm" disabled={clearingThinking === ch.id}>{clearingThinking === ch.id ? '⏳' : '🧹'} Clear Thinking</Btn>
                           <Btn onClick={() => doDeleteChannel(ch.id, ch.name)} variant="danger" size="sm">Delete</Btn>
                         </div>
                       </div>
