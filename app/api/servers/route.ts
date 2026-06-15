@@ -767,11 +767,11 @@ export async function POST(req: NextRequest) {
     const machinesMap = (data.config as unknown as { machines?: Record<string, { host?: string; port?: number; user?: string; password?: string }> })?.machines ?? {};
     const machine = machinesMap[clearServerId];
     if (!machine?.host || !machine?.password) return NextResponse.json({ error: 'No SSH credentials for this server' }, { status: 400 });
-    // Run clearing script via spawn
-    const clearScript = path.join(process.env.USERPROFILE || process.env.HOME || '', '.openclaw', 'agents', 'axelsonnet4', 'workspace', 'fix-all-thinking-blocks.py');
-    const child = spawn('python', [clearScript], { detached: true, stdio: 'ignore' });
+    // Run hard session reset script for this specific channel
+    const resetScript = path.join(process.env.USERPROFILE || process.env.HOME || '', '.openclaw', 'workspace', 'reset-channel-sessions.py');
+    const child = spawn('python', [resetScript, clearServerId, clearChannelId], { detached: true, stdio: 'ignore' });
     child.unref();
-    return NextResponse.json({ ok: true, message: `Clearing thinking blocks for ${clearChannel?.name || clearChannelId} on ${clearServer?.name || clearServerId}. This runs in background.`, agentId });
+    return NextResponse.json({ ok: true, message: `Hard-resetting all sessions for #${clearChannel?.name || clearChannelId} on ${clearServer?.name || clearServerId}. The agent will start fresh on next message.`, agentId });
   }
 
   if (body.action === 'lockAllChannels') {
