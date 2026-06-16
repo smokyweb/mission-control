@@ -730,16 +730,18 @@ export async function POST(req: NextRequest) {
     }
     writeServers(data);
     // Fire-and-forget: clear stale thinking blocks on all servers
-    const THINKING_SCRIPT = path.join(process.env.USERPROFILE || process.env.HOME || '', '.openclaw', 'agents', 'axelsonnet4', 'workspace', 'fix-all-thinking-blocks.py');
-    const STONYX_SCRIPT = path.join(process.env.USERPROFILE || process.env.HOME || '', '.openclaw', 'agents', 'axelsonnet4', 'workspace', 'fix-stonyx-thinking2.py');
-    const AGENT_SYNC_SCRIPT = path.join(process.env.USERPROFILE || process.env.HOME || '', '.openclaw', 'agents', 'axelsonnet4', 'workspace', 'sync-channel-assignments-to-agents.py');
-    [THINKING_SCRIPT, STONYX_SCRIPT, AGENT_SYNC_SCRIPT].forEach(script => {
+    const WS = path.join(process.env.USERPROFILE || process.env.HOME || '', '.openclaw', 'agents', 'axelsonnet4', 'workspace');
+    const THINKING_SCRIPT = path.join(WS, 'fix-all-thinking-blocks.py');       // Linux servers
+    const STONYX_FULL_SCRIPT = path.join(WS, 'reset-all-stonyx.py');           // Stonyx full reset
+    const STONYX_SCRIPT = path.join(WS, 'fix-stonyx-thinking2.py');            // Stonyx trajectory only
+    const AGENT_SYNC_SCRIPT = path.join(WS, 'sync-channel-assignments-to-agents.py');
+    [THINKING_SCRIPT, STONYX_FULL_SCRIPT, STONYX_SCRIPT, AGENT_SYNC_SCRIPT].forEach(script => {
       try {
         const child = spawn('python', [script], { detached: true, stdio: 'ignore' });
         child.unref();
       } catch { /* ignore */ }
     });
-    return NextResponse.json({ ok: true, fixedChannels, synced, backgroundTasks: 'clearing thinking blocks + syncing agent permissions' });
+    return NextResponse.json({ ok: true, fixedChannels, synced, backgroundTasks: 'clearing thinking blocks on all 4 servers (including Stonyx) + syncing agent permissions' });
   }
 
   if (body.action === 'syncAllRoles') {
