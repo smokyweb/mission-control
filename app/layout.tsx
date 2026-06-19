@@ -18,8 +18,8 @@ export const metadata: Metadata = {
   title: "Bat Cave | OpenClaw",
   description: "OpenClaw Agent Bat Cave Dashboard",
   icons: {
-    icon: '/favicon.png',
-    shortcut: '/favicon.png',
+    icon: [{ url: '/favicon.ico', sizes: 'any' }, { url: '/favicon.png', type: 'image/png', sizes: '32x32' }],
+    shortcut: '/favicon.ico',
     apple: '/favicon.png',
   },
 };
