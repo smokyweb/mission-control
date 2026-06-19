@@ -4,7 +4,14 @@ const COOKIE_NAME = 'batcave_session';
 
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
+  const host = request.headers.get('host') || '';
 
+  // On missions.batmanbluestone.com - Cloudflare handles auth, no custom login needed
+  if (host.includes('missions.batmanbluestone.com') || host.includes('batmanbluestone.com')) {
+    return NextResponse.next();
+  }
+
+  // On batcave.bluesapps.com - use custom login
   // Always allow static assets, API routes, login page, and portal routes
   if (
     pathname.startsWith('/_next') ||
@@ -24,7 +31,7 @@ export function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
-  // Redirect to login
+  // Redirect to login (only on bluesapps.com)
   const loginUrl = new URL('/batcave-login', request.url);
   loginUrl.searchParams.set('from', pathname);
   return NextResponse.redirect(loginUrl);
