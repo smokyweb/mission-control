@@ -541,7 +541,7 @@ export default function ServersClient({ portalUser = null }: { portalUser?: Port
       <div style={{ display: "flex", gap: 0, borderBottom: `1px solid ${GOLD_BORDER}`, marginBottom: "24px" }}>
         {availableTabs.map(t => (
           <button key={t} onClick={() => setMainTab(t)} style={{ padding: "10px 22px", fontSize: "13px", fontWeight: mainTab === t ? 700 : 400, color: mainTab === t ? GOLD : "rgba(255,255,255,0.4)", borderBottom: mainTab === t ? `2px solid ${GOLD}` : "2px solid transparent", background: "transparent", border: "none", cursor: "pointer", textTransform: "capitalize" }}>
-            {t === "staff" ? `Staff (${staff.length})` : t === "users" ? `Users (${portalUsers.length})` : t === "history" ? `History (${history.length})` : "Servers"}
+            {t === "staff" ? `Staff (${new Set(staff.map(s => s.discordUsername?.toLowerCase() || s.id)).size})` : t === "users" ? `Users (${portalUsers.length})` : t === "history" ? `History (${history.length})` : "Servers"}
           </button>
         ))}
       </div>
