@@ -158,6 +158,7 @@ export default function ServersClient({ portalUser = null }: { portalUser?: Port
   const [syncingRoles, setSyncingRoles] = useState(false);
   const [lockingChannels, setLockingChannels] = useState(false);
   const [syncingAll, setSyncingAll] = useState(false);
+  const [syncingAgentPerms, setSyncingAgentPerms] = useState(false);
   const [clearingThinking, setClearingThinking] = useState<string | null>(null);
   const [provisionModal, setProvisionModal] = useState<{ serverId: string; serverName: string } | null>(null);
   const [provisioning, setProvisioning] = useState(false);
@@ -337,6 +338,14 @@ export default function ServersClient({ portalUser = null }: { portalUser?: Port
     const r = await api('syncAll', {});
     setSyncingAll(false);
     if (r.ok) alert(`Sync complete!\nLocked ${r.fixedChannels} new channels\nSynced ${r.synced} staff members\nClearing thinking blocks in background...`);
+    else alert('Sync failed: ' + (r.error || 'unknown error'));
+  };
+
+  const syncAgentPermissions = async () => {
+    setSyncingAgentPerms(true);
+    const r = await api('syncAgentPermissions', {});
+    setSyncingAgentPerms(false);
+    if (r.ok) alert(`Agent permissions synced!\nUpdated ${r.updated} agent AGENTS.md files with current staff assignments.\nAgents will now recognize all assigned staff.`);
     else alert('Sync failed: ' + (r.error || 'unknown error'));
   };
 
@@ -709,6 +718,9 @@ export default function ServersClient({ portalUser = null }: { portalUser?: Port
               </Btn>
               <Btn onClick={lockAllChannels} disabled={lockingChannels} variant="ghost" size="sm">
                 {lockingChannels ? "Locking…" : "🔒 Lock Channels"}
+              </Btn>
+              <Btn onClick={syncAgentPermissions} disabled={syncingAgentPerms} variant="ghost" size="sm">
+                {syncingAgentPerms ? "Syncing permissions…" : "🤖 Sync Agent Permissions"}
               </Btn>
             </div>
           </div>

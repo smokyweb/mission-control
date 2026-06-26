@@ -818,6 +818,18 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ ok: true, fixed: totalFixed });
   }
 
+  // ── Sync agent permissions (update AGENTS.md on all servers) ──────────────────
+  if (body.action === 'syncAgentPermissions') {
+    const agentSyncScript = path.join(process.env.USERPROFILE || process.env.HOME || '', '.openclaw', 'agents', 'axelsonnet4', 'workspace', 'sync-channel-assignments-to-agents.py');
+    try {
+      const child = spawn('python', [agentSyncScript], { detached: true, stdio: 'ignore' });
+      child.unref();
+      return NextResponse.json({ ok: true, updated: 'running in background', message: 'Agent permissions sync started. All agent AGENTS.md files will be updated with current staff assignments (takes ~30s).' });
+    } catch (e) {
+      return NextResponse.json({ error: String(e) }, { status: 500 });
+    }
+  }
+
   return NextResponse.json({ error: 'Unknown action' }, { status: 400 });
 }
 
