@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
+// import Image from "next/image"; // replaced with <img> for Coolify compatibility
 import { usePathname } from "next/navigation";
 import { useEffect, useState, useRef } from "react";
 
@@ -68,7 +68,7 @@ export default function NavBar() {
       <div style={{ padding: "24px 20px 20px", borderBottom: `1px solid ${GOLD_BORDER}` }}>
         <Link href="/calendar" style={{ display: "flex", alignItems: "center", gap: "12px", textDecoration: "none" }}>
           <div style={{ position: "relative", flexShrink: 0 }}>
-            <Image
+            <img
               src="/batman-logo.jpg"
               alt="Bat Cave"
               width={42}
@@ -127,7 +127,7 @@ export default function NavBar() {
                 }
               }}
             >
-              <Image
+              <img
                 src={icon}
                 alt={label}
                 width={22}
