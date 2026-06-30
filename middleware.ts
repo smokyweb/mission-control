@@ -13,14 +13,20 @@ export function middleware(request: NextRequest) {
 
   // On batcave.bluesapps.com - use custom login
   // Always allow static assets, API routes, login page, and portal routes
+  // Allow static assets (images, icons, etc.)
+  const isStaticAsset = /\.(jpg|jpeg|png|gif|svg|ico|webp|woff|woff2|ttf|eot)$/i.test(pathname);
+
   if (
     pathname.startsWith('/_next') ||
     pathname.startsWith('/favicon') ||
+    pathname.startsWith('/icons/') ||
+    pathname.startsWith('/uploads/') ||
     pathname.startsWith('/api/') ||
     pathname.startsWith('/portal/') ||
     pathname === '/batcave-login' ||
     pathname.startsWith('/batcave-login') ||
-    pathname.startsWith('/(auth)')
+    pathname.startsWith('/(auth)') ||
+    isStaticAsset
   ) {
     return NextResponse.next();
   }
