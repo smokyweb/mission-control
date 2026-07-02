@@ -44,5 +44,6 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/((?!_next/static|_next/image|favicon.ico).*)'],
+  // Exclude _next/static, _next/image, favicon.ico, and all static file extensions
+  matcher: ['/((?!_next/static|_next/image|favicon\.ico|.*\.(?:jpg|jpeg|png|gif|svg|ico|webp|woff|woff2|ttf|eot)$).*)'],
 };
