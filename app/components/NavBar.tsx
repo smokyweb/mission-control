@@ -147,7 +147,7 @@ export default function NavBar() {
 
       {/* Batman Image */}
       <div style={{ padding: "0", overflow: "hidden" }}>
-        <Image
+        <img
           src="/batman-face.png"
           alt="Batman"
           width={220}
