@@ -32,20 +32,22 @@ export default function NavBar() {
   // Hide NavBar entirely on portal routes
   if (pathname.startsWith("/portal")) return null;
 
+  const MISSIONS = "https://missions.batmanbluestone.com";
+
   const links = [
-    { href: "/calendar",      label: "Calendar",      icon: "/icons/icon-7.png"  },
-    { href: "/tasks",         label: "Tasks",         icon: "/icons/icon-17.png" },
-    { href: "/todos",         label: "To-Dos",        icon: "/icons/icon-17.png" },
-    { href: "/conversations", label: "Conversations", icon: "/icons/icon-5.png"  },
-    { href: "/search",        label: "Search",        icon: "/icons/icon-14.png" },
-    { href: "/feed",          label: "Feed",          icon: "/icons/icon-4.png"  },
-    { href: "/content",       label: "Content",       icon: "/icons/icon-15.png" },
-    { href: "/memory",        label: "Memory",        icon: "/icons/icon-8.png"  },
-    { href: "/brent",         label: "Brent",         icon: "/icons/icon-10.png" },
-    { href: "/team",          label: "Team",          icon: "/icons/icon-10.png" },
-    { href: "/office",        label: "Office",        icon: "/icons/icon-16.png" },
-    { href: "/servers",       label: "Servers",       icon: "/icons/icon-14.png" },
-    { href: "/servers/cli",   label: "Servers CLI",   icon: "/icons/icon-14.png" },
+    { href: `${MISSIONS}/calendar`,      label: "Calendar",      icon: "/icons/icon-7.png",  external: true },
+    { href: `${MISSIONS}/tasks`,         label: "Tasks",         icon: "/icons/icon-17.png", external: true },
+    { href: `${MISSIONS}/todos`,         label: "To-Dos",        icon: "/icons/icon-17.png", external: true },
+    { href: `${MISSIONS}/conversations`, label: "Conversations", icon: "/icons/icon-5.png",  external: true },
+    { href: `${MISSIONS}/search`,        label: "Search",        icon: "/icons/icon-14.png", external: true },
+    { href: `${MISSIONS}/feed`,          label: "Feed",          icon: "/icons/icon-4.png",  external: true },
+    { href: `${MISSIONS}/content`,       label: "Content",       icon: "/icons/icon-15.png", external: true },
+    { href: `${MISSIONS}/memory`,        label: "Memory",        icon: "/icons/icon-8.png",  external: true },
+    { href: `${MISSIONS}/brent`,         label: "Brent",         icon: "/icons/icon-10.png", external: true },
+    { href: `${MISSIONS}/team`,          label: "Team",          icon: "/icons/icon-10.png", external: true },
+    { href: `${MISSIONS}/office`,        label: "Office",        icon: "/icons/icon-16.png", external: true },
+    { href: "/servers",                  label: "Servers",       icon: "/icons/icon-14.png", external: false },
+    { href: "/servers/cli",             label: "Servers CLI",   icon: "/icons/icon-14.png", external: false },
   ];
 
   return (
@@ -93,40 +95,38 @@ export default function NavBar() {
 
       {/* Nav Links */}
       <nav style={{ flex: 1, padding: "16px 12px" }}>
-        {links.map(({ href, label, icon }) => {
-          const active = pathname === href || pathname.startsWith(href + "/");
-          return (
-            <Link
-              key={href}
-              href={href}
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: "10px",
-                padding: "9px 12px",
-                borderRadius: "8px",
-                marginBottom: "2px",
-                textDecoration: "none",
-                fontSize: "13px",
-                fontWeight: active ? 700 : 400,
-                color: active ? GOLD : "rgba(255,255,255,0.55)",
-                background: active ? GOLD_DIM : "transparent",
-                borderLeft: active ? `3px solid ${GOLD}` : "3px solid transparent",
-                transition: "all 0.15s",
-              }}
-              onMouseEnter={e => {
-                if (!active) {
-                  (e.currentTarget as HTMLAnchorElement).style.color = "rgba(255,255,255,0.9)";
-                  (e.currentTarget as HTMLAnchorElement).style.background = "rgba(255,255,255,0.05)";
-                }
-              }}
-              onMouseLeave={e => {
-                if (!active) {
-                  (e.currentTarget as HTMLAnchorElement).style.color = "rgba(255,255,255,0.55)";
-                  (e.currentTarget as HTMLAnchorElement).style.background = "transparent";
-                }
-              }}
-            >
+        {links.map(({ href, label, icon, external }) => {
+          const active = !external && (pathname === href || pathname.startsWith(href + "/"));
+          const linkStyle = {
+            display: "flex",
+            alignItems: "center",
+            gap: "10px",
+            padding: "9px 12px",
+            borderRadius: "8px",
+            marginBottom: "2px",
+            textDecoration: "none",
+            fontSize: "13px",
+            fontWeight: active ? 700 : 400,
+            color: active ? GOLD : "rgba(255,255,255,0.55)",
+            background: active ? GOLD_DIM : "transparent",
+            borderLeft: active ? `3px solid ${GOLD}` : "3px solid transparent",
+            transition: "all 0.15s",
+          };
+          const hoverIn = (e: React.MouseEvent<HTMLAnchorElement>) => {
+            if (!active) {
+              (e.currentTarget as HTMLAnchorElement).style.color = "rgba(255,255,255,0.9)";
+              (e.currentTarget as HTMLAnchorElement).style.background = "rgba(255,255,255,0.05)";
+            }
+          };
+          const hoverOut = (e: React.MouseEvent<HTMLAnchorElement>) => {
+            if (!active) {
+              (e.currentTarget as HTMLAnchorElement).style.color = "rgba(255,255,255,0.55)";
+              (e.currentTarget as HTMLAnchorElement).style.background = "transparent";
+            }
+          };
+          return external ? (
+            <a key={href} href={href} target="_blank" rel="noopener noreferrer" style={linkStyle} onMouseEnter={hoverIn} onMouseLeave={hoverOut}>
+
               <img
                 src={icon}
                 alt={label}
@@ -139,6 +139,11 @@ export default function NavBar() {
                   flexShrink: 0,
                 }}
               />
+              <span style={{ letterSpacing: "0.03em" }}>{label}</span>
+            </a>
+          ) : (
+            <Link key={href} href={href} style={linkStyle} onMouseEnter={hoverIn} onMouseLeave={hoverOut}>
+              <img src={icon} alt={label} width={22} height={22} style={{ filter: active ? "invert(82%) sepia(100%) saturate(800%) hue-rotate(5deg) brightness(103%)" : "invert(1) opacity(0.5)", flexShrink: 0 }} />
               <span style={{ letterSpacing: "0.03em" }}>{label}</span>
             </Link>
           );
