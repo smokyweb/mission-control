@@ -4,6 +4,14 @@
   * {
     box-sizing: border-box;
   }
+
+  .main-content {
+    margin-left: 220px !important;
+    flex: 1;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
   
   :root {
     --background: #0A0A0F;
