@@ -174,6 +174,19 @@ export default function NavBar() {
         </span>
       </div>
 
+      {/* Logout */}
+      <div style={{ padding: "10px 20px" }}>
+        <button
+          onClick={async () => {
+            await fetch('/api/batcave-auth', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ action: 'logout' }) });
+            window.location.href = '/batcave-login';
+          }}
+          style={{ width: "100%", padding: "8px", background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.1)", borderRadius: "6px", color: "rgba(255,255,255,0.4)", fontSize: "11px", cursor: "pointer", letterSpacing: "0.05em" }}
+        >
+          LOGOUT
+        </button>
+      </div>
+
       {/* Gold bottom accent */}
       <div style={{ height: "3px", background: `linear-gradient(90deg, ${GOLD}, transparent)` }} />
     </aside>
