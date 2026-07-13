@@ -37,6 +37,11 @@ export function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
+  // Also allow /servers pages directly (they connect to internal APIs)
+  if (pathname.startsWith('/servers') || pathname.startsWith('/tasks') || pathname.startsWith('/team')) {
+    return NextResponse.next();
+  }
+
   // Redirect to login (only on bluesapps.com)
   const loginUrl = new URL('/batcave-login', request.url);
   loginUrl.searchParams.set('from', pathname);
