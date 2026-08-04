@@ -9,11 +9,20 @@ const CARD_BG = "#1A1A2E";
 const PAGE_BG = "#0A0A0F";
 
 const MODELS = [
-  { label: "Sonnet",   value: "anthropic/claude-sonnet-4-6", color: "#a855f7" },
-  { label: "GPT",      value: "openai/gpt-5.4",              color: "#3b82f6" },
-  { label: "Gemini",   value: "google/gemini-2.5-flash",     color: "#10b981" },
-  { label: "DeepSeek", value: "deepseek/deepseek-chat",      color: "#06b6d4" },
-  { label: "Opus",     value: "anthropic/claude-opus-4-7",   color: "#f59e0b" },
+  // GPT-5.6 series
+  { label: "GPT-5.6 Terra",  value: "openai/gpt-5.6-terra",         color: "#3b82f6",  cmd: "!model terra" },
+  { label: "GPT-5.6 Luna",   value: "openai/gpt-5.6-luna",          color: "#60a5fa",  cmd: "!model luna" },
+  { label: "GPT-5.6 Sol",    value: "openai/gpt-5.6-sol",           color: "#93c5fd",  cmd: "!model sol" },
+  // Claude series
+  { label: "Sonnet 4.6",     value: "anthropic/claude-sonnet-4-6",  color: "#a855f7",  cmd: "!model sonnet" },
+  { label: "Opus 4.7",       value: "anthropic/claude-opus-4-7",    color: "#f59e0b",  cmd: "!model opus" },
+  { label: "Haiku 4.5",      value: "anthropic/claude-haiku-4-5",   color: "#c084fc",  cmd: "!model haiku" },
+  // GPT-5.4 / GPT-4o
+  { label: "GPT-5.4",        value: "openai/gpt-5.4",               color: "#2563eb",  cmd: "!model gpt" },
+  { label: "GPT-4o",         value: "openai/gpt-4o",                color: "#1d4ed8",  cmd: "!model gpt4o" },
+  // Other
+  { label: "Gemini 2.5 Flash", value: "google/gemini-2.5-flash",    color: "#10b981",  cmd: "!model gemini" },
+  { label: "DeepSeek",       value: "deepseek/deepseek-chat",       color: "#06b6d4",  cmd: "!model deepseek" },
 ];
 
 const ROLES: Record<string, { label: string; color: string; bg: string }> = {
@@ -191,6 +200,11 @@ export default function ServersClient({ portalUser = null }: { portalUser?: Port
     if (!sid) return;
     setSaving(channelId);
     await api("updateModel", { serverId: sid, channelId, model });
+    // Send !model command to the channel to switch the active session immediately
+    const modelEntry = MODELS.find(m => m.value === model);
+    if (modelEntry?.cmd) {
+      await api("sendChannelMessage", { serverId: sid, channelId, message: modelEntry.cmd });
+    }
     await load();
     setSaving(null);
   };

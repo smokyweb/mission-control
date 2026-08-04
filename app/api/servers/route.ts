@@ -269,6 +269,32 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ ok: true, channel: ch });
   }
 
+  if (body.action === 'sendChannelMessage') {
+    const { serverId, channelId, message } = body;
+    if (!channelId || !message) return NextResponse.json({ error: 'channelId and message required' }, { status: 400 });
+    const botToken = data.config?.discordBotToken;
+    if (!botToken) return NextResponse.json({ error: 'No bot token configured' }, { status: 400 });
+    // Send message to Discord channel via API
+    const result = await new Promise<{ok: boolean; error?: string}>((resolve) => {
+      const payload = JSON.stringify({ content: message });
+      const req = https.request({
+        hostname: 'discord.com',
+        path: `/api/v10/channels/${channelId}/messages`,
+        method: 'POST',
+        headers: { 'Authorization': `Bot ${botToken}`, 'Content-Type': 'application/json', 'Content-Length': Buffer.byteLength(payload) }
+      }, res => {
+        let d = ''; res.on('data', c => d += c);
+        res.on('end', () => {
+          if (res.statusCode === 200 || res.statusCode === 201) resolve({ ok: true });
+          else resolve({ ok: false, error: `Discord API ${res.statusCode}: ${d.slice(0, 100)}` });
+        });
+      });
+      req.on('error', e => resolve({ ok: false, error: e.message }));
+      req.write(payload); req.end();
+    });
+    return NextResponse.json(result);
+  }
+
   if (body.action === 'updateServerModel') {
     const { serverId, model } = body;
     const server = data.servers[serverId];
