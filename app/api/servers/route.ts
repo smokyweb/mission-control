@@ -350,10 +350,36 @@ export async function POST(req: NextRequest) {
     const { id } = body;
     const member = data.staff.find(s => s.id === id);
     if (!member) return NextResponse.json({ ok: true });
+
+    // Kick from Discord + remove channel roles before wiping local data
+    const kickResults: { serverId: string; ok: boolean; error?: string }[] = [];
+    if (member.discordId) {
+      const serverIds = new Set<string>();
+      for (const sid of member.serverAdmins || []) serverIds.add(sid);
+      for (const ca of member.channelAssignments || []) serverIds.add(ca.serverId);
+
+      for (const serverId of serverIds) {
+        const token = getBotToken(data, serverId);
+        if (!token) { kickResults.push({ serverId, ok: false, error: 'no bot token' }); continue; }
+
+        // Remove all ch-* roles for this member on this server
+        const channelRoles = (data.config as unknown as { channelRoles?: Record<string, Record<string, { roleId: string; channelName: string }>> })?.channelRoles ?? {};
+        const roles = channelRoles[serverId] ?? {};
+        for (const [, roleInfo] of Object.entries(roles)) {
+          await discordApi(token, 'DELETE', `/guilds/${serverId}/members/${member.discordId}/roles/${roleInfo.roleId}`).catch(() => {});
+        }
+
+        // Kick from guild (removes remaining roles + leaves server)
+        const kickResult = await discordApi(token, 'DELETE', `/guilds/${serverId}/members/${member.discordId}`);
+        kickResults.push({ serverId, ok: kickResult.ok, error: kickResult.data?.message });
+      }
+    }
+
     data.staff = data.staff.filter(s => s.id !== id);
-    addHistory(data, { action: 'staff_remove', staffId: id, staffName: member.name, details: `${member.name} removed`, performedBy: by });
+    const kickDetails = kickResults.map(r => `${r.serverId}: ${r.ok ? 'kicked' : (r.error || 'skipped')}`).join('; ') || 'no discordId';
+    addHistory(data, { action: 'staff_remove', staffId: id, staffName: member.name, details: `${member.name} removed. Discord: ${kickDetails}`, performedBy: by });
     writeServers(data);
-    return NextResponse.json({ ok: true });
+    return NextResponse.json({ ok: true, discordCleanup: kickResults });
   }
 
   // ── Portal users ─────────────────────────────────────────────────────────
