@@ -231,9 +231,15 @@ export default function ServersClient({ portalUser = null }: { portalUser?: Port
   };
 
   const removeStaff = async (id: string) => {
-    if (!confirm("Remove this staff member?")) return;
-    await api("removeStaff", { id });
+    if (!confirm("Remove this staff member? This will also kick them from Discord servers.")) return;
+    const res = await api("removeStaff", { id });
     await load();
+    if (res.discordCleanup?.length) {
+      const lines = res.discordCleanup.map((r: { serverId: string; ok: boolean; error?: string }) => `${r.serverId}: ${r.ok ? 'kicked' : ('FAILED — ' + (r.error || 'unknown'))}`);
+      alert('Discord cleanup results:\n\n' + lines.join('\n'));
+    } else {
+      alert('Staff removed. No Discord servers were associated with this member.');
+    }
   };
 
   const openUser = (u: PortalUser | "new") => {
