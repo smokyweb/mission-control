@@ -359,19 +359,36 @@ export async function POST(req: NextRequest) {
       for (const ca of member.channelAssignments || []) serverIds.add(ca.serverId);
 
       for (const serverId of serverIds) {
-        const token = getBotToken(data, serverId);
-        if (!token) { kickResults.push({ serverId, ok: false, error: 'no bot token' }); continue; }
+        // Try per-server token first, fall back to global token
+        const perServerToken = (() => {
+          const machinesMap = (data.config as unknown as { machines?: Record<string, { botToken?: string }> })?.machines ?? {};
+          return machinesMap[serverId]?.botToken || '';
+        })();
+        const globalToken = data.config?.discordBotToken || '';
+        const tokens = [perServerToken, globalToken].filter(Boolean);
+        if (!tokens.length) { kickResults.push({ serverId, ok: false, error: 'no bot token configured' }); continue; }
 
         // Remove all ch-* roles for this member on this server
         const channelRoles = (data.config as unknown as { channelRoles?: Record<string, Record<string, { roleId: string; channelName: string }>> })?.channelRoles ?? {};
         const roles = channelRoles[serverId] ?? {};
+        const roleToken = tokens[0]!;
         for (const [, roleInfo] of Object.entries(roles)) {
-          await discordApi(token, 'DELETE', `/guilds/${serverId}/members/${member.discordId}/roles/${roleInfo.roleId}`).catch(() => {});
+          await discordApi(roleToken, 'DELETE', `/guilds/${serverId}/members/${member.discordId}/roles/${roleInfo.roleId}`).catch(() => {});
         }
 
         // Kick from guild (removes remaining roles + leaves server)
-        const kickResult = await discordApi(token, 'DELETE', `/guilds/${serverId}/members/${member.discordId}`);
-        kickResults.push({ serverId, ok: kickResult.ok, error: kickResult.data?.message });
+        // Try each available token until one succeeds
+        let kickResult: { ok: boolean; status?: number; data?: { code?: number; message?: string } | null } = { ok: false };
+        let lastError: string | undefined;
+        for (const t of tokens) {
+          kickResult = await discordApi(t, 'DELETE', `/guilds/${serverId}/members/${member.discordId}`);
+          if (kickResult.ok) break;
+          lastError = kickResult.data?.message || `HTTP ${kickResult.status}`;
+          // If 404, member isn't in this guild — treat as success from our perspective
+          if (kickResult.status === 404) { kickResult = { ok: true }; break; }
+        }
+        const detail = kickResult.ok ? 'kicked' : (kickResult.data?.code ? `${kickResult.data.code}: ${kickResult.data.message}` : (lastError || 'failed'));
+        kickResults.push({ serverId, ok: kickResult.ok, error: detail });
       }
     }
 
