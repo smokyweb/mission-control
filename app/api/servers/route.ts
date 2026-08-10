@@ -56,6 +56,32 @@ async function sendGmail({ to, subject, htmlBody }: { to: string; subject: strin
 
 const SERVERS_FILE = path.join(DATA_DIR, 'servers.json');
 
+// Fallback: if local data is missing or stale, fetch from batmanbluestone API
+const FALLBACK_API = 'https://missions.batmanbluestone.com/api/servers';
+let fallbackCache: { data: ServersData; fetchedAt: number } | null = null;
+const FALLBACK_TTL = 60_000; // 1 minute cache for fallback
+
+async function fetchFromFallback(): Promise<ServersData | null> {
+  const now = Date.now();
+  if (fallbackCache && now - fallbackCache.fetchedAt < FALLBACK_TTL) {
+    return fallbackCache.data;
+  }
+  try {
+    const res = await fetch(FALLBACK_API);
+    if (!res.ok) return null;
+    const raw = await res.json();
+    if (!raw.staff) raw.staff = [];
+    if (!raw.portalUsers) raw.portalUsers = [];
+    if (!raw.history) raw.history = [];
+    if (!raw.invites) raw.invites = [];
+    if (!raw.config) raw.config = { discordBotToken: '' };
+    fallbackCache = { data: raw, fetchedAt: now };
+    return raw;
+  } catch {
+    return null;
+  }
+}
+
 // ── Types ─────────────────────────────────────────────────────────────────────
 interface Channel { name: string; id: string; model: string; agentId: string; }
 interface Server { name: string; channels: Channel[]; }
@@ -108,6 +134,21 @@ function readServers(): ServersData {
     if (!raw.history) raw.history = [];
     if (!raw.invites) raw.invites = [];
     if (!raw.config) raw.config = { discordBotToken: '' };
+    
+    // Check if data looks stale or incomplete (e.g., missing servers)
+    const now = new Date();
+    const dataAge = now.getTime() - new Date(raw.lastUpdated).getTime();
+    const isStale = dataAge > 30 * 60 * 1000; // older than 30 minutes
+    const isIncomplete = !raw.servers || Object.keys(raw.servers).length === 0;
+    
+    if (isStale || isIncomplete) {
+      const fallback = fetchFromFallback();
+      if (fallback) {
+        // Sync fallback data back to local file so future reads are fast
+        try { fs.writeFileSync(SERVERS_FILE, JSON.stringify(fallback, null, 2)); } catch { /* ignore */ }
+        return fallback;
+      }
+    }
     return raw;
   } catch {
     return { config: { discordBotToken: '' }, servers: {}, staff: [], portalUsers: [], invites: [], history: [], lastUpdated: '' };
@@ -897,6 +938,14 @@ export async function POST(req: NextRequest) {
     } catch (e) {
       return NextResponse.json({ error: String(e) }, { status: 500 });
     }
+  }
+
+  // ── Manual sync from fallback API ─────────────────────────────────────────
+  if (body.action === 'syncFromBackup') {
+    const backup = await fetchFromFallback();
+    if (!backup) return NextResponse.json({ error: 'Could not reach backup API' }, { status: 502 });
+    writeServers(backup);
+    return NextResponse.json({ ok: true, synced: true, serverCount: Object.keys(backup.servers).length });
   }
 
   return NextResponse.json({ error: 'Unknown action' }, { status: 400 });
