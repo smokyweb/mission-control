@@ -126,7 +126,7 @@ interface ServersData {
 }
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
-function readServers(): ServersData {
+function readServersRaw(): ServersData | null {
   try {
     const raw = JSON.parse(fs.readFileSync(SERVERS_FILE, 'utf8'));
     if (!raw.staff) raw.staff = [];
@@ -134,25 +134,41 @@ function readServers(): ServersData {
     if (!raw.history) raw.history = [];
     if (!raw.invites) raw.invites = [];
     if (!raw.config) raw.config = { discordBotToken: '' };
-    
-    // Check if data looks stale or incomplete (e.g., missing servers)
-    const now = new Date();
-    const dataAge = now.getTime() - new Date(raw.lastUpdated).getTime();
-    const isStale = dataAge > 30 * 60 * 1000; // older than 30 minutes
-    const isIncomplete = !raw.servers || Object.keys(raw.servers).length === 0;
-    
-    if (isStale || isIncomplete) {
-      const fallback = fetchFromFallback();
-      if (fallback) {
-        // Sync fallback data back to local file so future reads are fast
-        try { fs.writeFileSync(SERVERS_FILE, JSON.stringify(fallback, null, 2)); } catch { /* ignore */ }
-        return fallback;
-      }
-    }
     return raw;
   } catch {
-    return { config: { discordBotToken: '' }, servers: {}, staff: [], portalUsers: [], invites: [], history: [], lastUpdated: '' };
+    return null;
   }
+}
+
+async function readServers(): Promise<ServersData> {
+  const raw = readServersRaw();
+  const empty: ServersData = { config: { discordBotToken: '' }, servers: {}, staff: [], portalUsers: [], invites: [], history: [], lastUpdated: '' };
+  
+  if (!raw) {
+    // No file — try fallback immediately
+    const fallback = await fetchFromFallback();
+    if (fallback) {
+      try { fs.writeFileSync(SERVERS_FILE, JSON.stringify(fallback, null, 2)); } catch { /* ignore */ }
+      return fallback;
+    }
+    return empty;
+  }
+
+  // Check if data looks stale or incomplete
+  const now = Date.now();
+  const dataAge = now - new Date(raw.lastUpdated || 0).getTime();
+  const isStale = dataAge > 30 * 60 * 1000; // older than 30 minutes
+  const isIncomplete = !raw.servers || Object.keys(raw.servers).length === 0;
+
+  if (isStale || isIncomplete) {
+    const fallback = await fetchFromFallback();
+    if (fallback) {
+      try { fs.writeFileSync(SERVERS_FILE, JSON.stringify(fallback, null, 2)); } catch { /* ignore */ }
+      return fallback;
+    }
+  }
+
+  return raw;
 }
 
 function writeServers(data: ServersData) {
@@ -278,7 +294,7 @@ async function discordApi(token: string, method: string, endpoint: string, body?
 export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url);
   const action = searchParams.get('action');
-  const data = readServers();
+  const data = await readServers();
 
   if (action === 'history') {
     const limit = parseInt(searchParams.get('limit') || '100');
@@ -293,7 +309,7 @@ export async function GET(req: NextRequest) {
 // ── POST ──────────────────────────────────────────────────────────────────────
 export async function POST(req: NextRequest) {
   const body = await req.json();
-  const data = readServers();
+  const data = await readServers();
   const by = body.performedBy || 'kevin';
 
   // ── Model changes ────────────────────────────────────────────────────────
