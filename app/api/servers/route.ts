@@ -487,6 +487,28 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ ok: true, user: safe });
   }
 
+  // ── Register existing Discord channel (does not create in Discord) ────────
+  if (body.action === 'registerChannel') {
+    const { serverId, name, channelId, model, agentId } = body;
+    const server = data.servers[serverId];
+    if (!server) return NextResponse.json({ error: 'Server not found' }, { status: 404 });
+    if (!channelId) return NextResponse.json({ error: 'channelId is required' }, { status: 400 });
+    // Remove any existing entry with same ID to avoid duplicates
+    server.channels = server.channels.filter(c => c.id !== channelId);
+    const slotNum = server.channels.length + 1;
+    const serverSlug = server.name.toLowerCase().replace(/\s+/g, '');
+    const newCh: Channel = {
+      name: name || channelId,
+      id: channelId,
+      model: model || 'anthropic/claude-sonnet-4-6',
+      agentId: agentId || `${serverSlug}-slot-${slotNum}`
+    };
+    server.channels.push(newCh);
+    addHistory(data, { action: 'channel_register', serverId, channelId: newCh.id, channelName: newCh.name, details: `#${newCh.name} registered from existing Discord channel (agent: ${newCh.agentId})`, performedBy: by });
+    writeServers(data);
+    return NextResponse.json({ ok: true, channel: newCh });
+  }
+
   // ── Discord channel management ────────────────────────────────────────────
   if (body.action === 'addChannel') {
     const { serverId, name, model } = body;
