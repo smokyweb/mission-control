@@ -489,12 +489,13 @@ export async function POST(req: NextRequest) {
 
   // ── Register existing Discord channel (does not create in Discord) ────────
   if (body.action === 'registerChannel') {
-    const { serverId, name, channelId, model, agentId } = body;
+    const { serverId, name, channelId, model, agentId, removeIds } = body;
     const server = data.servers[serverId];
     if (!server) return NextResponse.json({ error: 'Server not found' }, { status: 404 });
     if (!channelId) return NextResponse.json({ error: 'channelId is required' }, { status: 400 });
-    // Remove any existing entry with same ID to avoid duplicates
-    server.channels = server.channels.filter(c => c.id !== channelId);
+    // Remove any existing entry with same ID or any IDs listed in removeIds (cleanup bad entries)
+    const idsToRemove = new Set([channelId, ...(Array.isArray(removeIds) ? removeIds : [])]);
+    server.channels = server.channels.filter(c => !idsToRemove.has(c.id));
     const slotNum = server.channels.length + 1;
     const serverSlug = server.name.toLowerCase().replace(/\s+/g, '');
     const newCh: Channel = {
@@ -507,6 +508,18 @@ export async function POST(req: NextRequest) {
     addHistory(data, { action: 'channel_register', serverId, channelId: newCh.id, channelName: newCh.name, details: `#${newCh.name} registered from existing Discord channel (agent: ${newCh.agentId})`, performedBy: by });
     writeServers(data);
     return NextResponse.json({ ok: true, channel: newCh });
+  }
+
+  // Remove a channel from servers.json only (no Discord API call) — for cleanup
+  if (body.action === 'unregisterChannel') {
+    const { serverId, channelId } = body;
+    const server = data.servers[serverId];
+    if (!server) return NextResponse.json({ error: 'Server not found' }, { status: 404 });
+    const ch = server.channels.find(c => c.id === channelId);
+    server.channels = server.channels.filter(c => c.id !== channelId);
+    if (ch) addHistory(data, { action: 'channel_unregister', serverId, channelId, channelName: ch.name, details: `#${ch.name} removed from registry only (Discord channel preserved)`, performedBy: by });
+    writeServers(data);
+    return NextResponse.json({ ok: true });
   }
 
   // ── Discord channel management ────────────────────────────────────────────
