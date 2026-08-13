@@ -145,7 +145,9 @@ async function readServers(): Promise<ServersData> {
   const empty: ServersData = { config: { discordBotToken: '' }, servers: {}, staff: [], portalUsers: [], invites: [], history: [], lastUpdated: '' };
   
   if (!raw) {
-    // No file — try fallback immediately
+    // No file — try fallback immediately (fresh container start)
+    // Note: fallback data has no passwordHash fields (stripped by GET API)
+    // On fresh start there are no local users to preserve, so write as-is
     const fallback = await fetchFromFallback();
     if (fallback) {
       try { fs.writeFileSync(SERVERS_FILE, JSON.stringify(fallback, null, 2)); } catch { /* ignore */ }
@@ -163,8 +165,24 @@ async function readServers(): Promise<ServersData> {
   if (isStale || isIncomplete) {
     const fallback = await fetchFromFallback();
     if (fallback) {
-      try { fs.writeFileSync(SERVERS_FILE, JSON.stringify(fallback, null, 2)); } catch { /* ignore */ }
-      return fallback;
+      // Preserve existing portalUsers password hashes — the fallback API response strips
+      // passwordHash for security, so merging blindly would wipe all passwords.
+      // Keep local users if they have a hash; add any new ones from fallback without hashes.
+      const localUsers = raw.portalUsers || [];
+      const fallbackUsers = fallback.portalUsers || [];
+      const mergedUsers = fallbackUsers.map(fu => {
+        const local = localUsers.find(lu => lu.id === fu.id || lu.username === fu.username);
+        return local && local.passwordHash ? { ...fu, passwordHash: local.passwordHash } : fu;
+      });
+      // Also keep any local users not present in fallback (newly created on batcave)
+      for (const lu of localUsers) {
+        if (!mergedUsers.find(u => u.id === lu.id || u.username === lu.username)) {
+          mergedUsers.push(lu);
+        }
+      }
+      const merged = { ...fallback, portalUsers: mergedUsers };
+      try { fs.writeFileSync(SERVERS_FILE, JSON.stringify(merged, null, 2)); } catch { /* ignore */ }
+      return merged;
     }
   }
 
