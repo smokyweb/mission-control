@@ -169,6 +169,7 @@ export default function ServersClient({ portalUser = null }: { portalUser?: Port
   const [syncingAll, setSyncingAll] = useState(false);
   const [syncingAgentPerms, setSyncingAgentPerms] = useState(false);
   const [clearingThinking, setClearingThinking] = useState<string | null>(null);
+  const [resettingChannel, setResettingChannel] = useState<string | null>(null);
   const [provisionModal, setProvisionModal] = useState<{ serverId: string; serverName: string } | null>(null);
   const [provisioning, setProvisioning] = useState(false);
   const [provisionResult, setProvisionResult] = useState<{ ok?: boolean; error?: string; provisioned: number; skipped: number; results: { agent: string; channel: string; model?: string; status: string }[] } | null>(null);
@@ -342,6 +343,18 @@ export default function ServersClient({ portalUser = null }: { portalUser?: Port
     setLockingChannels(false);
     if (r.ok) alert(`Done! Fixed ${r.fixed} unlocked channels across all servers.`);
     else alert('Failed: ' + (r.error || 'unknown error'));
+  };
+
+  const resetChannelToSonnet = async (serverId: string, channelId: string, channelName: string) => {
+    if (!confirm(`Reset #${channelName} to Sonnet and clear stuck session?\n\nUse this when you see the auto-compaction error.`)) return;
+    setResettingChannel(channelId);
+    // Switch to Sonnet
+    await api('updateModel', { serverId, channelId, model: 'anthropic/claude-sonnet-4-6' });
+    // Send !model sonnet to the channel to switch active session
+    await api('sendChannelMessage', { serverId, channelId, message: '!model sonnet' });
+    await load();
+    setResettingChannel(null);
+    alert(`✅ #${channelName} reset to Sonnet! Tell the user to send /new in the channel.`);
   };
 
   const clearChannelThinking = async (serverId: string, channelId: string, channelName: string) => {
@@ -669,6 +682,14 @@ export default function ServersClient({ portalUser = null }: { portalUser?: Port
                             <select value={ch.model} onChange={e => updateModel(ch.id, e.target.value)} disabled={saving === ch.id} style={{ background: `${modelColor(ch.model)}22`, border: `1px solid ${modelColor(ch.model)}66`, color: modelColor(ch.model), padding: "4px 8px", borderRadius: "6px", fontSize: "11px", fontWeight: 700 }}>
                               {MODELS.map(m => <option key={m.value} value={m.value}>{m.label}</option>)}
                             </select>
+                            <button
+                              onClick={() => resetChannelToSonnet(selectedServer, ch.id, ch.name)}
+                              disabled={resettingChannel === ch.id}
+                              title="Reset to Sonnet (fixes auto-compaction error)"
+                              style={{ padding: "4px 8px", borderRadius: "6px", fontSize: "11px", background: "rgba(239,68,68,0.1)", border: "1px solid rgba(239,68,68,0.3)", color: "#f87171", cursor: "pointer", whiteSpace: "nowrap" }}
+                            >
+                              {resettingChannel === ch.id ? '⏳' : '🔄'}
+                            </button>
                           </div>
                         </div>
                       );
