@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import fs from 'fs';
 import path from 'path';
 import crypto from 'crypto';
-import { spawn } from 'child_process';
+import { spawn, spawnSync } from 'child_process';
 import https from 'https';
 
 // DATA_DIR env var allows overriding the data directory for cloud deployments
@@ -1007,6 +1007,84 @@ export async function POST(req: NextRequest) {
     } catch (e) {
       return NextResponse.json({ error: String(e) }, { status: 500 });
     }
+  }
+
+  // ── Reset channel session (clear SQLite + restart gateway + switch to Sonnet) ──
+  if (body.action === 'resetChannelSession') {
+    const { serverId, channelId, channelId: _ignore } = body;
+    if (!serverId || !channelId) return NextResponse.json({ error: 'serverId and channelId required' }, { status: 400 });
+    const server = data.servers[serverId];
+    if (!server) return NextResponse.json({ error: 'Server not found' }, { status: 404 });
+    const ch = server.channels.find(c => c.id === channelId);
+    if (!ch) return NextResponse.json({ error: 'Channel not found' }, { status: 404 });
+
+    // Step 1: SSH into the server and clear session files + restart gateway
+    const deleteSession = `find ${process.env.USERPROFILE || process.env.HOME || ''}/.openclaw/agents/main/sessions -type f -delete 2>/dev/null; find ${process.env.USERPROFILE || process.env.HOME || ''}/.openclaw/memory/*.sqlite -delete 2>/dev/null; echo 'sessions-cleared'; openclaw gateway restart --now 2>/dev/null; echo 'gateway-restarted'`;
+
+    let clearOk = false;
+    let clearMsg = '';
+    try {
+      const result = spawnSync('python', [SSH_SCRIPT, serverId, deleteSession], {
+        timeout: 30_000,
+        encoding: 'utf8',
+      });
+      if (result.error) {
+        clearMsg = `Session clear failed: ${result.error.message}`;
+      } else {
+        const stdout = (result.stdout || '').trim();
+        const jsonLine = stdout.split('\n').reverse().find((l: string) => l.startsWith('{'));
+        if (jsonLine) {
+          const parsed = JSON.parse(jsonLine);
+          clearOk = parsed.ok !== false;
+          clearMsg = parsed.message || stdout.split('\n').pop() || 'Session files cleared';
+        } else {
+          clearMsg = stdout.split('\n').pop() || 'Clear attempted';
+        }
+      }
+    } catch (e) {
+      clearMsg = `Error during clear: ${e instanceof Error ? e.message : String(e)}`;
+    }
+
+    // Step 2: Switch model on the server registry
+    ch.model = 'anthropic/claude-sonnet-4-6';
+
+    // Step 3: Send !model sonnet to the channel to switch the active session
+    const botToken = data.config?.discordBotToken;
+    let msgSent = false;
+    if (botToken) {
+      try {
+        const msgResult = await new Promise<{ok: boolean; error?: string}>((resolve) => {
+          const payload = JSON.stringify({ content: '!model sonnet' });
+          const req = https.request({
+            hostname: 'discord.com',
+            path: `/api/v10/channels/${channelId}/messages`,
+            method: 'POST',
+            headers: { 'Authorization': `Bot ${botToken}`, 'Content-Type': 'application/json', 'Content-Length': Buffer.byteLength(payload) }
+          }, res => {
+            let d = ''; res.on('data', c => d += c);
+            res.on('end', () => {
+              if (res.statusCode === 200 || res.statusCode === 201) resolve({ ok: true });
+              else resolve({ ok: false, error: `Discord API ${res.statusCode}: ${d.slice(0, 100)}` });
+            });
+          });
+          req.on('error', e => resolve({ ok: false, error: e.message }));
+          req.write(payload); req.end();
+        });
+        msgSent = msgResult.ok;
+      } catch { /* ignore */ }
+    }
+
+    writeServers(data);
+    addHistory(data, { action: 'channel_reset', serverId, channelId, channelName: ch.name, model: 'anthropic/claude-sonnet-4-6', details: `Channel reset: sessions cleared (${clearOk ? 'ok' : 'failed'}), gateway restarted, switched to Sonnet`, performedBy: by });
+    writeServers(data);
+    return NextResponse.json({
+      ok: true,
+      channel: ch,
+      clearOk,
+      clearMsg,
+      msgSent,
+      message: `✅ #${ch.name} reset to Sonnet! ${clearOk ? 'Sessions cleared + gateway restarted.' : clearMsg} Tell the user to send /new in the channel.`,
+    });
   }
 
   // ── Manual sync from fallback API ─────────────────────────────────────────

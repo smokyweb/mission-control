@@ -346,15 +346,21 @@ export default function ServersClient({ portalUser = null }: { portalUser?: Port
   };
 
   const resetChannelToSonnet = async (serverId: string, channelId: string, channelName: string) => {
-    if (!confirm(`Reset #${channelName} to Sonnet and clear stuck session?\n\nUse this when you see the auto-compaction error.`)) return;
+    if (!confirm(`Reset #${channelName} to Sonnet and clear stuck session?\n\nThis will clear SQLite sessions, restart the gateway, and switch to Sonnet.`)) return;
     setResettingChannel(channelId);
-    // Switch to Sonnet
-    await api('updateModel', { serverId, channelId, model: 'anthropic/claude-sonnet-4-6' });
-    // Send !model sonnet to the channel to switch active session
-    await api('sendChannelMessage', { serverId, channelId, message: '!model sonnet' });
+    const res = await fetch('/api/servers', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ action: 'resetChannelSession', serverId, channelId, performedBy: 'kevin' }),
+    });
+    const json = await res.json();
     await load();
     setResettingChannel(null);
-    alert(`✅ #${channelName} reset to Sonnet! Tell the user to send /new in the channel.`);
+    if (json.ok) {
+      alert(json.message);
+    } else {
+      alert(`Reset failed: ${json.error || 'unknown error'}`);
+    }
   };
 
   const clearChannelThinking = async (serverId: string, channelId: string, channelName: string) => {
